@@ -1,0 +1,104 @@
+body, html {
+    height: 100%;
+    margin: 0;
+}
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f6f8fa;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.register-container {
+    flex-grow: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-box {
+    width: 100%;
+    max-width: 400px;
+    margin: 20px;
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #d8dee2;
+    border-radius: 6px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-group {
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+.input-label {
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    padding: 12px;
+    border: 1px solid #d1d5da;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    height: 20px; /* pt mesaj de eroare */
+    margin-top: 10px;
+}
+
+.register-button {
+    padding: 12px;
+    margin-top: 10px;
+    background-color: #2ea44f;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.register-button:hover {
+    background-color: #22863a;
+}
+
+.login-account {
+    margin-top: 20px;
+    font-size: 12px;
+}
+
+.footer {
+    width: 100%;
+    background-color: #fafbfc;
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #eaecef;
+    flex-wrap: wrap;
+}
+
+.footer a {
+    text-decoration: none;
+    color: #0366d6;
+    margin: 5px 10px;
+    font-size: 12px;
+}
+
+.footer a:hover {
+    text-decoration: underline;
+}
+
+@media (max-width: 600px) {
+    .register-box, .footer {
+        margin: 10px; /* margini pt ecrane mici */
+    }
+}
