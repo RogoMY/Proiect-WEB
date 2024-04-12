@@ -9,7 +9,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const password = document.getElementById('password').value;
 
         if (username === 'admin' && password === 'admin') {//redirectionare catre homepage
-            window.location.href = 'C:/Users/Luca/Documents/test.html';
+            window.location.href = 'homepage.html';
         } else {//mesaj esuare logare
             errorMessage.textContent = 'Wrong username or password!';
         }
