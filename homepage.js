@@ -1,35 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const smallBar = document.getElementById('small-bar');
+document.addEventListener('DOMContentLoaded', function() {
+  // Toggle pentru meniul mobil
+  var menuToggle = document.getElementById('menu-toggle');
+  var menu = document.querySelector('.menu');
   
-    smallBar.addEventListener('click', function() {
-      smallBar.classList.toggle('active');
-    });
-  
-    // Vezi unde iti da redirect linkul
-    const menuLinks = smallBar.querySelectorAll('.menu a');
-    menuLinks.forEach(link => {
-      link.addEventListener('click', function(event) {
-        event.preventDefault(); 
-        const href = link.getAttribute('href'); // Vezi unde iti da redirect linkul
-        // Vezi unde dadea redirect linkul ala
-        window.location.href = href;
-      });
-    });
-  
-    const searchBar = document.querySelector('.search-bar');
-    const unfoldBar = document.querySelector('.unfold-bar');
-  
-    function alignSearchBar() {
-      if (unfoldBar.classList.contains('active')) {
-        const unfoldBarHeight = unfoldBar.clientHeight;
-        searchBar.style.marginTop = `${unfoldBarHeight + 10}px`;
-      } else {
-        searchBar.style.marginTop = ''; // daca nu e aleasa bara
-      }
-    }
-  
-    alignSearchBar();
-  
-    window.addEventListener('resize', alignSearchBar);
+  menuToggle.addEventListener('click', function() {
+    menu.classList.toggle('active');
   });
   
+  // Gestionarea cautarii
+  var searchButton = document.getElementById('search-button');
+  var searchField = document.getElementById('search-field');
+  
+  // Functia care se declanseaza la click pe butonul de cautare
+  searchButton.addEventListener('click', function() {
+    performSearch();
+  });
+  
+  // Functia care se declanseaza la apasarea tastei Enter in campul de cautare
+  searchField.addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+      performSearch();
+    }
+  });
+
+  // Functie pentru a executa cautarea
+  function performSearch() {
+    var query = searchField.value.trim();
+    if (query.length > 0) {
+      window.location.href = 'search-results.html?query=' + encodeURIComponent(query);
+    }
+  }
+});
