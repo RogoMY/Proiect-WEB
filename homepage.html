@@ -3,29 +3,46 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Main Page</title>
+  <title>Main Page | ReFi</title>
   <link rel="stylesheet" href="homepage.css">
+  <link rel="stylesheet" href="header-footer.css">
+
 </head>
 <body>
-  <div class="orange-bar" id="large-bar">
-    <div>ReFI</div>
-    <div class="menu">
-      <a href="====AICI O SA PUNEM LINKUL SPRE PAGINA DE ISTORIC====">History</a>
-      <a href="login.html">Logout</a>
-      <a href="=====AICI PUNEM LINKUL SPRE PAGINA DE FAVORITE====">Favorites</a>
+  <header class="header">
+    <span class="logo"><a href=homepage.html>ReFi</a></span>
+    <div class="menu-and-search">
+      <nav class="menu">
+        <ul>
+          <li><a href="history.html">History</a></li>
+          <li><a href="login.html">Logout</a></li>
+          <li><a href="favorites.html">Favorites</a></li>
+        </ul>
+      </nav>
+      <div class="search-bar">
+        <input type="text" id="search-field" placeholder="Search...">
+        <button id="search-button">Search</button>
+      </div>
     </div>
-  </div>
-  <div class="unfold-bar" id="small-bar">
-    <div>ReFI</div>
-    <div class="menu" id="menu-small-bar">
-      <a href="====AICI O SA PUNEM LINKUL SPRE PAGINA DE ISTORIC====">History</a>
-      <a href="login.html">Logout</a>
-      <a href="=====AICI PUNEM LINKUL SPRE PAGINA DE FAVORITE====">Favorites</a>
+    <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+  </header>
+  <main>
+    <section class="welcome-section">
+      <h1>Welcome to ReFi</h1>
+      <p>Welcome to ReFi, the ultimate resource finder for creative coding. Discover websites, tutorials, multimedia presentations, and source code that spark creativity and innovation.</p>
+    </section>
+    <section class="how-to-use-section">
+      <h2>How to Use</h2>
+      <p>Start by using the search bar to find resources. Once you have your results, apply the necessary filters to refine your search and get exactly what you need.</p>
+    </section>
+  </main>
+  <footer class="footer">
+    <div class="footer-content">
+      © ReFi 2024<br>
+      Using data from <a href="https://github.com/terkelg/awesome-creative-coding?tab=readme-overview" class="bottom-left-link"><u>GitHub Repository</u></a>
     </div>
-  </div>
-  <div class="search-bar">
-    <input type="text" id="search-field" placeholder="Search...">
-  </div>
+  </footer>
+  
   <script src="homepage.js"></script>
 </body>
 </html>
