@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | ReFi</title>
+    <link rel="stylesheet" href="manage-content.css">
+    <link rel="stylesheet" href="header-footer.css">
+</head>
+<body>
+    <header class="header">
+        <span class="logo">ReFi Admin</span>
+        <div class="menu-and-search">
+            <nav class="menu">
+                <ul>
+                    <li><a href="login.html">Logout</a></li>
+                    <li><a href="admin.html">Manage Users</a></li>
+                    <li><a href="manage-content.html">Manage Content</a></li>
+                </ul>
+            </nav>
+        </div>
+        <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+    </header>
+    
+    <main class="admin-main">
+        <div class="manage-buttons">
+            <button id="manage-categories-button">Manage Categories</button>
+            <button id="manage-content-button">Manage Content</button>
+        </div>
+    
+        <section class="form-section" id="category-form">
+            <h2>Add New Category</h2>
+            <form id="add-category-form">
+                <label for="category-title">Title:</label>
+                <input type="text" id="category-title" name="title" required>
+    
+                <label for="parent-category">Parent Category:</label>
+                <select id="parent-category" name="parentCategory">
+                    <option value="">None</option>
+                    <option value="">Category1</option>
+                <option value="">Category2</option>
+                </select>
+    
+                <button type="submit">Add Category</button>
+            </form>
+        </section>
+    
+        <section class="form-section" id="content-form" style="display: none;">
+            <h2>Add Content to Category</h2>
+            <form id="add-content-form">
+                <label for="content-category">Category Name:</label>
+                <select id="content-category" name="category" required>
+                <option value="">Category1</option>
+                <option value="">Category2</option>
+
+                </select>
+    
+                <label for="content-title">Title:</label>
+                <input type="text" id="content-title" name="title" required>
+    
+                <label for="content-description">Description:</label>
+                <textarea id="content-description" name="description" required></textarea>
+    
+                <label for="content-link">Link:</label>
+                <input type="url" id="content-link" name="link" required>
+    
+                <button type="submit">Add Content</button>
+            </form>
+        </section>
+
+        <section class="categories-section">
+            <h2>Manage Categories</h2>
+            <div class="category-list">
+                <div class="category-item" data-category="Category1">
+                    <span>Category1</span>
+                    <button class="delete-category-btn">Delete</button>
+                </div>
+                <div class="category-item" data-category="Category2">
+                    <span>Category2</span>
+                    <button class="delete-category-btn">Delete</button>
+                </div>
+            </div>
+        </section>
+        
+        <section class="category-details">
+            <h2>Category Details</h2>
+            <div id="category-content">
+            </div>
+        </section>
+        
+        
+    </main>
+    
+  
+    <footer class="footer">
+        <div class="footer-content">
+            © ReFi 2024<br>
+            Admin Dashboard
+        </div>
+    </footer>
+  
+    <script src="admin.js"></script>
+</body>
+</html>
