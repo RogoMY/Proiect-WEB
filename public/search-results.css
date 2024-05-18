@@ -1,0 +1,118 @@
+
+.search-results-main {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+  }
+  
+  .filter-section {
+    flex-basis: 20%;
+    padding: 10px;
+    border-right: 1px solid #ccc;
+  }
+  
+  .filter-checkboxes label {
+    display: block;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: #181515; 
+  }
+  .filter-toggle {
+    display: none;
+  }
+  .filter-checkboxes input[type="checkbox"] {
+    margin-right: 5px;
+  }
+  .results-section {
+    flex-grow: 1;
+    padding: 10px;
+  }
+  
+  .search-result-item {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    border-radius: 5px;
+  }
+  
+  .search-result-title {
+    margin: 0 0 10px 0; /* spatiu sub titlu */
+    color: #007bff;
+    font-size: 1.5rem; 
+  }
+  
+  .search-result-description {
+    margin: 0 0 10px 0; /* spatiu sub descriere */
+    color: #333;
+    font-size: 1rem;
+  }
+  
+  .search-result-tag {
+    margin: 0; /* fara spatiu sub tag-uri */
+    color: #555;
+    font-size: 0.9rem;
+  }
+  
+  .filter-list, .nested-filter-list {
+    list-style-type: none;
+    padding-left: 0;
+    user-select: none;
+  }
+
+  
+  .nested-filter-list {
+    display: none; 
+    padding-left: 20px; /* Spatiu pentru identare */
+    user-select: none;
+  }
+  
+  .expandable::before {
+    content: '+';
+    color: #007bff;
+    margin-right: 5px;
+    user-select: none;
+  }
+  
+  .expandable.collapsed::before {
+    content: '-';
+    user-select: none;
+  }
+  @media (max-width: 768px) {
+    .search-results-main {
+      flex-direction: column; /*flex pentru a stivui vertical */
+    }
+  
+    .filter-section {
+      width: 100%;
+      display: none; 
+      border-right: none;
+      border-bottom: 1px solid #ccc; 
+    }
+  
+    .filter-toggle {
+      display: block; 
+      background: #000000;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      text-align: left;
+    }
+  
+    .filter-toggle:after {
+      content: 'Filters';
+    }
+  
+    .filter-section.open {
+      display: block; 
+    }
+  
+    .results-section {
+      width: 100%; 
+    }
+    .filter-section h2{
+        display:none;
+    }
+  }

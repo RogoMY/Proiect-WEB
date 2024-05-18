@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Search Results | ReFi</title>
+  <link rel="stylesheet" href="search-results.css">
+  <link rel="stylesheet" href="header-footer.css">
+
+</head>
+<body>
+    <header class="header">
+        <span class="logo"><a href=homepage.html>ReFi</a></span>
+        <div class="menu-and-search">
+          <nav class="menu">
+            <ul>
+              <li><a href="history.html">History</a></li>
+              <li><a href="login.html">Logout</a></li>
+              <li><a href="favorites.html">Favorites</a></li>
+            </ul>
+          </nav>
+          <div class="search-bar">
+            <input type="text" id="search-field" placeholder="Search...">
+            <button id="search-button">Search</button>
+          </div>
+        </div>
+        <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+      </header>
+  <main class="search-results-main">
+    <button class="filter-toggle" id="filter-toggle"></button>
+    <aside class="filter-section">
+        <h2>Filters</h2>
+        <ul class="filter-list">
+          <li><label><input type="checkbox" name="filter" value="Books">Books</label></li>
+          <li><label><input type="checkbox" name="filter" value="Online Books">Online Books</label></li>
+          <li><label><input type="checkbox" name="filter" value="Courses">Courses</label></li>
+          <li>
+            <span class="expandable" data-target="tools-sub"> Tools</span>
+            <ul id="tools-sub" class="nested-filter-list">
+              <li><label><input type="checkbox" name="filter" value="Frameworks">Frameworks • Libraries • Ecosystems</label></li>
+              <li><label><input type="checkbox" name="filter" value="Visual Programming Languages">Visual Programming Languages</label></li>
+              <li><label><input type="checkbox" name="filter" value="Sound Programming Languages">Sound Programming Languages</label></li>
+              <li><label><input type="checkbox" name="filter" value="Web Programming">Web Programming • Libraries</label></li>
+              <li><label><input type="checkbox" name="filter" value="Projection Mapping">Projection Mapping • VJing</label></li>
+              <li><label><input type="checkbox" name="filter" value="Online">Online</label></li>
+              <li><label><input type="checkbox" name="filter" value="Hardware">Hardware</label></li>
+              <li><label><input type="checkbox" name="filter" value="Other Tools">Other</label></li>
+            </ul>
+          </li>
+          <li>
+            <span class="expandable" data-target="learning-resources-sub"> Learning Resources</span>
+            <ul id="learning-resources-sub" class="nested-filter-list">
+              <li><label><input type="checkbox" name="filter" value="Videos">Videos</label></li>
+              <li><label><input type="checkbox" name="filter" value="Talks">Talks</label></li>
+              <li>
+                <span class="expandable" data-target="articles-sub"> Articles</span>
+                <ul id="articles-sub" class="nested-filter-list">
+                  <li><label><input type="checkbox" name="filter" value="Shaders">Shaders • OpenGL • WebGL</label></li>
+                  <li><label><input type="checkbox" name="filter" value="Canvas">Canvas</label></li>
+                  <li><label><input type="checkbox" name="filter" value="Hardware Articles">Hardware</label></li>
+                  <li><label><input type="checkbox" name="filter" value="Other Articles">Other</label></li>
+                </ul>
+              </li>
+              <li><label><input type="checkbox" name="filter" value="Interactive">Interactive</label></li>
+              <li><label><input type="checkbox" name="filter" value="Quick References">Quick References • Cheat-Sheets</label></li>
+            </ul>
+          </li>
+          <li>
+            <span class="expandable" data-target="communities-sub"> Communities</span>
+            <ul id="communities-sub" class="nested-filter-list">
+              <li><label><input type="checkbox" name="filter" value="Subreddits">Subreddits</label></li>
+              <li><label><input type="checkbox" name="filter" value="Slack">Slack</label></li>
+              <li><label><input type="checkbox" name="filter" value="Other Communities">Other</label></li>
+            </ul>
+          </li>
+          <li><label><input type="checkbox" name="filter" value="Math">Math</label></li>
+          <li><label><input type="checkbox" name="filter" value="Machine learning">Machine learning • Computer Vision • AI</label></li>
+          <li><label><input type="checkbox" name="filter" value="Inspiration">Inspiration</label></li>
+          <li><label><input type="checkbox" name="filter" value="Events">Events</label></li>
+          <li><label><input type="checkbox" name="filter" value="Schools">Schools • Workshops</label></li>
+          <li><label><input type="checkbox" name="filter" value="Blogs">Blogs • Websites</label></li>
+          <li><label><input type="checkbox" name="filter" value="Related">Related</label></li>
+        </ul>
+      </aside>
+      
+      
+      
+    <section class="results-section">
+      <h2>Search Results</h2>
+      <div id="results-list">
+        <!-- populare cu date din js -->
+      </div>
+    </section>
+  </main>
+  
+  <footer class="footer">
+    <div class="footer-content">
+      © ReFi 2024<br>
+      Using data from <a href="https://github.com/terkelg/awesome-creative-coding?tab=readme-overview" class="bottom-left-link"><u>GitHub Repository</u></a>
+    </div>
+  </footer>
+  <script src="search-results.js"></script>
+</body>
+</html>
