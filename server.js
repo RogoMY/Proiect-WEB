@@ -18,7 +18,15 @@ connection.connect((err) => {
   if (err) throw err;
   console.log('Connected to the MySQL server.');
 });
-
+function createUser(username, encryptedPassword, email, keycode, callback) {
+    connection.query('INSERT INTO users (username, password, email, keycode) VALUES (?, ?, ?, ?)', [username, encryptedPassword, email, keycode], (error, results) => {
+        if (error) {
+            callback(error, null);
+        } else {
+            callback(null, results);
+        }
+    });
+}
 function getUserByUsername(username, callback) {
     connection.query('SELECT * FROM users WHERE username = ?', [username], (error, results) => {
         if (error) {
