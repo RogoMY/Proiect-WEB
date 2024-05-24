@@ -3,19 +3,29 @@ document.addEventListener('DOMContentLoaded', function() {
     const errorMessage = document.getElementById('error-message');
 
     loginForm.addEventListener('submit', function(event) {
-        event.preventDefault(); //previne trimiterea formularului
+        event.preventDefault();
 
         const username = document.getElementById('username').value;
         const password = document.getElementById('password').value;
 
-        if (username === 'admin' && password === 'admin') {//redirectionare catre admin dashboard
-            window.location.href = 'admin.html';
-        }
-        else  if (username === 'user' && password === 'user') {//redirectionare catre homepage
-            window.location.href = 'homepage.html';
-        }
-        else {//mesaj esuare logare
-            errorMessage.textContent = 'Wrong username or password!';
-        }
+        fetch('http://localhost:5000/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({ username, password })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.href = 'homepage.html';
+            } else {
+                errorMessage.textContent = data.message;
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            errorMessage.textContent = 'An error occurred. Please try again.';
+        });
     });
 });

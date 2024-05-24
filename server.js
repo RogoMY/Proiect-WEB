@@ -3,8 +3,8 @@ const http = require('http');
 const url = require('url');
 const fs = require('fs');
 const path = require('path');
-const crypto = require('crypto');
-
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -20,32 +20,13 @@ connection.connect((err) => {
 });
 
 function getUserByUsername(username, callback) {
-    connection.query('SELECT * FROM users WHERE username = ?', [username], function(error, results, fields) {
+    connection.query('SELECT * FROM users WHERE username = ?', [username], (error, results) => {
         if (error) {
             callback(error, null);
         } else {
-            callback(null, results);
+            callback(null, results[0]);
         }
     });
-}
-
-function createUser(username, encryptedPassword, email, keycode, callback) {
-    connection.query('INSERT INTO users (username, password, email, keycode) VALUES (?, ?, ?, ?)', [username, encryptedPassword, email, keycode], function(error, results, fields) {
-        if (error) {
-            callback(error, null);
-        } else {
-            callback(null, results);
-        }
-    });
-}
-
-function encryptPassword(password, keycode) {
-    const key = crypto.createHash('sha256').update(keycode.toString()).digest();
-    const iv = crypto.randomBytes(16); 
-    const cipher = crypto.createCipheriv('aes-256-cbc', key, iv);
-    let encrypted = cipher.update(password, 'utf8', 'hex');
-    encrypted += cipher.final('hex');
-    return iv.toString('hex') + ':' + encrypted;
 }
 
 const server = http.createServer((req, res) => {
@@ -53,72 +34,128 @@ const server = http.createServer((req, res) => {
     let pathname = `./public${parsedUrl.pathname}`;
 
     if (pathname === './public/register' && req.method === 'POST') {
-        let body = '';
-        req.on('data', chunk => {
-            body += chunk.toString();
-        });
-        req.on('end', () => {
-            console.log('Received registration data:', body); 
-            const { username, email, password } = JSON.parse(body);
-
-            getUserByUsername(username, (error, results) => {
-                if (error) {
-                    res.writeHead(500, { 'Content-Type': 'application/json' });
-                    res.end(JSON.stringify({ message: 'Error querying the database' }));
-                    console.error('Error querying the database:', error); 
-                    return;
-                }
-
-                if (results && results.length > 0) {
-                    res.writeHead(400, { 'Content-Type': 'application/json' });
-                    res.end(JSON.stringify({ message: 'Username already exists' }));
-                    console.log('Username already exists:', username); 
-                    return;
-                }
-
-                const keycode = crypto.randomInt(100000, 999999);
-
-                const encryptedPassword = encryptPassword(password, keycode);
-
-                createUser(username, encryptedPassword, email, keycode, (error, results) => {
-                    if (error) {
-                        res.writeHead(500, { 'Content-Type': 'application/json' });
-                        res.end(JSON.stringify({ message: 'Error adding user to the database' }));
-                        console.error('Error adding user to the database:', error); 
-                        return;
-                    }
-                    res.writeHead(200, { 'Content-Type': 'application/json' });
-                    res.end(JSON.stringify({ message: 'User registered successfully' }));
-                    console.log('User registered successfully:', username); 
-                });
-            });
-        });
+        handleRegister(req, res);
+    } else if (pathname === './public/login' && req.method === 'POST') {
+        handleLogin(req, res);
     } else {
-        fs.exists(pathname, function(exist) {
-            if (!exist) {
-                res.statusCode = 404;
-                res.end(`File ${pathname} not found!`);
-                return;
-            }
-            if (fs.statSync(pathname).isDirectory()) {
-                pathname += '/login.html';
-            }
-            fs.readFile(pathname, function(err, data) {
-                if (err) {
-                    res.statusCode = 500;
-                    res.end(`Error getting the file: ${err}.`);
-                } else {
-                    const ext = path.parse(pathname).ext;
-                    if (ext === '.html') {
-                        res.setHeader('Content-type', 'text/html');
-                    }
-                    res.end(data);
-                }
-            });
-        });
+        handleFileRequest(pathname, res);
     }
 });
 
-server.listen(5000, function() {
+function handleRegister(req, res) {
+    let body = '';
+    req.on('data', chunk => {
+        body += chunk.toString();
+    });
+    req.on('end', () => {
+        console.log('Received registration data:', body);
+        const { username, email, password } = JSON.parse(body);
+
+        getUserByUsername(username, (error, user) => {
+            if (error) {
+                sendErrorResponse(res, 500, 'Error querying the database');
+                console.error('Error querying the database:', error);
+                return;
+            }
+
+            if (user) {
+                sendErrorResponse(res, 400, 'Username already exists');
+                console.log('Username already exists:', username);
+                return;
+            }
+
+            bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
+                if (err) {
+                    sendErrorResponse(res, 500, 'Error hashing the password');
+                    console.error('Error hashing the password:', err);
+                    return;
+                }
+
+                createUser(username, hashedPassword, email, 1, (error, results) => {
+                    if (error) {
+                        sendErrorResponse(res, 500, 'Error adding user to the database');
+                        console.error('Error adding user to the database:', error);
+                        return;
+                    }
+                    sendSuccessResponse(res, 'User registered successfully');
+                    console.log('User registered successfully:', username);
+                });
+            });
+        });
+    });
+}
+
+function handleLogin(req, res) {
+    let body = '';
+    req.on('data', chunk => {
+        body += chunk.toString();
+    });
+    req.on('end', () => {
+        const { username, password } = JSON.parse(body);
+
+        getUserByUsername(username, (error, user) => {
+            if (error) {
+                sendErrorResponse(res, 500, 'Error retrieving user from the database');
+                console.error('Error retrieving user from the database:', error);
+                return;
+            }
+
+            if (!user) {
+                sendErrorResponse(res, 401, 'Invalid username or password');
+                console.log('Invalid username or password:', username);
+                return;
+            }
+
+            bcrypt.compare(password, user.password, (err, result) => {
+                if (result) {
+                    sendSuccessResponse(res, 'Login successful', true);
+                    console.log('Login successful:', username);
+                } else {
+                    sendErrorResponse(res, 401, 'Invalid username or password');
+                    console.log('Invalid username or password:', username);
+                }
+            });
+        });
+    });
+}
+
+function handleFileRequest(pathname, res) {
+    fs.exists(pathname, exist => {
+        if (!exist) {
+            res.statusCode = 404;
+            res.end(`File ${pathname} not found!`);
+            return;
+        }
+
+        if (fs.statSync(pathname).isDirectory()) {
+            pathname += '/login.html';
+        }
+
+        fs.readFile(pathname, (err, data) => {
+            if (err) {
+                res.statusCode = 500;
+                res.end(`Error getting the file: ${err}.`);
+            } else {
+                const ext = path.parse(pathname).ext;
+                if (ext === '.html') {
+                    res.setHeader('Content-type', 'text/html');
+                }
+                res.end(data);
+            }
+        });
+    });
+}
+
+function sendErrorResponse(res, statusCode, message) {
+    res.writeHead(statusCode, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: false, message }));
+}
+
+function sendSuccessResponse(res, message, success = true) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success, message }));
+}
+
+server.listen(5000, () => {
     console.log("Server listening on port 5000");
 });
