@@ -30,4 +30,30 @@ document.addEventListener('DOMContentLoaded', function() {
       window.location.href = 'search-results.html?query=' + encodeURIComponent(query);
     }
   }
+
+  // Functie pentru logout
+  document.querySelector('a[href="login.html"]').addEventListener('click', function(event) {
+    event.preventDefault(); 
+    console.log('Logout button clicked');
+    fetch('/logout', {
+      method: 'POST'
+    })
+    .then(response => {
+      console.log('Logout response status:', response.status);
+      return response.json();
+    })
+    .then(data => {
+      if (data.success) {
+        console.log('Logout successful');
+        window.location.href = 'login.html';
+      } else {
+        console.error('Logout failed:', data.message);
+        alert('Logout failed.');
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Logout failed.');
+    });
+  });
 });
