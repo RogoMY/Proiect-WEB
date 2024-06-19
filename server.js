@@ -20,29 +20,6 @@ connection.connect((err) => {
   console.log('Connected to the MySQL server.');
 });
 
-function sendSuccessResponse(res, message, data = true) {
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ success: true, message, data }));
-}
-
-function sendErrorResponse(res, message, error = null) {
-    res.writeHead(500, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ success: false, message, error }));
-}
-
-
-function getHighestId(callback) {
-    const query = 'SELECT MAX(keycode) AS maxKeycode FROM users';
-    connection.query(query, (error, results) => {
-        if (error) {
-            callback(error);
-            return;
-        }
-        const highestId = results[0].maxKeycode;
-        callback(null, highestId);
-    });
-}
-
 function getUserByUsername(username, callback) {
     connection.query('SELECT * FROM users WHERE username = ?', [username], (error, results) => {
         if (error) {

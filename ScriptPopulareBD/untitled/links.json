@@ -1,0 +1,4515 @@
+[
+    {
+        "description": "Practical guide using Processing.",
+        "href": "https://www.manning.com/books/generative-art",
+        "scopes": [
+            "books",
+            "processing"
+        ],
+        "filters": [],
+        "title": "Generative Art: A Practical Guide",
+        "programming_languages": []
+    },
+    {
+        "description": "Visualize, Program, and Create with Processing.",
+        "href": "http://www.generative-gestaltung.de/",
+        "scopes": [
+            "books",
+            "visual",
+            "processing"
+        ],
+        "filters": [],
+        "title": "Generative Design",
+        "programming_languages": []
+    },
+    {
+        "description": "Simulating natural systems with Processing.",
+        "href": "http://natureofcode.com/",
+        "scopes": [
+            "books",
+            "processing"
+        ],
+        "filters": [],
+        "title": "The Nature of Code",
+        "programming_languages": []
+    },
+    {
+        "description": "Practical introduction to the new foundations of graphic design.",
+        "href": "https://programmingdesignsystems.com/",
+        "scopes": [
+            "books",
+            "design"
+        ],
+        "filters": [],
+        "title": "Programming Design Systems",
+        "programming_languages": []
+    },
+    {
+        "description": "Series of tutorials on using OpenGL to do graphical rendering.",
+        "href": "https://paroj.github.io/gltut/",
+        "scopes": ["books"],
+        "filters": [],
+        "title": "Learning Modern 3D Graphics Programming",
+        "programming_languages": []
+    },
+    {
+        "description": "Designer's Guide to Processing, Arduino, and openFrameworks.",
+        "href": "http://shop.oreilly.com/product/9780596154158.do",
+        "scopes": [
+            "books",
+            "framework",
+            "arduino",
+            "design",
+            "processing"
+        ],
+        "filters": ["Tools"],
+        "title": "Programming Interactivity",
+        "programming_languages": []
+    },
+    {
+        "description": "openFrameworks beginner Guide for programmer, visual artist, or designer.",
+        "href": "https://www.packtpub.com/application-development/openframeworks-essentials",
+        "scopes": [
+            "books",
+            "framework",
+            "artist",
+            "design",
+            "visual"
+        ],
+        "filters": ["Tools"],
+        "title": "openFrameworks Essentials",
+        "programming_languages": []
+    },
+    {
+        "description": "Advanced in depth guide to openFrameworks.",
+        "href": "https://www.packtpub.com/application-development/mastering-openframeworks-creative-coding-demystified",
+        "scopes": [
+            "books",
+            "framework"
+        ],
+        "filters": ["Tools"],
+        "title": "Mastering openFrameworks: Creative Coding Demystified",
+        "programming_languages": []
+    },
+    {
+        "description": "Experiment with design problems to create 3D animations, GUIs, and more.",
+        "href": "https://www.amazon.com/Algorithms-Visual-Design-Processing-Language/dp/0470375485",
+        "scopes": [
+            "3d",
+            "books",
+            "design",
+            "animation"
+        ],
+        "filters": [],
+        "title": "Algorithms for Visual Design Using the Processing Language",
+        "programming_languages": []
+    },
+    {
+        "description": "Everything you need to know to create animation using the HTML5 canvas.",
+        "href": "http://www.apress.com/us/book/9781430236658",
+        "scopes": [
+            "canvas",
+            "books",
+            "animation"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Foundation HTML5 Animation with JavaScript",
+        "programming_languages": ["html"]
+    },
+    {
+        "description": "Programming Fractals and Strange Attractors in JavaScript.",
+        "href": "http://www.playingwithchaos.net/",
+        "scopes": ["books"],
+        "filters": [],
+        "title": "Playing with chaos",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Mini book about Ray Tracing.",
+        "href": "https://www.amazon.com/Ray-Tracing-Weekend-Minibooks-Book-ebook/dp/B01B5AODD8/",
+        "scopes": [
+            "books",
+            "ray"
+        ],
+        "filters": [],
+        "title": "Ray Tracing in One Weekend",
+        "programming_languages": []
+    },
+    {
+        "description": "Guides you to explore the Processing environment using practical and useful recipes.",
+        "href": "https://www.packtpub.com/hardware-and-creative/processing-2-creative-programming-cookbook",
+        "scopes": [
+            "books",
+            "processing"
+        ],
+        "filters": [],
+        "title": "Processing 2: Creative Programming Cookbook",
+        "programming_languages": []
+    },
+    {
+        "description": "Creative Coding for Visual Communication.",
+        "href": "https://www.amazon.com/dp/1472578309/",
+        "scopes": [
+            "coding",
+            "books",
+            "visual"
+        ],
+        "filters": [],
+        "title": "Data-driven Graphic Design",
+        "programming_languages": []
+    },
+    {
+        "description": "Learn how to use modern techniques to generate synthetic three-dimensional images in a fraction of a second.",
+        "href": "https://www.amazon.com/Real-Time-Rendering-Third-Tomas-Akenine-Moller/dp/1568814240",
+        "scopes": ["books"],
+        "filters": [],
+        "title": "Real-Time Rendering",
+        "programming_languages": []
+    },
+    {
+        "description": "Introduction to shader programming in general, but focusing on the GLSL shading language.",
+        "href": "https://www.amazon.com/Graphics-Shaders-Theory-Practice-Second/dp/1568814348/",
+        "scopes": [
+            "shader",
+            "books"
+        ],
+        "filters": [],
+        "title": "Graphics Shaders: Theory and Practice",
+        "programming_languages": []
+    },
+    {
+        "description": "Practical guide to starting 3d programming with OpenGL.",
+        "href": "https://www.amazon.com/gp/product/B00LAMQYF2/",
+        "scopes": [
+            "3d",
+            "books"
+        ],
+        "filters": [],
+        "title": "Anton's OpenGL 4 Tutorials",
+        "programming_languages": []
+    },
+    {
+        "description": "Teaches JavaScript programmers how to incorporate real physics into their HTML5 games, animations, and simulations.",
+        "href": "http://www.apress.com/us/book/9781430263371",
+        "scopes": [
+            "game",
+            "books",
+            "physics",
+            "animation"
+        ],
+        "filters": [],
+        "title": "Physics for JavaScript Games, Animation, and Simulations",
+        "programming_languages": [
+            "html",
+            "javascript"
+        ]
+    },
+    {
+        "description": "Book teaches you to solve mathematical problems in code.",
+        "href": "https://www.manning.com/books/math-for-programmers",
+        "scopes": [
+            "books",
+            "code",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "Math for Programmers",
+        "programming_languages": []
+    },
+    {
+        "description": "Book in french, which covers OpenGL, OpenGL ES and WebGL.",
+        "href": "ES",
+        "scopes": [
+            "books",
+            "web"
+        ],
+        "filters": [],
+        "title": "Synthèse d'images avec OpenGL (ES)",
+        "programming_languages": []
+    },
+    {
+        "description": "Explore the role of deep learning in music generation and assisted music composition.",
+        "href": "https://alexandredubreuil.com/publications/2020-01-31-music-generation-with-magenta-deep-learning-in-music-generation/",
+        "scopes": [
+            "generation",
+            "books",
+            "music"
+        ],
+        "filters": [],
+        "title": "Hands-On Music Generation with Magenta",
+        "programming_languages": []
+    },
+    {
+        "description": "Step-by-step guide through the abstract and complex universe of fragment shaders.",
+        "href": "https://thebookofshaders.com/",
+        "scopes": [
+            "shader",
+            "online books"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "The Book of Shaders",
+        "programming_languages": []
+    },
+    {
+        "description": "WebGL from the ground up. No magic.",
+        "href": "http://webglfundamentals.org/",
+        "scopes": [
+            "web",
+            "online books"
+        ],
+        "filters": [],
+        "title": "WebGL Fundamentals",
+        "programming_languages": []
+    },
+    {
+        "description": "WebGL2 from the ground up. No magic.",
+        "href": "http://webgl2fundamentals.org/",
+        "scopes": [
+            "web",
+            "online books"
+        ],
+        "filters": [],
+        "title": "WebGL 2 Fundamentals",
+        "programming_languages": []
+    },
+    {
+        "description": "Extensive tutorial resource for learning Modern OpenGL.",
+        "href": "https://learnopengl.com/",
+        "scopes": ["online books"],
+        "filters": [],
+        "title": "Learn OpenGL",
+        "programming_languages": []
+    },
+    {
+        "description": "Learn Computer Graphics From Scratch.",
+        "href": "http://www.scratchapixel.com/",
+        "scopes": [
+            "graphics",
+            "online books"
+        ],
+        "filters": [],
+        "title": "Scratchapixel 2.0",
+        "programming_languages": []
+    },
+    {
+        "description": "Community-written book/guide on openFrameworks.",
+        "href": "http://openframeworks.cc/ofBook/chapters/foreword.html",
+        "scopes": [
+            "framework",
+            "online books"
+        ],
+        "filters": ["Tools"],
+        "title": "ofBook",
+        "programming_languages": []
+    },
+    {
+        "description": "Collection of modern OpenGL tutorials by Etay Meiri.",
+        "href": "http://ogldev.atspace.co.uk/",
+        "scopes": ["online books"],
+        "filters": [],
+        "title": "OGLdev",
+        "programming_languages": []
+    },
+    {
+        "description": "Site dedicated to tutorials for OpenGL 3.3 and later.",
+        "href": "http://www.opengl-tutorial.org/",
+        "scopes": ["online books"],
+        "filters": [],
+        "title": "OpenGL Tutorial",
+        "programming_languages": []
+    },
+    {
+        "description": "Guide that teach you the basics of using OpenGL.",
+        "href": "https://open.gl/",
+        "scopes": ["online books"],
+        "filters": [],
+        "title": "Open.gl",
+        "programming_languages": []
+    },
+    {
+        "description": "Interactive Introduction to Graphics Programming.",
+        "href": "http://pixelshaders.com/",
+        "scopes": [
+            "interactive",
+            "graphics",
+            "online books"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Pixel Shaders",
+        "programming_languages": []
+    },
+    {
+        "description": "Free OpenGL programming tutorial in online book format.",
+        "href": "http://openglbook.com/",
+        "scopes": ["online books"],
+        "filters": ["Tools"],
+        "title": "OpenGLBook",
+        "programming_languages": []
+    },
+    {
+        "description": "Book about 3D computational graphics by Morgan McGuire.",
+        "href": "http://graphicscodex.com/projects/projects/index.html",
+        "scopes": [
+            "3d",
+            "graphics",
+            "online books"
+        ],
+        "filters": [],
+        "title": "Graphics Programming Projects",
+        "programming_languages": []
+    },
+    {
+        "description": "Notes about generating various organic patterns, with examples and Python code, by Anders Hoff.",
+        "href": "http://inconvergent.net/generative/",
+        "scopes": [
+            "code",
+            "online books"
+        ],
+        "filters": [],
+        "title": "On Generative Algorithms",
+        "programming_languages": ["python"]
+    },
+    {
+        "description": "A raytracing and rasterization textbook that teaches you how OpenGL and DirectX works.",
+        "href": "http://www.gabrielgambetta.com/computer-graphics-from-scratch/introduction.html",
+        "scopes": [
+            "ray",
+            "online books"
+        ],
+        "filters": [],
+        "title": "Computer Graphics from Scratch",
+        "programming_languages": []
+    },
+    {
+        "description": "A free book for when you really need to know how to do Bézier things.",
+        "href": "https://pomax.github.io/bezierinfo/",
+        "scopes": ["online books"],
+        "filters": [],
+        "title": "A Primer on Bézier Curves",
+        "programming_languages": []
+    },
+    {
+        "description": "Step-by-step guide to real-time shading techniques.",
+        "href": "https://lettier.github.io/3d-game-shaders-for-beginners",
+        "scopes": ["online books"],
+        "filters": [],
+        "title": "3D Game Shaders For Beginners",
+        "programming_languages": []
+    },
+    {
+        "description": "Step-by-step guide to WebGL.",
+        "href": "https://xem.github.io/articles/webgl-guide.html",
+        "scopes": [
+            "web",
+            "online books"
+        ],
+        "filters": [],
+        "title": "XEM WebGL Guide",
+        "programming_languages": []
+    },
+    {
+        "description": "An authorial set of fundamental Python recipes on Creative Coding and Computer Art, by Diego Inácio.",
+        "href": "https://diegoinacio.github.io/creative-coding-notebooks-page/",
+        "scopes": [
+            "coding",
+            "online books"
+        ],
+        "filters": [],
+        "title": "Creative Coding Notebooks",
+        "programming_languages": ["python"]
+    },
+    {
+        "description": "Learn WebGL and 3D algorithmic in a progressive and interactive way.",
+        "href": "http://www.webglacademy.com",
+        "scopes": [
+            "3d",
+            "web",
+            "interactive",
+            "online books"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "WebGL Academy",
+        "programming_languages": []
+    },
+    {
+        "description": "Get started creating content with WebGL without any frameworks.",
+        "href": "https://egghead.io/courses/create-3d-graphics-in-javascript-using-webgl",
+        "scopes": [
+            "courses",
+            "framework",
+            "web"
+        ],
+        "filters": ["Tools"],
+        "title": "Create 3D Graphics in JS Using WebGL",
+        "programming_languages": []
+    },
+    {
+        "description": "Introduction to the canvas 2D drawing API.",
+        "href": "https://egghead.io/courses/learn-html5-graphics-and-animation",
+        "scopes": [
+            "courses",
+            "canvas",
+            "2d",
+            "win"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Learn HTML5 Graphics and Animation",
+        "programming_languages": []
+    },
+    {
+        "description": "Udacity course that teach you the principles of 3D computer graphics.",
+        "href": "https://classroom.udacity.com/courses/cs291",
+        "scopes": [
+            "courses",
+            "3d",
+            "graphics"
+        ],
+        "filters": [],
+        "title": "Interactive 3D Graphics",
+        "programming_languages": []
+    },
+    {
+        "description": "Computer graphics course from Coursera.",
+        "href": "https://www.coursera.org/learn/interactive-computer-graphics",
+        "scopes": [
+            "courses",
+            "graphics"
+        ],
+        "filters": [],
+        "title": "Interactive Computer Graphics",
+        "programming_languages": []
+    },
+    {
+        "description": "Selection of Kadenze courses covering p5.js, TensorFlow, Max/Jitter, and ChucK.",
+        "href": "http://try.kadenze.com/creative-coder/",
+        "scopes": ["courses"],
+        "filters": ["Other"],
+        "title": "Kadenze Creative Coding",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Coursera course on creative coding with processing.",
+        "href": "https://www.coursera.org/learn/digitalmedia",
+        "scopes": [
+            "courses",
+            "coding",
+            "processing"
+        ],
+        "filters": [],
+        "title": "Creative Programming for Digital Media & Mobile Apps",
+        "programming_languages": []
+    },
+    {
+        "description": "Learn how to create gorgeous interactive graphics.",
+        "href": "https://imaginary-institute.com/",
+        "scopes": [
+            "courses",
+            "interactive",
+            "graphics"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Imaginary Institute",
+        "programming_languages": []
+    },
+    {
+        "description": "Use computer programming as a creative discipline to generate sounds, images, animations and more.",
+        "href": "https://www.futurelearn.com/courses/creative-coding",
+        "scopes": [
+            "courses",
+            "animation"
+        ],
+        "filters": [],
+        "title": "Future Learn: Creative Coding",
+        "programming_languages": []
+    },
+    {
+        "description": "Use JavaScript and the ProcessingJS library to create drawings and animations.",
+        "href": "https://www.khanacademy.org/computing/computer-programming/programming",
+        "scopes": [
+            "courses",
+            "processing",
+            "win",
+            "animation"
+        ],
+        "filters": [],
+        "title": "Intro to JS: Drawing & Animation",
+        "programming_languages": [
+            "js",
+            "javascript"
+        ]
+    },
+    {
+        "description": "Combine JS, ProcessingJS, and mathematical concepts to simulate nature in your programs",
+        "href": "https://www.khanacademy.org/computing/computer-programming/programming-natural-simulations",
+        "scopes": [
+            "courses",
+            "processing",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "Advanced JS: Natural Simulations",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Learn how to read, map, and illustrate data with Processing.",
+        "href": "https://www.lynda.com/Processing-tutorials/Interactive-Data-Visualization-Processing/97578-2.html",
+        "scopes": [
+            "courses",
+            "processing"
+        ],
+        "filters": [],
+        "title": "Interactive Data Visualization with Processing",
+        "programming_languages": []
+    },
+    {
+        "description": "Join information designer Nicholas Felton in the world of Processing.",
+        "href": "https://www.skillshare.com/classes/Programming-Data-Visualizations-A-Coding-Toolkit-for-Processing/1782124914",
+        "scopes": [
+            "courses",
+            "design",
+            "processing"
+        ],
+        "filters": [],
+        "title": "Programming Data Visualizations: A Coding Toolkit for Processing",
+        "programming_languages": []
+    },
+    {
+        "description": "Join Nicholas Felton for a smart, comprehensive, and inspiring intro to data visualization.",
+        "href": "https://www.skillshare.com/classes/Introduction-to-Data-Visualization-From-Data-to-Design/1435958330",
+        "scopes": [
+            "courses",
+            "visual"
+        ],
+        "filters": [],
+        "title": "Introduction to Data Visualization",
+        "programming_languages": []
+    },
+    {
+        "description": "Learn generative art and Processing with art with Joshua Davis.",
+        "href": "https://www.skillshare.com/classes/Programming-Graphics-I-Introduction-to-Generative-Art/782118657",
+        "scopes": [
+            "generative",
+            "courses",
+            "processing"
+        ],
+        "filters": [],
+        "title": "Programming Graphics I",
+        "programming_languages": []
+    },
+    {
+        "description": "Workshop by Matt DesLauriers. that teaches you about generative art, interactive animations, 3D graphics, and shaders.",
+        "href": "https://frontendmasters.com/courses/canvas-webgl/",
+        "scopes": [
+            "generative",
+            "courses",
+            "3d",
+            "shader",
+            "interactive",
+            "graphics",
+            "animation"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Creative Coding with Canvas & WebGL",
+        "programming_languages": []
+    },
+    {
+        "description": "Workshop by Matt DesLauriers that go deeper into graphics programming, math and shaders.",
+        "href": "https://frontendmasters.com/courses/webgl-shaders/",
+        "scopes": [
+            "courses",
+            "shader",
+            "graphics",
+            "math"
+        ],
+        "filters": [
+            "Learning Resources",
+            "Other"
+        ],
+        "title": "Advanced Creative Coding with WebGL & Shaders",
+        "programming_languages": []
+    },
+    {
+        "description": "This course by Bruno Simon will teach you the secrets to create the coolest WebGL websites with Three.js whether your are a beginner or an advanced developer.",
+        "href": "https://threejs-journey.com/",
+        "scopes": [
+            "courses",
+            "web"
+        ],
+        "filters": [],
+        "title": "Three.js Journey",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Learn all the theory and the math behind 3D graphics while creating a software renderer from scratch using the C programming language",
+        "href": "https://pikuma.com/courses/learn-3d-computer-graphics-programming",
+        "scopes": [
+            "courses",
+            "3d",
+            "graphics",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "3D Computer Graphics Programming",
+        "programming_languages": []
+    },
+    {
+        "description": "Computer programming language and IDE for visual arts.",
+        "href": "https://processing.org",
+        "scopes": [
+            "visual",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "Processing",
+        "programming_languages": []
+    },
+    {
+        "description": "Open source library for professional-quality creative coding in C++.",
+        "href": "https://libcinder.org/",
+        "scopes": [
+            "coding",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "Cinder",
+        "programming_languages": ["c++"]
+    },
+    {
+        "description": "Open source C++ toolkit for creative coding.",
+        "href": "http://openframeworks.cc/",
+        "scopes": [
+            "coding",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "openFrameworks",
+        "programming_languages": ["c++"]
+    },
+    {
+        "description": "[C4](http://www.c4ios.com) [iOS] - Open-source creative coding framework for iOS.",
+        "href": "http://www.c4ios.com",
+        "scopes": [
+            "coding",
+            "framework",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "C4",
+        "programming_languages": []
+    },
+    {
+        "description": "Game engine, but useful for creative coding and installations.",
+        "href": "https://unity3d.com/",
+        "scopes": [
+            "coding",
+            "game",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "Unity",
+        "programming_languages": []
+    },
+    {
+        "description": "Open source game engine, that can also be used for all sorts of things.",
+        "href": "https://godotengine.org",
+        "scopes": [
+            "game",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "Godot",
+        "programming_languages": []
+    },
+    {
+        "description": "Open source, realtime collaborative WebGL engine.",
+        "href": "https://playcanvas.com/",
+        "scopes": [
+            "web",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "PlayCanvas",
+        "programming_languages": []
+    },
+    {
+        "description": "GLSL library for building signed distance functions.",
+        "href": "http://mercury.sexy/hg_sdf/",
+        "scopes": ["frameworks \u2022 libraries \u2022 ecosystems"],
+        "filters": [],
+        "title": "hg_sdf",
+        "programming_languages": []
+    },
+    {
+        "description": "[nannou](http://nannou.cc/)",
+        "href": "http://nannou.cc/",
+        "scopes": ["frameworks \u2022 libraries \u2022 ecosystems"],
+        "filters": [],
+        "title": "nannou",
+        "programming_languages": []
+    },
+    {
+        "description": "[thi.ng](http://thi.ng/)",
+        "href": "http://thi.ng/",
+        "scopes": ["frameworks \u2022 libraries \u2022 ecosystems"],
+        "filters": [],
+        "title": "thi.ng",
+        "programming_languages": []
+    },
+    {
+        "description": "Open source, live graphics, Swift framework, powered by Metal.",
+        "href": "https://github.com/heestand-xyz/PixelKit",
+        "scopes": [
+            "framework",
+            "graphics",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "PixelKit",
+        "programming_languages": ["swift"]
+    },
+    {
+        "description": "Open source library for creative coding written in Kotlin.",
+        "href": "https://openrndr.org/",
+        "scopes": [
+            "coding",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "OPENRNDR",
+        "programming_languages": ["kotlin"]
+    },
+    {
+        "description": "HTML5 framework for building games, uses both a Canvas and WebGL renderer.",
+        "href": "https://phaser.io/",
+        "scopes": [
+            "game",
+            "canvas",
+            "framework",
+            "web",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Phaser",
+        "programming_languages": ["html"]
+    },
+    {
+        "description": "HTML5 framework for making generative artwork in JavaScript and the browser.",
+        "href": "https://github.com/mattdesl/canvas-sketch",
+        "scopes": [
+            "generative",
+            "framework",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "Canvas-sketch",
+        "programming_languages": [
+            "html",
+            "javascript"
+        ]
+    },
+    {
+        "description": "Open source, live graphics, async / await, Swift package, powered by Metal.",
+        "href": "https://github.com/heestand-xyz/AsyncGraphics",
+        "scopes": [
+            "graphics",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "AsyncGraphics",
+        "programming_languages": ["swift"]
+    },
+    {
+        "description": "Granular and multi-language (GLSL, HLSL, WGSL, MSL and CUDA) shader library designed for performance and flexibility.",
+        "href": "https://github.com/patriciogonzalezvivo/lygia",
+        "scopes": [
+            "shader",
+            "design",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "Lygia",
+        "programming_languages": []
+    },
+    {
+        "description": "A web development environment for creative coding.",
+        "href": "https://github.com/raphaelameaume/fragment",
+        "scopes": [
+            "coding",
+            "web",
+            "frameworks \u2022 libraries \u2022 ecosystems"
+        ],
+        "filters": [],
+        "title": "Fragment.tools",
+        "programming_languages": []
+    },
+    {
+        "description": "Hybrid visual/textual live-programming environment for easy prototyping and development.",
+        "href": "https://vvvv.org/",
+        "scopes": [
+            "visual programming languages",
+            "visual"
+        ],
+        "filters": [],
+        "title": "vvvv",
+        "programming_languages": []
+    },
+    {
+        "description": "Cross-platform, node-based GUI for efficient data visualizations and generative design.",
+        "href": "https://www.nodebox.net/node/",
+        "scopes": [
+            "generative",
+            "cross-platform",
+            "visual programming languages",
+            "design",
+            "visual"
+        ],
+        "filters": [],
+        "title": "NodeBox",
+        "programming_languages": []
+    },
+    {
+        "description": "Visual development platform to create realtime projects.",
+        "href": "http://www.derivative.ca/",
+        "scopes": [
+            "projects",
+            "visual programming languages",
+            "visual"
+        ],
+        "filters": [],
+        "title": "TouchDesigner",
+        "programming_languages": []
+    },
+    {
+        "description": "Development tool for processing and rendering graphical data.",
+        "href": "https://developer.apple.com/library/content/documentation/GraphicsImaging/Conceptual/QuartzComposerUserGuide/qc_intro/qc_intro.html",
+        "scopes": [
+            "visual programming languages",
+            "processing"
+        ],
+        "filters": [],
+        "title": "Quartz Composer",
+        "programming_languages": []
+    },
+    {
+        "description": "Live interactive-media programming environment.",
+        "href": "http://vuo.org/",
+        "scopes": [
+            "visual programming languages",
+            "interactive"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Vuo",
+        "programming_languages": []
+    },
+    {
+        "description": "Visual programming language for media.",
+        "href": "https://cycling74.com/products/max/",
+        "scopes": [
+            "visual programming languages",
+            "visual"
+        ],
+        "filters": [],
+        "title": "Max",
+        "programming_languages": []
+    },
+    {
+        "description": "Open source visual programming language for multimedia.",
+        "href": "https://puredata.info/",
+        "scopes": [
+            "visual programming languages",
+            "visual"
+        ],
+        "filters": [],
+        "title": "Pure Data",
+        "programming_languages": []
+    },
+    {
+        "description": "Interactive, intermedia audio-visual sequencer.",
+        "href": "https://ossia.io",
+        "scopes": [
+            "visual programming languages",
+            "interactive",
+            "visual",
+            "audio"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "ossia score",
+        "programming_languages": []
+    },
+    {
+        "description": "Open source tool for creating interactive 3d content and animations.",
+        "href": "http://tooll.io/",
+        "scopes": [
+            "3d",
+            "visual programming languages",
+            "interactive",
+            "animation"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "tooll",
+        "programming_languages": []
+    },
+    {
+        "description": "Open source visual programming language and environment for microcontroller-based projects.",
+        "href": "https://xod.io/",
+        "scopes": [
+            "projects",
+            "visual programming languages",
+            "visual"
+        ],
+        "filters": [],
+        "title": "XOD",
+        "programming_languages": []
+    },
+    {
+        "description": "Scene based media control software with integrated projection mapper.",
+        "href": "https://troikatronix.com",
+        "scopes": ["visual programming languages"],
+        "filters": [],
+        "title": "Isadora",
+        "programming_languages": []
+    },
+    {
+        "description": "Your model kit for creating beautiful interactive content. Currently in private beta, invites can be requested.",
+        "href": "https://cables.gl",
+        "scopes": [
+            "visual programming languages",
+            "interactive"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "cables",
+        "programming_languages": []
+    },
+    {
+        "description": "Programs as graphs and graphs as compositional tools for creation",
+        "href": "https://github.com/kousun12/eternal",
+        "scopes": ["visual programming languages"],
+        "filters": [],
+        "title": "eternal",
+        "programming_languages": []
+    },
+    {
+        "description": "Node-based authoring tool with a strong focus on real-time graphics. Currently in beta.",
+        "href": "https://www.notch.one",
+        "scopes": [
+            "visual programming languages",
+            "graphics"
+        ],
+        "filters": [],
+        "title": "Notch Builder",
+        "programming_languages": []
+    },
+    {
+        "description": "Realtime visual coding tool, easy to understand and aimed at beginners.",
+        "href": "https://ncase.me/joy/",
+        "scopes": [
+            "coding",
+            "visual programming languages",
+            "visual"
+        ],
+        "filters": [],
+        "title": "JOY.JS",
+        "programming_languages": []
+    },
+    {
+        "description": "Live graphics node editor, powered by AsyncGraphics.",
+        "href": "http://circles.software",
+        "scopes": [
+            "visual programming languages",
+            "graphics"
+        ],
+        "filters": [],
+        "title": "Circles",
+        "programming_languages": []
+    },
+    {
+        "description": "Make pixel art style games and art on a 240\\*136 pixel screen.",
+        "href": "https://tic80.com/",
+        "scopes": [
+            "game",
+            "visual programming languages"
+        ],
+        "filters": [],
+        "title": "TIC-80",
+        "programming_languages": []
+    },
+    {
+        "description": "Platform for audio synthesis and algorithmic composition.",
+        "href": "http://supercollider.github.io/",
+        "scopes": [
+            "sound programming languages",
+            "audio"
+        ],
+        "filters": [],
+        "title": "SuperCollider",
+        "programming_languages": []
+    },
+    {
+        "description": "Strongly-timed, concurrent, and on-the-fly music programming language.",
+        "href": "http://chuck.cs.princeton.edu/",
+        "scopes": [
+            "music",
+            "sound programming languages"
+        ],
+        "filters": [],
+        "title": "ChucK",
+        "programming_languages": []
+    },
+    {
+        "description": "Domain specific language for live coding of pattern.",
+        "href": "https://tidalcycles.org/",
+        "scopes": [
+            "coding",
+            "sound programming languages"
+        ],
+        "filters": [],
+        "title": "TidalCycles",
+        "programming_languages": []
+    },
+    {
+        "description": "The live coding music synth for everyone.",
+        "href": "http://sonic-pi.net/",
+        "scopes": [
+            "coding",
+            "music",
+            "sound programming languages"
+        ],
+        "filters": [],
+        "title": "Sonic Pi",
+        "programming_languages": []
+    },
+    {
+        "description": "A sound and music computing system.",
+        "href": "https://csound.com/",
+        "scopes": [
+            "music",
+            "sound programming languages"
+        ],
+        "filters": [],
+        "title": "Csound",
+        "programming_languages": []
+    },
+    {
+        "description": "Live coding environment to quickly create procedural sequencers.",
+        "href": "https://100r.co/site/orca.html",
+        "scopes": [
+            "coding",
+            "sound programming languages"
+        ],
+        "filters": [],
+        "title": "Orca",
+        "programming_languages": []
+    },
+    {
+        "description": "A small procedural programming language for writing songs in browser.",
+        "href": "https://handel-pl.github.io/",
+        "scopes": ["sound programming languages"],
+        "filters": [],
+        "title": "handel",
+        "programming_languages": []
+    },
+    {
+        "description": "An open source audio environment designed to explore new musical ideas from synthesis and instrument building to live-coding.",
+        "href": "https://overtone.github.io/",
+        "scopes": [
+            "coding",
+            "music",
+            "sound programming languages",
+            "design",
+            "audio"
+        ],
+        "filters": [],
+        "title": "Overtone",
+        "programming_languages": []
+    },
+    {
+        "description": "A MIDI producing environment for creating (live) music.",
+        "href": "https://melrōse.org/",
+        "scopes": [
+            "music",
+            "sound programming languages"
+        ],
+        "filters": [],
+        "title": "Melrōse",
+        "programming_languages": []
+    },
+    {
+        "description": "Graph-oriented live coding language and music/audio DSP library written in Rust.",
+        "href": "https://glicol.org",
+        "scopes": [
+            "coding",
+            "music",
+            "sound programming languages",
+            "audio"
+        ],
+        "filters": [],
+        "title": "Glicol",
+        "programming_languages": ["rust"]
+    },
+    {
+        "description": "JavaScript 3D library.",
+        "href": "https://github.com/mrdoob/three.js/",
+        "scopes": [
+            "3d",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "three.js",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Functional WebGL.",
+        "href": "https://github.com/regl-project/regl",
+        "scopes": [
+            "web",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "regl",
+        "programming_languages": []
+    },
+    {
+        "description": "Open software ecosystem for WebGL, built on top of browserify and npm.",
+        "href": "http://stack.gl/",
+        "scopes": [
+            "web",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "Stackgl",
+        "programming_languages": []
+    },
+    {
+        "description": "The swiss army knife of vector graphics scripting.",
+        "href": "http://paperjs.org/",
+        "scopes": [
+            "web programming \u2022 libraries",
+            "vector",
+            "graphics"
+        ],
+        "filters": [],
+        "title": "Paper.js",
+        "programming_languages": []
+    },
+    {
+        "description": "HTML 5 2D rendering engine that uses webGL with canvas fallback.",
+        "href": "http://www.pixijs.com/",
+        "scopes": [
+            "canvas",
+            "2d",
+            "web",
+            "web programming \u2022 libraries"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Pixi.js",
+        "programming_languages": ["html"]
+    },
+    {
+        "description": "JavaScript library that starts with the original goal of Processing.",
+        "href": "https://p5js.org/",
+        "scopes": [
+            "web programming \u2022 libraries",
+            "processing"
+        ],
+        "filters": [],
+        "title": "p5.js",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "JavaScript library for visualization and creative-coding.",
+        "href": "https://ptsjs.org/",
+        "scopes": [
+            "coding",
+            "web programming \u2022 libraries",
+            "visual"
+        ],
+        "filters": [],
+        "title": "Pts.js",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Javascript canvas library, SVG-to-canvas parser.",
+        "href": "http://fabricjs.com/",
+        "scopes": [
+            "canvas",
+            "web programming \u2022 libraries"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Fabric.js",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Parametric line drawing for SVG, CNC & laser cutters.",
+        "href": "https://maker.js.org",
+        "scopes": [
+            "web programming \u2022 libraries",
+            "win"
+        ],
+        "filters": [],
+        "title": "Maker.js",
+        "programming_languages": []
+    },
+    {
+        "description": "Programmatic 3D modeling in JavaScript.",
+        "href": "https://openjscad.org",
+        "scopes": [
+            "3d",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "OpenJSCAD",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Minimal JavaScript creative coding framework.",
+        "href": "http://soulwire.github.io/sketch.js/",
+        "scopes": [
+            "coding",
+            "framework",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "Sketch.js",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Two-dimensional drawing api geared towards modern web browsers.",
+        "href": "https://two.js.org/",
+        "scopes": [
+            "web",
+            "web programming \u2022 libraries",
+            "win"
+        ],
+        "filters": [],
+        "title": "Two.js",
+        "programming_languages": []
+    },
+    {
+        "description": "WebGL graphic library for building scalable Web3D applications.",
+        "href": "http://claygl.xyz/",
+        "scopes": [
+            "3d",
+            "web",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "ClayGL",
+        "programming_languages": []
+    },
+    {
+        "description": "A lightweight and powerful javascript particle engine.",
+        "href": "https://github.com/a-jie/Proton",
+        "scopes": [
+            "web programming \u2022 libraries",
+            "particle"
+        ],
+        "filters": [],
+        "title": "Proton",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "A lightweight WebGL library.",
+        "href": "https://github.com/evanw/lightgl.js",
+        "scopes": [
+            "web",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "lightgl.js",
+        "programming_languages": []
+    },
+    {
+        "description": "A minimal WebGL 2 rendering library.",
+        "href": "https://github.com/tsherif/picogl.js",
+        "scopes": [
+            "web",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "picogl.js",
+        "programming_languages": []
+    },
+    {
+        "description": "A WebGL tool set.",
+        "href": "https://github.com/yiwenl/Alfrid",
+        "scopes": [
+            "web",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "Alfrid",
+        "programming_languages": []
+    },
+    {
+        "description": "complete JavaScript framework for building 3D games with HTML 5 and WebGL.",
+        "href": "https://github.com/BabylonJS/Babylon.js",
+        "scopes": [
+            "3d",
+            "game",
+            "framework",
+            "web",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "Babylon.js",
+        "programming_languages": [
+            "html",
+            "javascript"
+        ]
+    },
+    {
+        "description": "A Tiny WebGL helper Library.",
+        "href": "https://github.com/greggman/twgl.js",
+        "scopes": [
+            "web",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "twigl",
+        "programming_languages": []
+    },
+    {
+        "description": "WebGL2 Components for Data Visualization.",
+        "href": "https://github.com/uber/luma.gl",
+        "scopes": [
+            "web",
+            "web programming \u2022 libraries",
+            "visual"
+        ],
+        "filters": [],
+        "title": "luma.gl",
+        "programming_languages": []
+    },
+    {
+        "description": "A web component for drawing patterns with CSS.",
+        "href": "https://css-doodle.com/",
+        "scopes": [
+            "web",
+            "web programming \u2022 libraries",
+            "win"
+        ],
+        "filters": [],
+        "title": "css-doodle",
+        "programming_languages": ["css"]
+    },
+    {
+        "description": "JavaScript 3D library (WebGL).",
+        "href": "https://github.com/oframe/ogl",
+        "scopes": [
+            "3d",
+            "web",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "OGL.js",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "A pseudo-3D engine for canvas & SVG.",
+        "href": "https://zzz.dog/",
+        "scopes": [
+            "3d",
+            "canvas",
+            "web programming \u2022 libraries"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Zdog",
+        "programming_languages": []
+    },
+    {
+        "description": "Lightweight 3d physics engine for javascript",
+        "href": "https://github.com/lo-th/Oimo.js/",
+        "scopes": [
+            "3d",
+            "physics",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "Oimo.js",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Direct port of the Bullet physics engine to JavaScript using Emscripten.",
+        "href": "https://github.com/kripken/ammo.js/",
+        "scopes": [
+            "physics",
+            "web programming \u2022 libraries"
+        ],
+        "filters": [],
+        "title": "Ammo.js",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Motion design library with visual tools",
+        "href": "https://github.com/ariaminaei/theatre",
+        "scopes": [
+            "design",
+            "web programming \u2022 libraries",
+            "visual"
+        ],
+        "filters": [],
+        "title": "Theatre.js",
+        "programming_languages": []
+    },
+    {
+        "description": "A lightweight open-source JavaScript library for graphics and animations (SVG/VML).",
+        "href": "http://www.graphicsjs.org",
+        "scopes": [
+            "web programming \u2022 libraries",
+            "graphics",
+            "animation"
+        ],
+        "filters": [],
+        "title": "GraphicsJS",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Video mapping projections and Light mapping.",
+        "href": "http://www.madmapper.com/",
+        "scopes": ["projection mapping \u2022 vjing"],
+        "filters": [],
+        "title": "MadMapper",
+        "programming_languages": []
+    },
+    {
+        "description": "Realtime multimedia performance application.",
+        "href": "https://vidvox.net/",
+        "scopes": ["projection mapping \u2022 vjing"],
+        "filters": [],
+        "title": "VDMX",
+        "programming_languages": []
+    },
+    {
+        "description": "Real time video mixing and compositing.",
+        "href": "http://www.modul8.ch/",
+        "scopes": ["projection mapping \u2022 vjing"],
+        "filters": [],
+        "title": "Modul8",
+        "programming_languages": []
+    },
+    {
+        "description": "Mixing of digital video and effects in a realtime.",
+        "href": "https://resolume.com/",
+        "scopes": ["projection mapping \u2022 vjing"],
+        "filters": [],
+        "title": "Resolume",
+        "programming_languages": []
+    },
+    {
+        "description": "VJ software designed for realtime HD video mixing and compositing with a modular user interface.",
+        "href": "http://imimot.com/cogevj/",
+        "scopes": [
+            "projection mapping \u2022 vjing",
+            "design"
+        ],
+        "filters": [],
+        "title": "CoGe VJ",
+        "programming_languages": []
+    },
+    {
+        "description": "Realtime preview tool for projection mapping.",
+        "href": "https://github.com/baku89/VirtualMapper",
+        "scopes": ["projection mapping \u2022 vjing"],
+        "filters": ["Tools"],
+        "title": "VirtualMapper",
+        "programming_languages": []
+    },
+    {
+        "description": "A software to create and perform interactive audiovisual shows.",
+        "href": "https://www.millumin.com/v3/index.php",
+        "scopes": [
+            "projection mapping \u2022 vjing",
+            "interactive",
+            "visual",
+            "audio"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Millumin",
+        "programming_languages": []
+    },
+    {
+        "description": "A real-time 2D/3D creation, compositing and video-mapping engine.",
+        "href": "https://smode.fr/",
+        "scopes": [
+            "3d",
+            "2d",
+            "projection mapping \u2022 vjing"
+        ],
+        "filters": [],
+        "title": "Smode",
+        "programming_languages": []
+    },
+    {
+        "description": "A live performance tool featuring simple non-linear editing and mixing from multiple sources (files, devices, streams...)",
+        "href": "http://veejayhq.net/",
+        "scopes": ["projection mapping \u2022 vjing"],
+        "filters": [],
+        "title": "Veejay",
+        "programming_languages": []
+    },
+    {
+        "description": "Build and share shaders with the world and get inspired.",
+        "href": "https://www.shadertoy.com/",
+        "scopes": [
+            "shader",
+            "online"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Shadertoy",
+        "programming_languages": []
+    },
+    {
+        "description": "A JavaScript library for creating interactive procedural 2D and 3D shaders.",
+        "href": "https://shaderpark.com/",
+        "scopes": [
+            "3d",
+            "shader",
+            "2d",
+            "interactive",
+            "online"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Shader Park",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Online shader editor and gallery.",
+        "href": "http://glslsandbox.com/",
+        "scopes": [
+            "shader",
+            "online"
+        ],
+        "filters": ["Tools"],
+        "title": "GLSL Sandbox",
+        "programming_languages": []
+    },
+    {
+        "description": "Online shader editor.",
+        "href": "http://shdr.bkcore.com/",
+        "scopes": [
+            "shader",
+            "online"
+        ],
+        "filters": ["Tools"],
+        "title": "Shdr Editor",
+        "programming_languages": []
+    },
+    {
+        "description": "Show case of advanced techniques with editable source code.",
+        "href": "http://codepen.io/",
+        "scopes": [
+            "code",
+            "online"
+        ],
+        "filters": [],
+        "title": "CodePen",
+        "programming_languages": []
+    },
+    {
+        "description": "Interface for programming GPU shaders.",
+        "href": "http://www.cdglabs.org/Shadershop/",
+        "scopes": [
+            "shader",
+            "online"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Shadershop",
+        "programming_languages": []
+    },
+    {
+        "description": "Online shader editor and gallery.",
+        "href": "https://www.vertexshaderart.com/",
+        "scopes": [
+            "shader",
+            "online"
+        ],
+        "filters": ["Tools"],
+        "title": "Vertexshaderart",
+        "programming_languages": []
+    },
+    {
+        "description": "Online shader editor.",
+        "href": "http://cyos.babylonjs.com/",
+        "scopes": [
+            "shader",
+            "online"
+        ],
+        "filters": ["Tools"],
+        "title": "Cyos",
+        "programming_languages": []
+    },
+    {
+        "description": "Simple WebGL Fragment Shader Editor.",
+        "href": "http://editor.thebookofshaders.com/",
+        "scopes": [
+            "shader",
+            "web",
+            "online"
+        ],
+        "filters": [],
+        "title": "GlslEditor",
+        "programming_languages": []
+    },
+    {
+        "description": "Create and experiment with algorithmic design, Processing and P5.js.",
+        "href": "https://www.openprocessing.org/",
+        "scopes": [
+            "design",
+            "online",
+            "processing"
+        ],
+        "filters": [],
+        "title": "OpenProcessing",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Online web editor for P5.js.",
+        "href": "https://editor.p5js.org/",
+        "scopes": [
+            "web",
+            "online"
+        ],
+        "filters": ["Tools"],
+        "title": "P5.js Editor",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Run-as-you-type tool for VJs, musicians, teachers, students, kids.",
+        "href": "http://livecodelab.net",
+        "scopes": [
+            "music",
+            "online"
+        ],
+        "filters": [],
+        "title": "LiveCodeLab",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Minimalistic API and online showcase for generative code. (Javascript)",
+        "href": "https://turtletoy.net/",
+        "scopes": [
+            "generative",
+            "code",
+            "online"
+        ],
+        "filters": ["Tools"],
+        "title": "Turtletoy",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Open source home for art made with code (WebGL1/2, JavaScript Canvas & P5.js).",
+        "href": "https://shadergif.com/",
+        "scopes": [
+            "canvas",
+            "code",
+            "web",
+            "online"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "ShaderGif",
+        "programming_languages": [
+            "js",
+            "javascript"
+        ]
+    },
+    {
+        "description": "p5.js live-coding environment.",
+        "href": "https://teddavis.org/p5live/",
+        "scopes": [
+            "coding",
+            "online"
+        ],
+        "filters": [],
+        "title": "P5LIVE",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Digital art platform for creative coders (Fragment Shader, Javascript Canvas).",
+        "href": "https://neort.io/popular",
+        "scopes": [
+            "shader",
+            "canvas",
+            "code",
+            "online"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "NEORT",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Learn programming by issuing instructions to a turtle.",
+        "href": "https://shelly.dev/",
+        "scopes": ["online"],
+        "filters": [],
+        "title": "Shelly",
+        "programming_languages": []
+    },
+    {
+        "description": "The most minimalist creative coding environment is alive.",
+        "href": "https://tixy.land/",
+        "scopes": [
+            "coding",
+            "online"
+        ],
+        "filters": [],
+        "title": "tixy.land",
+        "programming_languages": []
+    },
+    {
+        "description": "Run your tweet on an 8-bit computer emulator.",
+        "href": "https://www.bbcmicrobot.com/",
+        "scopes": ["online"],
+        "filters": [],
+        "title": "BBC Micro bot",
+        "programming_languages": []
+    },
+    {
+        "description": "Live code-able video synth and coding environment.",
+        "href": "https://hydra.ojack.xyz/",
+        "scopes": [
+            "coding",
+            "code",
+            "online"
+        ],
+        "filters": [],
+        "title": "Hydra",
+        "programming_languages": []
+    },
+    {
+        "description": "Open source microcontroller kits for building digital devices and interactive objects.",
+        "href": "https://www.arduino.cc/",
+        "scopes": [
+            "interactive",
+            "hardware"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Arduino",
+        "programming_languages": []
+    },
+    {
+        "description": "Small single-board computers.",
+        "href": "https://www.raspberrypi.org/",
+        "scopes": ["hardware"],
+        "filters": [],
+        "title": "Raspberry Pi",
+        "programming_languages": []
+    },
+    {
+        "description": "Open source JavaScript microcontroller you can program wirelessly.",
+        "href": "https://www.puck-js.com/",
+        "scopes": ["hardware"],
+        "filters": [],
+        "title": "Puck.js",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Low-power open source single-board computers.",
+        "href": "http://beagleboard.org/",
+        "scopes": ["hardware"],
+        "filters": [],
+        "title": "BeagleBoard",
+        "programming_languages": []
+    },
+    {
+        "description": "Turn everyday objects into touchpads and combine them with the internet.",
+        "href": "http://www.makeymakey.com/",
+        "scopes": ["hardware"],
+        "filters": [],
+        "title": "Makey Makey",
+        "programming_languages": []
+    },
+    {
+        "description": "Sensor device that supports hand and finger motions as input.",
+        "href": "https://www.leapmotion.com/",
+        "scopes": ["hardware"],
+        "filters": [],
+        "title": "Leap Motion",
+        "programming_languages": []
+    },
+    {
+        "description": "Simple, modern, and precise pen plotter.",
+        "href": "https://www.axidraw.com/",
+        "scopes": ["hardware"],
+        "filters": [],
+        "title": "AxiDraw",
+        "programming_languages": []
+    },
+    {
+        "description": "Sensors, input devices and controllers for computers.",
+        "href": "https://www.phidgets.com",
+        "scopes": ["hardware"],
+        "filters": [],
+        "title": "Phidgets",
+        "programming_languages": []
+    },
+    {
+        "description": "USB-based microcontroller development system.",
+        "href": "https://www.pjrc.com/teensy/",
+        "scopes": ["hardware"],
+        "filters": [],
+        "title": "Teensy",
+        "programming_languages": []
+    },
+    {
+        "description": "AR projection mapping with built-in depth sensor.",
+        "href": "https://lightform.com/",
+        "scopes": ["hardware"],
+        "filters": ["Tools"],
+        "title": "Lightform",
+        "programming_languages": []
+    },
+    {
+        "description": "Application for generating 3D structures by specifying a design grammar.",
+        "href": "http://structuresynth.sourceforge.net/",
+        "scopes": [
+            "3d",
+            "other",
+            "design"
+        ],
+        "filters": [],
+        "title": "Structure Synth",
+        "programming_languages": []
+    },
+    {
+        "description": "Powerful 3D design app that enables you to live code 3D form.",
+        "href": "http://www.syedrezaali.com/f3-mac-app/",
+        "scopes": [
+            "3d",
+            "other",
+            "code",
+            "design"
+        ],
+        "filters": [],
+        "title": "F3",
+        "programming_languages": []
+    },
+    {
+        "description": "[Fragment](https://github.com/rezaali/fragment) [Mac]- App to live code GLSL graphics.",
+        "href": "https://github.com/rezaali/fragment",
+        "scopes": [
+            "other",
+            "code",
+            "graphics",
+            "mac"
+        ],
+        "filters": [],
+        "title": "Fragment",
+        "programming_languages": []
+    },
+    {
+        "description": "Modern shader IDE for programmers and FX artists.",
+        "href": "http://store.steampowered.com/app/314720/",
+        "scopes": [
+            "shader",
+            "other",
+            "artist"
+        ],
+        "filters": [],
+        "title": "ShaderTool",
+        "programming_languages": []
+    },
+    {
+        "description": "Allows applications to share frames with one another in realtime.",
+        "href": "http://syphon.v002.info/",
+        "scopes": ["other"],
+        "filters": [],
+        "title": "Syphon",
+        "programming_languages": []
+    },
+    {
+        "description": "Real-time GPU shader editor, live-code performance tool and graphics prototyping sketchpad.",
+        "href": "https://hexler.net/software/kodelife",
+        "scopes": [
+            "shader",
+            "other",
+            "code",
+            "graphics"
+        ],
+        "filters": [],
+        "title": "KodeLife",
+        "programming_languages": []
+    },
+    {
+        "description": "GLSL shaders for use in interactive applications.",
+        "href": "https://www.interactiveshaderformat.com/",
+        "scopes": [
+            "shader",
+            "other",
+            "interactive"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "ISF",
+        "programming_languages": []
+    },
+    {
+        "description": "Live-coding console tool that renders GLSL Shaders.",
+        "href": "http://patriciogonzalezvivo.com/2015/glslViewer/",
+        "scopes": [
+            "coding",
+            "shader",
+            "other"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "glslViewer",
+        "programming_languages": []
+    },
+    {
+        "description": "Education oriented 2d graphics programming environment based on python.",
+        "href": "http://www.drawbot.com/",
+        "scopes": [
+            "other",
+            "2d",
+            "graphics"
+        ],
+        "filters": [],
+        "title": "DrawBot",
+        "programming_languages": ["python"]
+    },
+    {
+        "description": "A collection of scripts for creative coding with Unity.",
+        "href": "https://github.com/keijiro/Klak",
+        "scopes": [
+            "coding",
+            "other"
+        ],
+        "filters": [],
+        "title": "Klak",
+        "programming_languages": []
+    },
+    {
+        "description": "Scripting (JS) in InDesign for designers and artists in the spirit of Processing.",
+        "href": "https://basiljs.ch/",
+        "scopes": [
+            "other",
+            "artist",
+            "design",
+            "processing"
+        ],
+        "filters": [],
+        "title": "basil.js",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "A commandline tool to generate different scaleable patterns as SVGs.",
+        "href": "https://github.com/MarcelMue/konstrukt",
+        "scopes": ["other"],
+        "filters": [],
+        "title": "Konstrukt",
+        "programming_languages": []
+    },
+    {
+        "description": "Daniel Shiffman makes videos about creative coding.",
+        "href": "https://www.youtube.com/user/shiffman",
+        "scopes": [
+            "coding",
+            "videos"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "The Coding Train",
+        "programming_languages": []
+    },
+    {
+        "description": "Fragment Shaders](https://www.youtube.com/playlist?list=PLW3Zl3wyJwWMpFSRpeMmSBGDShbkiV1Cq) - YouTube playlist about fragment shaders.",
+        "href": "https://www.youtube.com/playlist?list=PLW3Zl3wyJwWMpFSRpeMmSBGDShbkiV1Cq",
+        "scopes": [
+            "shader",
+            "videos"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "MFGD - Fragment Shaders",
+        "programming_languages": []
+    },
+    {
+        "description": "YouTube channel about shaders.",
+        "href": "https://www.youtube.com/channel/UCDk9-aPr8zQzwi4ylnuoJ6w",
+        "scopes": [
+            "shader",
+            "videos"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Shaders Laboratory",
+        "programming_languages": []
+    },
+    {
+        "description": "YouTube channel about shaders case studies.",
+        "href": "https://www.youtube.com/channel/UCEklP9iLcpExB8vp_fWQseg",
+        "scopes": [
+            "shader",
+            "videos"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Makin' Stuff Look Good",
+        "programming_languages": []
+    },
+    {
+        "description": "YouTube series to learning openFrameworks",
+        "href": "https://www.youtube.com/watch?v=dwt2NAd1ZYY&list=PL4neAtv21WOlqpDzGqbGM_WN2hc5ZaVv7",
+        "scopes": [
+            "framework",
+            "videos"
+        ],
+        "filters": ["Tools"],
+        "title": "openFrameworks Tutorial Series",
+        "programming_languages": []
+    },
+    {
+        "description": "YouTube playlist about openFrameworks - not updated [2015].",
+        "href": "https://www.youtube.com/watch?v=IKSTo_0pB28&index=51&list=PL4neAtv21WOmrV8z9rSzL20QpdLU1zJLr",
+        "scopes": [
+            "framework",
+            "videos"
+        ],
+        "filters": ["Tools"],
+        "title": "openFrameworks tutorial",
+        "programming_languages": []
+    },
+    {
+        "description": "YouTube playlist about Shaders, using Visual Studio Code.",
+        "href": "https://www.youtube.com/watch?v=HIvNePu7UEE&list=PL4neAtv21WOmIrTrkNO3xCyrxg4LKkrF7",
+        "scopes": [
+            "shader",
+            "code",
+            "visual",
+            "videos"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Shader Tutorial Series",
+        "programming_languages": []
+    },
+    {
+        "description": "YouTube playlist about the Kha framework, built in Haxe.",
+        "href": "https://www.youtube.com/watch?v=5Uxht76ODtQ&list=PL4neAtv21WOmmR5mKb7TQvEQHpMh1h0po",
+        "scopes": [
+            "framework",
+            "videos"
+        ],
+        "filters": [],
+        "title": "Kha Tutorial Series",
+        "programming_languages": []
+    },
+    {
+        "description": "YouTube playlist about WebGL 2.0.",
+        "href": "https://www.youtube.com/watch?v=LtFujAtKM5I&list=PLMinhigDWz6emRKVkVIEAaePW7vtIkaIF",
+        "scopes": [
+            "web",
+            "videos"
+        ],
+        "filters": [],
+        "title": "Fun with WebGL 2.0",
+        "programming_languages": []
+    },
+    {
+        "description": "YouTube playlist about modern OpenGL.",
+        "href": "https://www.youtube.com/playlist?list=PLRtjMdoYXLf6zUMDJVRZYV-6g6n62vet8",
+        "scopes": ["videos"],
+        "filters": [],
+        "title": "Modern OpenGL 3.0+ Tutorials",
+        "programming_languages": []
+    },
+    {
+        "description": "YouTube playlist about vertex shaders.",
+        "href": "https://www.youtube.com/channel/UC6IqL5vkMJpqBG_bFDjsaxw",
+        "scopes": [
+            "shader",
+            "videos"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Vertexshaderart",
+        "programming_languages": []
+    },
+    {
+        "description": "YouTube playlist diving into three.js.",
+        "href": "https://www.youtube.com/playlist?list=PL08jItIqOb2qyMOhtEUoLh100KpccQiRf",
+        "scopes": ["videos"],
+        "filters": [],
+        "title": "Diving in Three.js",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "YouTube playlist teaching you how to make shaders, starting with zero knowledge using shadertoy.",
+        "href": "https://www.youtube.com/watch?v=u5HAYVHsasc&list=PLGmrMu-IwbguU_nY2egTFmlg691DN7uE5",
+        "scopes": [
+            "shader",
+            "videos"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Shadertoy Tutorials",
+        "programming_languages": []
+    },
+    {
+        "description": "Introduction to WebGL lightning with Greg Tatum.",
+        "href": "https://www.youtube.com/playlist?list=PLxaZqnd-OQM7Y0lfe7h2cjlQAm5O9_6UL",
+        "scopes": [
+            "web",
+            "videos"
+        ],
+        "filters": [],
+        "title": "WebGL Lightning",
+        "programming_languages": []
+    },
+    {
+        "description": "Intro to WebGL with three.js.",
+        "href": "http://davidscottlyons.com/threejs/presentations/frontporch14/",
+        "scopes": [
+            "web",
+            "talks"
+        ],
+        "filters": [],
+        "title": "Intro to WebGL Slides",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Collection of live coding videos by Íñigo Quílez.",
+        "href": "https://iquilezles.org/live/",
+        "scopes": [
+            "coding",
+            "talks"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Inigo Quilez Live",
+        "programming_languages": []
+    },
+    {
+        "description": "Bruno Imbrizi go through the use of canvas for creative coding at WebExpo 2016. Interactive slides [here](https://brunoimbrizi.github.io/webexpo-2016/dist/).",
+        "href": "https://slideslive.com/38898318/there-is-also-canvas",
+        "scopes": [
+            "coding",
+            "canvas",
+            "web",
+            "talks",
+            "interactive"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "There is also canvas",
+        "programming_languages": []
+    },
+    {
+        "description": "Beginners tutorial series about creating 3D games OpenG.",
+        "href": "https://www.youtube.com/playlist?list=PLRIWtICgwaX0u7Rf9zkZhLoLuZVfUksDP",
+        "scopes": [
+            "3d",
+            "game",
+            "talks"
+        ],
+        "filters": [],
+        "title": "OpenGL 3D Game Tutorials",
+        "programming_languages": []
+    },
+    {
+        "description": "Talk on how tech-based artists do this financially.",
+        "href": "http://how-we-do-this-shit.com/",
+        "scopes": [
+            "artist",
+            "talks"
+        ],
+        "filters": [],
+        "title": "How We Do This Shit",
+        "programming_languages": []
+    },
+    {
+        "description": "How I Learnt to Stop Worrying and Love Linear Algebra.",
+        "href": "http://acko.net/files/fullfrontal/fullfrontal/webglmath/online.html",
+        "scopes": [
+            "talks",
+            "algebra"
+        ],
+        "filters": [],
+        "title": "Making WebGL Dance",
+        "programming_languages": []
+    },
+    {
+        "description": "Talk about WebGL, GPUs and Math by Steven Wittens.",
+        "href": "http://acko.net/files/gltalks/pixelfactory/online.html",
+        "scopes": [
+            "web",
+            "talks",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "The Pixel Factory",
+        "programming_languages": []
+    },
+    {
+        "description": "Inspiring talk by Zach Lieberman.",
+        "href": "https://www.youtube.com/watch?v=bmztlO9_Wvo&t=387s",
+        "scopes": ["talks"],
+        "filters": [],
+        "title": "Poetic Computation",
+        "programming_languages": []
+    },
+    {
+        "description": "FITC talk by Matt DesLauriers about his passion for generative art.",
+        "href": "https://www.youtube.com/watch?v=8Uo6zFwSO78",
+        "scopes": [
+            "generative",
+            "talks"
+        ],
+        "filters": [],
+        "title": "Generative Machines",
+        "programming_languages": []
+    },
+    {
+        "description": "Part 1 of an introduction to shaders using threejs.",
+        "href": "https://aerotwist.com/tutorials/an-introduction-to-shaders-part-1/",
+        "scopes": [
+            "shader",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Introduction to shaders",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Introduction to three.js from a creative coder perspective.",
+        "href": "https://medium.com/@necsoft/three-js-101-hello-world-part-1-443207b1ebe1",
+        "scopes": [
+            "code",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "Three.js 101",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Shader tutorial in the context of lwjgl-basics.",
+        "href": "https://github.com/mattdesl/lwjgl-basics/wiki/Shaders",
+        "scopes": [
+            "shader",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "lwjgl: Shaders",
+        "programming_languages": []
+    },
+    {
+        "description": "A primer on shaders.",
+        "href": "https://notes.underscorediscovery.com/shaders-a-primer/",
+        "scopes": [
+            "shader",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Shaders: A primer",
+        "programming_languages": []
+    },
+    {
+        "description": "The second part to the previous.",
+        "href": "https://notes.underscorediscovery.com/shaders-second-stage/",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "Shaders: Second stage",
+        "programming_languages": []
+    },
+    {
+        "description": "A brief introduction to fragment shaders.",
+        "href": "https://github.com/Jam3/jam3-lesson-webgl-shader-intro",
+        "scopes": [
+            "shader",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "WebGL Lessons \u2014 Fragment Shaders",
+        "programming_languages": []
+    },
+    {
+        "description": "Using custom vertex and fragment shaders in ThreeJS.",
+        "href": "https://github.com/Jam3/jam3-lesson-webgl-shader-threejs",
+        "scopes": [
+            "shader",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "WebGL Lessons \u2014 ThreeJS Shaders",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "example of post-processing effects in ThreeJS.",
+        "href": "https://github.com/Jam3/threejs-post-process-example",
+        "scopes": [
+            "processing",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "ThreeJS post-proces example",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Introduction to ray tracing.",
+        "href": "https://www.scratchapixel.com/lessons/3d-basic-rendering/introduction-to-ray-tracing/how-does-it-work.html",
+        "scopes": [
+            "ray",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "Ray Marching and Signed Distance Functions",
+        "programming_languages": []
+    },
+    {
+        "description": "A simple method for creating 3D images.",
+        "href": "http://jamie-wong.com/2016/07/15/ray-marching-signed-distance-functions/",
+        "scopes": [
+            "3d",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "Introduction to Ray Tracing",
+        "programming_languages": []
+    },
+    {
+        "description": "Phong shading tutorial with glslify.",
+        "href": "https://github.com/stackgl/glsl-lighting-walkthrough",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "GLSL lighting walkthrough",
+        "programming_languages": []
+    },
+    {
+        "description": "Example on how to use three.js with glslify.",
+        "href": "https://github.com/mattdesl/three-glslify-example",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "Three glslify example",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Greg Tatum explain the basic of WebGL using Regl.",
+        "href": "https://github.com/gregtatum/talk-webgl-beyond-dom",
+        "scopes": [
+            "explain",
+            "web",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "WebGL Beyond Dom",
+        "programming_languages": []
+    },
+    {
+        "description": "Article about FBO/GPGPU particles by @nicoptere.",
+        "href": "http://barradeau.com/blog/?p=621",
+        "scopes": [
+            "particle",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "FBO particles",
+        "programming_languages": []
+    },
+    {
+        "description": "Article about ray marching with three.js by @nicoptere.",
+        "href": "with THREE.js",
+        "scopes": [
+            "ray",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "Ray marching (with THREE.js)",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Introduction to custom shaders, uniforms, textures and lighting in three.js.",
+        "href": "https://csantosbh.wordpress.com/2014/01/09/custom-shaders-with-three-js-uniforms-textures-and-lighting/",
+        "scopes": [
+            "shader",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Custom shaders with Three.JS",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "First part of an introduction to modern OpenGL.",
+        "href": "http://duriansoftware.com/joe/An-intro-to-modern-OpenGL.-Chapter-1:-The-Graphics-Pipeline.html",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "An intro to modern OpenGL",
+        "programming_languages": []
+    },
+    {
+        "description": "Good introduction to some of the OpenGL terms.",
+        "href": "https://github.com/tomdalling/opengl-series",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "Modern OpenGL Series",
+        "programming_languages": []
+    },
+    {
+        "description": "Article about the smooth based primitive union.",
+        "href": "https://iquilezles.org/www/articles/smin/smin.htm",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "Smooth minimum",
+        "programming_languages": []
+    },
+    {
+        "description": "Collection of distance functions in one centralized place.",
+        "href": "https://iquilezles.org/www/articles/distfunctions/distfunctions.htm",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "Modeling with distance functions",
+        "programming_languages": []
+    },
+    {
+        "description": "Explains how to create complex 3D shapes inside volumetric shaders.",
+        "href": "http://www.alanzucconi.com/2016/07/01/volumetric-rendering/",
+        "scopes": [
+            "explain",
+            "3d",
+            "shader",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Volumetric rendering",
+        "programming_languages": []
+    },
+    {
+        "description": "Book, blog and collection of resources regarding real-time rendering.",
+        "href": "http://www.realtimerendering.com/",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "Real-time Rendering",
+        "programming_languages": []
+    },
+    {
+        "description": "Short and sweet introduction to OpenGL shaders by Anton Gerdelan.",
+        "href": "http://antongerdelan.net/opengl/shaders.html",
+        "scopes": [
+            "shader",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "OpenGL 4 Shaders",
+        "programming_languages": []
+    },
+    {
+        "description": "The title says it all. Introduction by Adok.",
+        "href": "http://www.hugi.scene.org/online/hugi37/hugi%2037%20-%20coding%20adok%20on%20ray%20casting,%20ray%20tracing,%20ray%20marching%20and%20the%20like.htm",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "On ray casting, ray tracing, ray marching and the like",
+        "programming_languages": []
+    },
+    {
+        "description": "Really good introduction to how basic software rendering works.",
+        "href": "http://blog.simonrodriguez.fr/articles/18-02-2017_writing_a_small_software_renderer.html",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "Writing a small software renderer",
+        "programming_languages": []
+    },
+    {
+        "description": "Website with a really good collection of WebGL tutorials.",
+        "href": "http://www.webgltutorials.org/",
+        "scopes": [
+            "web",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "WebGL Tutorials",
+        "programming_languages": []
+    },
+    {
+        "description": "Beginner introduction on how to create geometry object.",
+        "href": "http://codepen.io/mcdorli/post/generating-geometry-part-1-basics",
+        "scopes": [
+            "geometry",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "Generating Geometry: 1",
+        "programming_languages": []
+    },
+    {
+        "description": "Series of tutorials about WebGL, Three.js, and Three.bas.",
+        "href": "https://medium.com/@Zadvorsky/into-vertex-shaders-594e6d8cd804",
+        "scopes": [
+            "web",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "Into Vertex Shaders",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Brief overview over the different coordinate systems through out the 3D graphics pipeline.",
+        "href": "https://medium.com/@Zadvorsky/into-vertex-shaders-part-1-the-spaces-of-webgl-c70ded527841",
+        "scopes": [
+            "3d",
+            "graphics",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "The Spaces of WebGL",
+        "programming_languages": []
+    },
+    {
+        "description": "Short and sweet online introduction to WebGL.",
+        "href": "http://webgl-workshop.com/",
+        "scopes": [
+            "web",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": ["Tools"],
+        "title": "WebGL Workshop",
+        "programming_languages": []
+    },
+    {
+        "description": "Fluffy predator with three.js and instanced geometry.",
+        "href": "http://barradeau.com/blog/?p=1109",
+        "scopes": [
+            "geometry",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "THREE.js & instanced geometry",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "How to create a particle effects with billboarding and WebGL.",
+        "href": "http://www.chinedufn.com/webgl-particle-effect-billboard-tutorial/",
+        "scopes": [
+            "web",
+            "particle",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "Particle Effects via Billboards",
+        "programming_languages": []
+    },
+    {
+        "description": "How to create GPGPU particles with regl.",
+        "href": "https://peterbeshai.com/beautifully-animate-points-with-webgl-and-regl.html",
+        "scopes": [
+            "particle",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "Beautifully Animate Points with WebGL and regl",
+        "programming_languages": []
+    },
+    {
+        "description": "Introduction to the concepts behind real time directional light shadow mapping.",
+        "href": "https://www.chinedufn.com/webgl-shadow-mapping-tutorial/",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "WebGL Tutorial: Directional Shadow Mapping without extensions",
+        "programming_languages": []
+    },
+    {
+        "description": "A tutorial and a list of useful resources to use WebGL raymarching and distance functions easily.",
+        "href": "http://xem.github.io/articles/#webgl_quest_2",
+        "scopes": [
+            "web",
+            "ray",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "WebGL Quest",
+        "programming_languages": []
+    },
+    {
+        "description": "Introduction to different bump mapping techniques.",
+        "href": "http://apoorvaj.io/exploring-bump-mapping-with-webgl.html",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "Exploring bump mapping with WebGL",
+        "programming_languages": []
+    },
+    {
+        "description": "Deck on OpenGL/GLSL shader programing.",
+        "href": "http://web.cse.ohio-state.edu/~wang.3602/courses/cse5542-2013-spring/13-GLSL.pdf",
+        "scopes": [
+            "shader",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "OpenGL/GLSL Shader Programing",
+        "programming_languages": []
+    },
+    {
+        "description": "Perlin noise flow field tutorial.",
+        "href": "https://codepen.io/DonKarlssonSan/post/particles-in-simplex-noise-flow-field",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "Particles in a Simplex Noise Flow Field",
+        "programming_languages": []
+    },
+    {
+        "description": "Introduction to flow fields also known as vector fields.",
+        "href": "https://medium.com/@bit101/flow-fields-part-i-3ebebc688fd8",
+        "scopes": [
+            "vector",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "Flow Fields, Part 1",
+        "programming_languages": []
+    },
+    {
+        "description": "Introduction to flow fields also known as vector fields.",
+        "href": "https://medium.com/@bit101/flow-fields-part-ii-f3c24c1b777d",
+        "scopes": [
+            "vector",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "Flow Fields, Part 2",
+        "programming_languages": []
+    },
+    {
+        "description": "Introduction to 3D graphics programming including shaders, math post-processing etc. from Newcastle University.",
+        "href": "https://research.ncl.ac.uk/game/mastersdegree/graphicsforgames/",
+        "scopes": [
+            "3d",
+            "shader",
+            "processing",
+            "graphics",
+            "math",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [
+            "Learning Resources",
+            "Other"
+        ],
+        "title": "Graphics for Games",
+        "programming_languages": []
+    },
+    {
+        "description": "Introduction to Three.js by Eric Haines.",
+        "href": "http://www.realtimerendering.com/basics3js/#1",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "Three.js Basics",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Slides from the SIGGRAPH 2017 WebGL workshop.",
+        "href": "https://www.cs.unm.edu/~angel/SIGGRAPH17/COURSE/s17_final.pdf",
+        "scopes": [
+            "web",
+            "shaders \u2022 opengl \u2022 webgl"
+        ],
+        "filters": [],
+        "title": "An Interactive Introduction to WebGL and three.js",
+        "programming_languages": []
+    },
+    {
+        "description": "Advice and thoughts on how to get started by Eric Arnebäck.",
+        "href": "https://erkaman.github.io/posts/beginner_computer_graphics.html",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "How to Start Learning Computer Graphics Programming",
+        "programming_languages": []
+    },
+    {
+        "description": "Deep dive into the importance of gamma.",
+        "href": "http://blog.johnnovak.net/2016/09/21/what-every-coder-should-know-about-gamma/",
+        "scopes": ["shaders \u2022 opengl \u2022 webgl"],
+        "filters": [],
+        "title": "What Every Coder Should Know About Gamma",
+        "programming_languages": []
+    },
+    {
+        "description": "Profound introduction to the canvas API.",
+        "href": "http://joshondesign.com/p/books/canvasdeepdive/toc.html",
+        "scopes": ["canvas"],
+        "filters": ["Learning Resources"],
+        "title": "HTML Canvas Deep Dive",
+        "programming_languages": []
+    },
+    {
+        "description": "Collection of canvas tutorials by Seb Lee-Delisle.",
+        "href": "http://creativejs.com/2011/08/31-days-of-canvas-tutorials/",
+        "scopes": ["canvas"],
+        "filters": ["Learning Resources"],
+        "title": "31 days of Canvas tutorials",
+        "programming_languages": []
+    },
+    {
+        "description": "How to use the AxiDraw pen plotter with JavaScript.",
+        "href": "https://mattdesl.svbtle.com/pen-plotter-1",
+        "scopes": ["hardware"],
+        "filters": [],
+        "title": "Pen Plotter Art & Algorithms Part 1",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "In-depth blog post about noise as an indispensable tool for creative coding.",
+        "href": "https://varun.ca/noise/",
+        "scopes": [
+            "coding",
+            "other"
+        ],
+        "filters": [],
+        "title": "Noise in Creative Coding",
+        "programming_languages": []
+    },
+    {
+        "description": "In depth tutorials on math, algorithms and Unity.",
+        "href": "http://catlikecoding.com/unity/tutorials/",
+        "scopes": [
+            "other",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "Cat Like Coding",
+        "programming_languages": []
+    },
+    {
+        "description": "Learn creative coding writing simple programs.",
+        "href": "http://funprogramming.org/",
+        "scopes": [
+            "coding",
+            "other"
+        ],
+        "filters": [],
+        "title": "Fun Programming",
+        "programming_languages": []
+    },
+    {
+        "description": "Introduction to C4 published on Creative Applications.",
+        "href": "http://www.creativeapplications.net/tutorials/creative-coding-on-ios-with-c4-tutorial/",
+        "scopes": ["other"],
+        "filters": [],
+        "title": "Creative-coding on iOS with C4",
+        "programming_languages": []
+    },
+    {
+        "description": "An end-to-end tutorial on the design, programming and launch of an app using C4.",
+        "href": "http://www.c4ios.com/cosmos/",
+        "scopes": [
+            "other",
+            "design"
+        ],
+        "filters": [],
+        "title": "COSMOS",
+        "programming_languages": []
+    },
+    {
+        "description": "Particle physics explained.",
+        "href": "https://www.khanacademy.org/partner-content/pixar/effects/particle-physics/a/start-here-fx",
+        "scopes": [
+            "explain",
+            "other",
+            "physics",
+            "particle"
+        ],
+        "filters": [],
+        "title": "Particle Physics",
+        "programming_languages": []
+    },
+    {
+        "description": "Looks at the use of visualization to understand, explain and debug algorithms.",
+        "href": "https://bost.ocks.org/mike/algorithms/",
+        "scopes": [
+            "explain",
+            "other",
+            "visual"
+        ],
+        "filters": [],
+        "title": "Visualizing Algorithms",
+        "programming_languages": []
+    },
+    {
+        "description": "Easy to understand collection of articles on game developement, but relevant to creative coding as well.",
+        "href": "http://ruh.li/",
+        "scopes": [
+            "coding",
+            "other",
+            "game"
+        ],
+        "filters": [],
+        "title": "Adventures in Game Development World",
+        "programming_languages": []
+    },
+    {
+        "description": "Collection of resources on stuff like path-finding, Ai, math etc.",
+        "href": "http://www-cs-students.stanford.edu/~amitp/gameprog.html",
+        "scopes": [
+            "other",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "Amit\u2019s Game Programming Information",
+        "programming_languages": []
+    },
+    {
+        "description": "Tips to make your art look better.",
+        "href": "https://tylerxhobbs.com/essays/2018/tips-to-improve-your-generative-artwork",
+        "scopes": ["other"],
+        "filters": [],
+        "title": "Tips to Improve Your Generative Artwork",
+        "programming_languages": []
+    },
+    {
+        "description": "Tips on how to get color right.",
+        "href": "https://tylerxhobbs.com/essays/2016/working-with-color-in-generative-art",
+        "scopes": ["other"],
+        "filters": [],
+        "title": "Working With Color in Generative Art",
+        "programming_languages": []
+    },
+    {
+        "description": "Workshop for GLSL shaders and graphics programming.",
+        "href": "https://github.com/stackgl/shader-school",
+        "scopes": [
+            "shader",
+            "interactive",
+            "graphics"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Shader-school",
+        "programming_languages": []
+    },
+    {
+        "description": "The sequel to shader-school: Learn the WebGL API.",
+        "href": "https://github.com/stackgl/webgl-workshop",
+        "scopes": [
+            "shader",
+            "web",
+            "interactive"
+        ],
+        "filters": [],
+        "title": "Webgl-workshop",
+        "programming_languages": []
+    },
+    {
+        "description": "Interactive fragment shader tutorial.",
+        "href": "http://hughsk.io/fragment-foundry",
+        "scopes": [
+            "shader",
+            "interactive"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Fragment-oundry",
+        "programming_languages": []
+    },
+    {
+        "description": "Shadertoy tutorial on raytracing.",
+        "href": "https://www.shadertoy.com/view/Xl2XWt",
+        "scopes": [
+            "shader",
+            "interactive",
+            "ray"
+        ],
+        "filters": [],
+        "title": "SDF Tutorial 1: box & balloon",
+        "programming_languages": []
+    },
+    {
+        "description": "Shadertoy tutorial on Ray Marching.",
+        "href": "https://www.shadertoy.com/view/XllGW4",
+        "scopes": [
+            "shader",
+            "interactive",
+            "ray"
+        ],
+        "filters": [],
+        "title": "HOWTO: Ray Marching",
+        "programming_languages": []
+    },
+    {
+        "description": "Shadertoy raymarch tutorial.",
+        "href": "https://www.shadertoy.com/view/XlBGDW",
+        "scopes": [
+            "shader",
+            "interactive",
+            "ray"
+        ],
+        "filters": [],
+        "title": "Raymarch Tutorial2",
+        "programming_languages": []
+    },
+    {
+        "description": "Shadertoy GLSL 2D Tutorial.",
+        "href": "https://www.shadertoy.com/view/Md23DV",
+        "scopes": [
+            "shader",
+            "2d",
+            "interactive"
+        ],
+        "filters": [],
+        "title": "GLSL 2D Tutorials",
+        "programming_languages": []
+    },
+    {
+        "description": "Shader breakdown by Perlin.",
+        "href": "http://mrl.nyu.edu/~perlin/bubble_breakdown/",
+        "scopes": [
+            "shader",
+            "interactive"
+        ],
+        "filters": [],
+        "title": "Bubble Breakdown",
+        "programming_languages": []
+    },
+    {
+        "description": "Interactive Shader-Toy on writing a ray marcher.",
+        "href": "https://www.shadertoy.com/view/MdBfRK",
+        "scopes": [
+            "shader",
+            "interactive",
+            "ray"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Let's Make A Ray Marcher",
+        "programming_languages": []
+    },
+    {
+        "description": "Interactive Shader-Toy raymarching tutorial.",
+        "href": "https://www.shadertoy.com/view/4dSfRc",
+        "scopes": [
+            "shader",
+            "interactive",
+            "ray"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Raymarching",
+        "programming_languages": []
+    },
+    {
+        "description": "OpenGL ES shading language reference.",
+        "href": "https://shaderific.com/glsl.html",
+        "scopes": ["interactive"],
+        "filters": [],
+        "title": "Shaderific GLSL",
+        "programming_languages": []
+    },
+    {
+        "description": "Shader glossary by theme.",
+        "href": "https://thebookofshaders.com/glossary/",
+        "scopes": [
+            "shader",
+            "interactive"
+        ],
+        "filters": [],
+        "title": "The Book of Shaders Glossary",
+        "programming_languages": []
+    },
+    {
+        "description": "OpenGL 3D programming glossary.",
+        "href": "https://paroj.github.io/gltut/Basics/Intro%20Glossary.html",
+        "scopes": [
+            "3d",
+            "interactive"
+        ],
+        "filters": [],
+        "title": "gltut glossary pages: 1",
+        "programming_languages": []
+    },
+    {
+        "description": "Quick and visual canvas cheatsheet.",
+        "href": "https://web.archive.org/web/20171226205420/https://skilled.co/html-canvas/",
+        "scopes": [
+            "canvas",
+            "interactive",
+            "visual"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Canvas Cheatsheet",
+        "programming_languages": []
+    },
+    {
+        "description": "WebGL 1.0 API reference card.",
+        "href": "https://www.khronos.org/files/webgl/webgl-reference-card-1_0.pdf",
+        "scopes": [
+            "web",
+            "interactive"
+        ],
+        "filters": [],
+        "title": "WebGL Cheatsheet",
+        "programming_languages": []
+    },
+    {
+        "description": "Glossary of terms relating computer graphics.",
+        "href": "https://en.wikipedia.org/wiki/Glossary_of_computer_graphics",
+        "scopes": [
+            "interactive",
+            "graphics"
+        ],
+        "filters": [],
+        "title": "Glossary of Computer Graphics",
+        "programming_languages": []
+    },
+    {
+        "description": "OpenGL Shading Language quick reference guide.",
+        "href": "http://www.cs.cmu.edu/afs/cs/academic/class/15462-f10/www/lec_slides/glslref.pdf",
+        "scopes": ["interactive"],
+        "filters": [],
+        "title": "GLSL Reference Guide",
+        "programming_languages": []
+    },
+    {
+        "description": "Math cheatsheet by Anton Gerdelan, from his OpenGL book.",
+        "href": "http://antongerdelan.net/teaching/3dprog1/maths_cheat_sheet.pdf",
+        "scopes": [
+            "interactive",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "3D Maths Cheat Sheet",
+        "programming_languages": []
+    },
+    {
+        "description": "Improvement of the official OpenGL documentation.",
+        "href": "http://docs.gl/",
+        "scopes": ["interactive"],
+        "filters": [],
+        "title": "docs.GL",
+        "programming_languages": []
+    },
+    {
+        "description": "Khronos Group GLSL wiki.",
+        "href": "https://www.khronos.org/opengl/wiki/OpenGL_Shading_Language",
+        "scopes": ["interactive"],
+        "filters": [],
+        "title": "OpenGL Shading Language",
+        "programming_languages": []
+    },
+    {
+        "description": "PDF Reference Card for the OpenGL 4.3 API.",
+        "href": "https://www.khronos.org/files/opengl43-quick-reference-card.pdf",
+        "scopes": ["interactive"],
+        "filters": [],
+        "title": "OpenGL 4.3 Reference Card",
+        "programming_languages": []
+    },
+    {
+        "description": "Interactive easing functions cheatsheet.",
+        "href": "http://easings.net/",
+        "scopes": ["interactive"],
+        "filters": ["Learning Resources"],
+        "title": "Easings",
+        "programming_languages": []
+    },
+    {
+        "description": "GLSL library on the back of tarot cards, for learning and reference.",
+        "href": "http://pixelspiritdeck.com/",
+        "scopes": ["interactive"],
+        "filters": [],
+        "title": "PixelSpirit",
+        "programming_languages": []
+    },
+    {
+        "description": "Collection of procedural patterns and procedural noises.",
+        "href": "http://www.neilblevins.com/art_lessons/procedural_noise/procedural_noise.html",
+        "scopes": ["interactive"],
+        "filters": [],
+        "title": "Procedural Patterns And Noises",
+        "programming_languages": []
+    },
+    {
+        "description": "Visualize noise algorithms in 1D and 2D.",
+        "href": "https://ramesaliyev.com/visual-noises/",
+        "scopes": [
+            "2d",
+            "interactive",
+            "visual"
+        ],
+        "filters": [],
+        "title": "Visual Noises",
+        "programming_languages": []
+    },
+    {
+        "description": "Simple trigonometry visualisation.",
+        "href": "https://ramesaliyev.com/trigonoparty/",
+        "scopes": [
+            "interactive",
+            "visual"
+        ],
+        "filters": [],
+        "title": "Trigonoparty",
+        "programming_languages": []
+    },
+    {
+        "description": "Exploration of how shapes, forms, and patterns emerge in nature.",
+        "href": "https://github.com/jasonwebb/morphogenesis-resources",
+        "scopes": ["interactive"],
+        "filters": [],
+        "title": "Morphogenesis",
+        "programming_languages": []
+    },
+    {
+        "description": "Sharing and discussing the use of computer programming as a creative discipline.",
+        "href": "https://www.reddit.com/r/creativecoding/",
+        "scopes": ["subreddits"],
+        "filters": [],
+        "title": "r/creativecoding",
+        "programming_languages": []
+    },
+    {
+        "description": "Subreddit on raytracing.",
+        "href": "https://www.reddit.com/r/raytracing/",
+        "scopes": [
+            "subreddits",
+            "ray"
+        ],
+        "filters": [],
+        "title": "r/raytraycing",
+        "programming_languages": []
+    },
+    {
+        "description": "News and discussion about OpenGL on all platforms.",
+        "href": "https://www.reddit.com/r/opengl/",
+        "scopes": ["subreddits"],
+        "filters": [],
+        "title": "r/opengl",
+        "programming_languages": []
+    },
+    {
+        "description": "Subreddit on graphics programming.",
+        "href": "https://www.reddit.com/r/GraphicsProgramming/",
+        "scopes": [
+            "subreddits",
+            "graphics"
+        ],
+        "filters": [],
+        "title": "r/graphicsprogramming",
+        "programming_languages": []
+    },
+    {
+        "description": "Subreddit on Processing.",
+        "href": "https://www.reddit.com/r/processing/",
+        "scopes": [
+            "subreddits",
+            "processing"
+        ],
+        "filters": [],
+        "title": "r/processing",
+        "programming_languages": []
+    },
+    {
+        "description": "Subreddit on shaders.",
+        "href": "https://www.reddit.com/r/shaders/",
+        "scopes": [
+            "shader",
+            "subreddits"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "r/shaders",
+        "programming_languages": []
+    },
+    {
+        "description": "Subreddit on procedural generation.",
+        "href": "https://www.reddit.com/r/proceduralgeneration/",
+        "scopes": [
+            "generation",
+            "subreddits"
+        ],
+        "filters": [],
+        "title": "r/proceduralgeneration",
+        "programming_languages": []
+    },
+    {
+        "description": "Subreddit on machine learning.",
+        "href": "https://www.reddit.com/r/MachineLearning/",
+        "scopes": [
+            "subreddits",
+            "mac"
+        ],
+        "filters": ["Other"],
+        "title": "r/MachineLearning",
+        "programming_languages": []
+    },
+    {
+        "description": "Subreddit on generative art and music.",
+        "href": "https://www.reddit.com/r/generative/",
+        "scopes": [
+            "generative",
+            "subreddits",
+            "music"
+        ],
+        "filters": [],
+        "title": "r/generative",
+        "programming_languages": []
+    },
+    {
+        "description": "Creative Coding Club Slack.",
+        "href": "http://creative-coding-club.slack.com/",
+        "scopes": [
+            "coding",
+            "slack"
+        ],
+        "filters": ["Communities"],
+        "title": "Creative Coding Club",
+        "programming_languages": []
+    },
+    {
+        "description": "Iain and Seb discuss the ins and outs of creative coding.",
+        "href": "http://creativecodingpodcast.com/",
+        "scopes": [
+            "coding",
+            "other"
+        ],
+        "filters": [],
+        "title": "The Creative Coding Podcast",
+        "programming_languages": []
+    },
+    {
+        "description": "Real Time VFX Community.",
+        "href": "https://realtimevfx.com/",
+        "scopes": ["other"],
+        "filters": [],
+        "title": "realtimevfx.com",
+        "programming_languages": []
+    },
+    {
+        "description": "Podcast on data visualization.",
+        "href": "http://datastori.es/",
+        "scopes": [
+            "other",
+            "visual"
+        ],
+        "filters": [],
+        "title": "Data Stories",
+        "programming_languages": []
+    },
+    {
+        "description": "Great collection of shader and math related resources.",
+        "href": "https://www.3dkingdoms.com/weekly/weekly.php",
+        "scopes": [
+            "shader",
+            "other",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "3D Programming Weekly Articles",
+        "programming_languages": []
+    },
+    {
+        "description": "A community of front-end developers who build collaborative creative coding projects on CodePen.",
+        "href": "https://spectrum.chat/codepen/pass-the-pen/",
+        "scopes": [
+            "coding",
+            "other",
+            "projects",
+            "code"
+        ],
+        "filters": [],
+        "title": "Pass The Pen",
+        "programming_languages": []
+    },
+    {
+        "description": "A weekly newsletter of resources around creative technology.",
+        "href": "https://us19.campaign-archive.com/home/?u=ac884610ba6fe07f4988a2182&id=ad49a755b1",
+        "scopes": ["other"],
+        "filters": [],
+        "title": "Creative Tech Weekly",
+        "programming_languages": []
+    },
+    {
+        "description": "Cheat-sheet for mathematical notation in code form.",
+        "href": "https://github.com/Jam3/math-as-code",
+        "scopes": [
+            "code",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "Math as code",
+        "programming_languages": []
+    },
+    {
+        "description": "Teaches you the math you need to understand as a programmer.",
+        "href": "https://www.youtube.com/user/codingmath",
+        "scopes": ["math"],
+        "filters": ["Other"],
+        "title": "Coding Math",
+        "programming_languages": []
+    },
+    {
+        "description": "Math snippets with graphic programming in mind.",
+        "href": "https://github.com/terkelg/math",
+        "scopes": ["math"],
+        "filters": ["Other"],
+        "title": "Math snippets",
+        "programming_languages": []
+    },
+    {
+        "description": "The principles of painting with maths.",
+        "href": "https://www.youtube.com/watch?v=0ifChJ0nJfM",
+        "scopes": ["math"],
+        "filters": ["Other"],
+        "title": "Formul Animations",
+        "programming_languages": []
+    },
+    {
+        "description": "Collection of JS and GLSL math snippets.",
+        "href": "https://github.com/silviopaganini/maths",
+        "scopes": ["math"],
+        "filters": ["Other"],
+        "title": "Learning Maths again",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Grab-bag of modular easing equations.",
+        "href": "https://github.com/mattdesl/eases",
+        "scopes": ["math"],
+        "filters": [],
+        "title": "Eases",
+        "programming_languages": []
+    },
+    {
+        "description": "Visualization of different motion equations.",
+        "href": "https://soulwire.co.uk/math-for-motion/",
+        "scopes": [
+            "visual",
+            "math"
+        ],
+        "filters": [],
+        "title": "Math for Motion",
+        "programming_languages": []
+    },
+    {
+        "description": "Matrix multiplication visualized.",
+        "href": "http://matrixmultiplication.xyz",
+        "scopes": [
+            "visual",
+            "math"
+        ],
+        "filters": [],
+        "title": "Matrix Multiplication",
+        "programming_languages": []
+    },
+    {
+        "description": "The most useful rules of basic algebra.",
+        "href": "http://algebrarules.com/",
+        "scopes": [
+            "algebra",
+            "math"
+        ],
+        "filters": [],
+        "title": "Algebra rules",
+        "programming_languages": []
+    },
+    {
+        "description": "Fully interactive linear algebra.",
+        "href": "http://immersivemath.com/ila/index.html",
+        "scopes": [
+            "interactive",
+            "algebra",
+            "math"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Immersive Math",
+        "programming_languages": []
+    },
+    {
+        "description": "Interactive and visual introduction to image kernels.",
+        "href": "http://setosa.io/ev/image-kernels/",
+        "scopes": [
+            "interactive",
+            "visual",
+            "math"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Image Kernels",
+        "programming_languages": []
+    },
+    {
+        "description": "Interactive explination of sine and cosine.",
+        "href": "http://setosa.io/ev/sine-and-cosine/",
+        "scopes": [
+            "interactive",
+            "math"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "Sine and Cosine",
+        "programming_languages": []
+    },
+    {
+        "description": "Perlin noise explained in detail.",
+        "href": "https://eev.ee/blog/2016/05/29/perlin-noise/",
+        "scopes": [
+            "explain",
+            "math"
+        ],
+        "filters": [],
+        "title": "Perlin Noise",
+        "programming_languages": []
+    },
+    {
+        "description": "Tutorial on vector algebra and matrix algebra from the viewpoint of computer graphics.",
+        "href": "http://programmedlessons.org/VectorLessons/",
+        "scopes": [
+            "algebra",
+            "vector",
+            "math",
+            "graphics"
+        ],
+        "filters": [],
+        "title": "Vector Math for 3D Computer Graphics",
+        "programming_languages": []
+    },
+    {
+        "description": "Graph functions, plot data, evaluate equations, explore transformations, and much more.",
+        "href": "https://www.desmos.com/",
+        "scopes": ["math"],
+        "filters": [],
+        "title": "Desmos",
+        "programming_languages": []
+    },
+    {
+        "description": "Math for game developers YouTube playlist.",
+        "href": "https://www.youtube.com/playlist?list=PLW3Zl3wyJwWNQjMz941uyOIq3Nw6bcDYC",
+        "scopes": [
+            "game",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "MFGD",
+        "programming_languages": []
+    },
+    {
+        "description": "Essence of linear algebra YouTube playlist.",
+        "href": "https://www.youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab",
+        "scopes": [
+            "algebra",
+            "math"
+        ],
+        "filters": [],
+        "title": "Essence of linear algebra",
+        "programming_languages": []
+    },
+    {
+        "description": "Slides about the mathematics of animation ([repo](https://github.com/winkerVSbecks/mathematics-of-animation)).",
+        "href": "https://winkervsbecks.github.io/mathematics-of-animation/#/",
+        "scopes": [
+            "math",
+            "win",
+            "animation"
+        ],
+        "filters": ["Other"],
+        "title": "Mathematics of Animation",
+        "programming_languages": []
+    },
+    {
+        "description": "Beautiful and visual introduction to math and quasi physics.",
+        "href": "https://kynd.github.io/p5sketches/index.html",
+        "scopes": [
+            "physics",
+            "visual",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "Sketching with Math and Quasi Physics",
+        "programming_languages": []
+    },
+    {
+        "description": "introduction to 2D and 3D perlin noise.",
+        "href": "http://genekogan.com/code/p5js-perlin-noise/",
+        "scopes": [
+            "3d",
+            "2d",
+            "math"
+        ],
+        "filters": [],
+        "title": "Gene Kogan: Perlin Noise",
+        "programming_languages": []
+    },
+    {
+        "description": "High level introduction to matrices.",
+        "href": "https://medium.com/@Zadvorsky/into-vertex-shaders-addendum-1-matrix-math-and-you-565a51094472",
+        "scopes": ["math"],
+        "filters": [],
+        "title": "Matrix Math and You",
+        "programming_languages": []
+    },
+    {
+        "description": "List of all mathematical symbols and signs.",
+        "href": "http://www.rapidtables.com/math/symbols/Basic_Math_Symbols.htm",
+        "scopes": ["math"],
+        "filters": ["Other"],
+        "title": "Mathematical Symbols",
+        "programming_languages": []
+    },
+    {
+        "description": "Interactive tool to better understand transformation matrices.",
+        "href": "http://ncase.me/matrix/",
+        "scopes": [
+            "interactive",
+            "math"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "The magnificent 2d matrix",
+        "programming_languages": []
+    },
+    {
+        "description": "JavaScript math snippets for movement.",
+        "href": "http://www.somethinghitme.com/2013/11/13/snippets-i-always-forget-movement/",
+        "scopes": ["math"],
+        "filters": ["Other"],
+        "title": "Game Dev Movement cheatsheet with examples",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Maths cheat-sheet for 2D and 3D game-makers.",
+        "href": "https://gist.github.com/xem/99930986c5333125a13b0ea50600391f",
+        "scopes": [
+            "3d",
+            "game",
+            "2d",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "Maths & trigonometry cheat sheet for 2D & 3D games",
+        "programming_languages": []
+    },
+    {
+        "description": "Introduction to matrices by Greg Tatum.",
+        "href": "https://www.youtube.com/watch?v=4k9wTfxfkJU&list=PLxaZqnd-OQM7k2Gp3xu02VzExGKMKgqY2",
+        "scopes": ["math"],
+        "filters": [],
+        "title": "Matrices for Creative Coding",
+        "programming_languages": []
+    },
+    {
+        "description": "Talk by Steven Wittens about bezier curves, procedural generation, physics engines and fractals.",
+        "href": "https://acko.net/tv/wdcode/",
+        "scopes": [
+            "generation",
+            "physics",
+            "math"
+        ],
+        "filters": [],
+        "title": "Making Things With Maths",
+        "programming_languages": []
+    },
+    {
+        "description": "Interactive real-time physics simulations, with formulars and code.",
+        "href": "https://www.myphysicslab.com/",
+        "scopes": [
+            "code",
+            "physics",
+            "interactive",
+            "math"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "MyPhysicsLab",
+        "programming_languages": []
+    },
+    {
+        "description": "Explanations of fields like Linear Algebra and Geometry designed to help you develop a visual intuition for what is going on.",
+        "href": "https://intuitive-math.club/",
+        "scopes": [
+            "design",
+            "visual",
+            "algebra",
+            "geometry",
+            "math"
+        ],
+        "filters": [],
+        "title": "Intuitive Math",
+        "programming_languages": []
+    },
+    {
+        "description": "A Haskell package for L-systems.",
+        "href": "https://github.com/arendsee/lsystems",
+        "scopes": ["math"],
+        "filters": [],
+        "title": "L-systems",
+        "programming_languages": ["haskell"]
+    },
+    {
+        "description": "Introduction to linear interpolation (also known as mix/lerp).",
+        "href": "https://mattdesl.svbtle.com/linear-interpolation",
+        "scopes": ["math"],
+        "filters": [],
+        "title": "Linear Interpolation",
+        "programming_languages": []
+    },
+    {
+        "description": "In-depth article on vectors for game math.",
+        "href": "https://www.gamedev.net/articles/programming/math-and-physics/practical-use-of-vector-math-in-games-r2968/",
+        "scopes": [
+            "game",
+            "vector",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "Practical use of Vector Math in Games",
+        "programming_languages": []
+    },
+    {
+        "description": "Tiny guide to shepherding random numbers.",
+        "href": "https://inconvergent.net/2016/shepherding-random-numbers/",
+        "scopes": [
+            "math",
+            "shepherding"
+        ],
+        "filters": [],
+        "title": "Shepherding random numbers",
+        "programming_languages": []
+    },
+    {
+        "description": "Tiny guide to shepherding random grids.",
+        "href": "https://inconvergent.net/2016/shepherding-random-grids/",
+        "scopes": [
+            "math",
+            "shepherding"
+        ],
+        "filters": [],
+        "title": "Shepherding random grids",
+        "programming_languages": []
+    },
+    {
+        "description": "Tiny guide to shepherding random growth.",
+        "href": "https://inconvergent.net/2016/shepherding-random-growth/",
+        "scopes": [
+            "math",
+            "shepherding"
+        ],
+        "filters": [],
+        "title": "Shepherding random growth",
+        "programming_languages": []
+    },
+    {
+        "description": "Machine learning for artists.",
+        "href": "https://ml4a.net/",
+        "scopes": [
+            "machine learning \u2022 computer vision \u2022 ai",
+            "artist",
+            "mac"
+        ],
+        "filters": ["Other"],
+        "title": "ml4a",
+        "programming_languages": []
+    },
+    {
+        "description": "Run Keras models (tensorflow backend) in the browser, with GPU support.",
+        "href": "https://transcranial.github.io/keras-js/",
+        "scopes": ["machine learning \u2022 computer vision \u2022 ai"],
+        "filters": [],
+        "title": "Keras.js",
+        "programming_languages": []
+    },
+    {
+        "description": "Pure Javascript Multilingual OCR.",
+        "href": "http://tesseract.projectnaptha.com/",
+        "scopes": ["machine learning \u2022 computer vision \u2022 ai"],
+        "filters": [],
+        "title": "Tesseract.js",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Cloud machine learning by Google.",
+        "href": "https://cloud.google.com/ml/",
+        "scopes": [
+            "machine learning \u2022 computer vision \u2022 ai",
+            "mac"
+        ],
+        "filters": ["Other"],
+        "title": "Google ML",
+        "programming_languages": []
+    },
+    {
+        "description": "Open source software library for machine intelligence.",
+        "href": "https://www.tensorflow.org/",
+        "scopes": [
+            "machine learning \u2022 computer vision \u2022 ai",
+            "mac"
+        ],
+        "filters": [],
+        "title": "TensorFlow",
+        "programming_languages": []
+    },
+    {
+        "description": "Deep Learning in your browser.",
+        "href": "http://cs.stanford.edu/people/karpathy/convnetjs/started.html",
+        "scopes": ["machine learning \u2022 computer vision \u2022 ai"],
+        "filters": [],
+        "title": "ConvNetJS",
+        "programming_languages": []
+    },
+    {
+        "description": "Allows anyone to use machine learning.",
+        "href": "http://www.wekinator.org/",
+        "scopes": [
+            "machine learning \u2022 computer vision \u2022 ai",
+            "mac"
+        ],
+        "filters": ["Other"],
+        "title": "Wekinator",
+        "programming_languages": []
+    },
+    {
+        "description": "Coding Train repo with links to machine learning resources.",
+        "href": "https://github.com/CodingTrain/Machine-Learning",
+        "scopes": [
+            "coding",
+            "machine learning \u2022 computer vision \u2022 ai",
+            "mac"
+        ],
+        "filters": ["Other"],
+        "title": "Machine Learning",
+        "programming_languages": []
+    },
+    {
+        "description": "Space to share creative Ai projects.",
+        "href": "http://www.creativeai.net/",
+        "scopes": [
+            "machine learning \u2022 computer vision \u2022 ai",
+            "projects"
+        ],
+        "filters": [],
+        "title": "CreativeAi.net",
+        "programming_languages": []
+    },
+    {
+        "description": "Ai microsite intended to help newcomers get started.",
+        "href": "http://aiplaybook.a16z.com/",
+        "scopes": ["machine learning \u2022 computer vision \u2022 ai"],
+        "filters": [],
+        "title": "AI Playbook",
+        "programming_languages": []
+    },
+    {
+        "description": "Explore how machine learning works, live in the browser.",
+        "href": "https://github.com/googlecreativelab/teachable-machine",
+        "scopes": [
+            "machine learning \u2022 computer vision \u2022 ai",
+            "mac"
+        ],
+        "filters": ["Other"],
+        "title": "Teachable Machine",
+        "programming_languages": []
+    },
+    {
+        "description": "JavaScript library for training and deploying ML models in the browser and on Node.js.",
+        "href": "https://js.tensorflow.org/",
+        "scopes": ["machine learning \u2022 computer vision \u2022 ai"],
+        "filters": [],
+        "title": "TensorFlow.js",
+        "programming_languages": [
+            "js",
+            "javascript"
+        ]
+    },
+    {
+        "description": "Fully commented TensorFlow.js demo.",
+        "href": "https://hello-tensorflow.glitch.me/",
+        "scopes": ["machine learning \u2022 computer vision \u2022 ai"],
+        "filters": [],
+        "title": "Hello TensorFlow",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Friendly machine learning for the web.",
+        "href": "https://ml5js.org/",
+        "scopes": [
+            "machine learning \u2022 computer vision \u2022 ai",
+            "web",
+            "mac"
+        ],
+        "filters": ["Other"],
+        "title": "ml5.js",
+        "programming_languages": []
+    },
+    {
+        "description": "Discover open source deep learning code and pretrained models.",
+        "href": "https://modelzoo.co/",
+        "scopes": [
+            "machine learning \u2022 computer vision \u2022 ai",
+            "code"
+        ],
+        "filters": [],
+        "title": "Model Zoo",
+        "programming_languages": []
+    },
+    {
+        "description": "Toolkit that adds artificial intelligence capabilities to design and creative platforms.",
+        "href": "https://runwayapp.ai/",
+        "scopes": [
+            "machine learning \u2022 computer vision \u2022 ai",
+            "design"
+        ],
+        "filters": [],
+        "title": "Runway",
+        "programming_languages": []
+    },
+    {
+        "description": "Build, train, and ship custom deep learning models using a simple visual interface.",
+        "href": "https://lobe.ai/",
+        "scopes": [
+            "machine learning \u2022 computer vision \u2022 ai",
+            "visual"
+        ],
+        "filters": [],
+        "title": "Lobe",
+        "programming_languages": []
+    },
+    {
+        "description": "Platform for discovering, sharing, and discussing easy to use and pre-trained machine learning models.",
+        "href": "https://modeldepot.io/",
+        "scopes": [
+            "machine learning \u2022 computer vision \u2022 ai",
+            "mac"
+        ],
+        "filters": ["Other"],
+        "title": "ModelDepot",
+        "programming_languages": []
+    },
+    {
+        "description": "Algorithmic Designs Created with Processing, p5js and processingjs.",
+        "href": "https://www.openprocessing.org/",
+        "scopes": [
+            "design",
+            "processing",
+            "inspiration"
+        ],
+        "filters": [],
+        "title": "OpenProcessing",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Social network for short JavaScript demos.",
+        "href": "https://www.dwitter.net/",
+        "scopes": ["inspiration"],
+        "filters": [],
+        "title": "Dwitter",
+        "programming_languages": ["javascript"]
+    },
+    {
+        "description": "Showcase of web experiments written by the creative coding community.",
+        "href": "https://www.chromeexperiments.com/",
+        "scopes": [
+            "coding",
+            "web",
+            "inspiration"
+        ],
+        "filters": [],
+        "title": "Chrome Experiments",
+        "programming_languages": []
+    },
+    {
+        "description": "Showcase of curated creative coding sketches.",
+        "href": "http://codedoodl.es/",
+        "scopes": [
+            "coding",
+            "inspiration"
+        ],
+        "filters": [],
+        "title": "Codedoodl.es",
+        "programming_languages": []
+    },
+    {
+        "description": "Projects and tutorials about Processing.",
+        "href": "http://fyprocessing.tumblr.com/",
+        "scopes": [
+            "projects",
+            "processing",
+            "inspiration"
+        ],
+        "filters": [],
+        "title": "For your Processing",
+        "programming_languages": []
+    },
+    {
+        "description": "Code sketches by Keith Peters.",
+        "href": "http://www.artfromcode.com/",
+        "scopes": [
+            "code",
+            "inspiration"
+        ],
+        "filters": [],
+        "title": "Art From Code",
+        "programming_languages": []
+    },
+    {
+        "description": "Flickr group about generative strategies in art & design.",
+        "href": "https://www.flickr.com/groups/generatorx/",
+        "scopes": [
+            "generative",
+            "design",
+            "inspiration"
+        ],
+        "filters": [],
+        "title": "Generator.x",
+        "programming_languages": []
+    },
+    {
+        "description": "Flickr group about generative art.",
+        "href": "https://www.flickr.com/groups/generativeart/",
+        "scopes": [
+            "generative",
+            "inspiration"
+        ],
+        "filters": [],
+        "title": "Generative Art",
+        "programming_languages": []
+    },
+    {
+        "description": "Open source micro blog about inspiring and creative works published online.",
+        "href": "https://inspiring.online",
+        "scopes": ["inspiration"],
+        "filters": ["Tools"],
+        "title": "Inspiring Online",
+        "programming_languages": []
+    },
+    {
+        "description": "List of interesting people worth following.",
+        "href": "https://github.com/nucliweb/People-You-Should-Follow-on-CodePen",
+        "scopes": [
+            "inspiration",
+            "win"
+        ],
+        "filters": [],
+        "title": "People You Should Follow on CodePen",
+        "programming_languages": []
+    },
+    {
+        "description": "Tumblr by visual artist Raven Kwok.",
+        "href": "https://ravenkwok.tumblr.com/",
+        "scopes": [
+            "artist",
+            "visual",
+            "inspiration"
+        ],
+        "filters": [],
+        "title": "Raven Kwok",
+        "programming_languages": []
+    },
+    {
+        "description": "Really good collection of experiments in Processing.",
+        "href": "http://p5art.tumblr.com/",
+        "scopes": [
+            "processing",
+            "inspiration"
+        ],
+        "filters": [],
+        "title": "P5Art",
+        "programming_languages": []
+    },
+    {
+        "description": "Tumblr with visual inspiration.",
+        "href": "http://echophon.tumblr.com/",
+        "scopes": [
+            "visual",
+            "inspiration"
+        ],
+        "filters": ["Other"],
+        "title": "Echophon",
+        "programming_languages": []
+    },
+    {
+        "description": "Tumblr with gifs by Dave.",
+        "href": "https://beesandbombs.tumblr.com/",
+        "scopes": ["inspiration"],
+        "filters": [],
+        "title": "Bees & Bombs",
+        "programming_languages": []
+    },
+    {
+        "description": "Celebration of art made with code by artists that push the possibilities of creativity.",
+        "href": "https://devart.withgoogle.com/",
+        "scopes": [
+            "code",
+            "artist",
+            "inspiration"
+        ],
+        "filters": [],
+        "title": "DevArt",
+        "programming_languages": []
+    },
+    {
+        "description": "Tumblr with curves, surfaces, scalar and vector fields.",
+        "href": "http://folds2d.tumblr.com/",
+        "scopes": [
+            "vector",
+            "inspiration"
+        ],
+        "filters": [],
+        "title": "Folds2d",
+        "programming_languages": []
+    },
+    {
+        "description": "Digital design festival (_Online Flash Film Festival_).",
+        "href": "http://offf.barcelona/",
+        "scopes": [
+            "design",
+            "events"
+        ],
+        "filters": ["Tools"],
+        "title": "OFFF Festival",
+        "programming_languages": []
+    },
+    {
+        "description": "Creative coding, art and technology festival.",
+        "href": "http://grayareafestival.io/",
+        "scopes": [
+            "coding",
+            "events"
+        ],
+        "filters": [],
+        "title": "Gray Area Festival",
+        "programming_languages": []
+    },
+    {
+        "description": "Showcase of light art and emerging technologies in Prague, the Czech Republic.",
+        "href": "http://www.signalfestival.com/",
+        "scopes": ["events"],
+        "filters": [],
+        "title": "Signal Festival",
+        "programming_languages": []
+    },
+    {
+        "description": "Bring together creative coders, data designers and creators working at the intersection of data, art and technology.",
+        "href": "http://eyeofestival.com/",
+        "scopes": [
+            "code",
+            "design",
+            "events"
+        ],
+        "filters": [],
+        "title": "Eyeo Festival",
+        "programming_languages": []
+    },
+    {
+        "description": "Organization dedicated to digital creativity in sound, music, and audio-visual art.",
+        "href": "http://www.mutek.org/en",
+        "scopes": [
+            "music",
+            "visual",
+            "audio",
+            "events"
+        ],
+        "filters": [],
+        "title": "Mutek",
+        "programming_languages": []
+    },
+    {
+        "description": "An open platform for the exchange on culture, arts and technology.",
+        "href": "https://nodeforum.org/",
+        "scopes": ["events"],
+        "filters": [],
+        "title": "Node",
+        "programming_languages": []
+    },
+    {
+        "description": "3 day event offering conferences, workshops, digital showcases & installations.",
+        "href": "http://www.ddd.it",
+        "scopes": ["events"],
+        "filters": [],
+        "title": "Digital Design Days",
+        "programming_languages": []
+    },
+    {
+        "description": "Projects and nonprofit events, to inspire through experience.",
+        "href": "http://codame.com/",
+        "scopes": [
+            "projects",
+            "events"
+        ],
+        "filters": ["Other"],
+        "title": "CODAME ART+TECH",
+        "programming_languages": []
+    },
+    {
+        "description": "Inspiring people through creative uses of tech.",
+        "href": "https://nextart.tech/",
+        "scopes": ["events"],
+        "filters": [],
+        "title": "NextArt Night",
+        "programming_languages": []
+    },
+    {
+        "description": "ZKM organizes exhibitions and events on the effects of media, digitization, and globalization.",
+        "href": "https://zkm.de",
+        "scopes": ["museums \u2022 galleries"],
+        "filters": ["Other"],
+        "title": "ZKM \u2014 Zentrum für Kunst und Medien, Karlsruhe/Germany",
+        "programming_languages": []
+    },
+    {
+        "description": "Museum of the Future \u2014 a place where diverse blends of artistic genres, scientific domains and technological directions are displayed and processed.",
+        "href": "https://ars.electronica.art/center/",
+        "scopes": [
+            "artist",
+            "museums \u2022 galleries"
+        ],
+        "filters": [],
+        "title": "Ars Electronica Center, Linz/Austria",
+        "programming_languages": []
+    },
+    {
+        "description": "Technorama allows hands-on experiences of hundreds of natural phenomena and technology.",
+        "href": "https://www.technorama.ch/en/home",
+        "scopes": ["museums \u2022 galleries"],
+        "filters": [],
+        "title": "Technorama, Zurich/Switzerland",
+        "programming_languages": []
+    },
+    {
+        "description": "Zürich/Switzerland](https://www.katevassgalerie.com/) - Contemporary art gallery presenting works by international established, mid-career, and emerging artists focusing on photography and new technologies.",
+        "href": "https://www.katevassgalerie.com/",
+        "scopes": [
+            "artist",
+            "museums \u2022 galleries"
+        ],
+        "filters": [],
+        "title": "Kate Vass Gallery - Zürich/Switzerland",
+        "programming_languages": []
+    },
+    {
+        "description": "Berlin/Germany](http://dam.org) - Digital Art Museum is an **online** resource for the history and practice of digital fine art.",
+        "href": "http://dam.org",
+        "scopes": ["museums \u2022 galleries"],
+        "filters": ["Tools"],
+        "title": "Digital Art Museum - Berlin/Germany",
+        "programming_languages": []
+    },
+    {
+        "description": "Amsterdam/Netherlands](https://nxtmuseum.com) - The first museum in the Netherlands dedicated to new media art.",
+        "href": "https://nxtmuseum.com",
+        "scopes": ["museums \u2022 galleries"],
+        "filters": [],
+        "title": "NXT Museum - Amsterdam/Netherlands",
+        "programming_languages": []
+    },
+    {
+        "description": "Graduate program in London which develops your arts practice through the expressive world of creative computation",
+        "href": "https://www.gold.ac.uk/pg/ma-computational-arts/",
+        "scopes": ["schools \u2022 workshops"],
+        "filters": [],
+        "title": "Goldsmiths, UoL, MA Computational Art",
+        "programming_languages": []
+    },
+    {
+        "description": "school in London working at the intersection of creativity and computational technologies",
+        "href": "https://www.arts.ac.uk/creative-computing-institute",
+        "scopes": ["schools \u2022 workshops"],
+        "filters": [],
+        "title": "UAL Creative Computing Institute",
+        "programming_languages": []
+    },
+    {
+        "description": "School in New York that explore the intersections of code, design, hardware and theory.",
+        "href": "http://sfpc.io/",
+        "scopes": [
+            "code",
+            "design",
+            "schools \u2022 workshops"
+        ],
+        "filters": ["Tools"],
+        "title": "School for Poetic Computation",
+        "programming_languages": []
+    },
+    {
+        "description": "Hosts a range of educational initiatives, most notably, the Interaction Design Programme and the CIID Summer School.",
+        "href": "http://ciid.dk/",
+        "scopes": [
+            "design",
+            "schools \u2022 workshops"
+        ],
+        "filters": [],
+        "title": "Copenhagen Institute of Interaction Design",
+        "programming_languages": []
+    },
+    {
+        "description": "Huge list of residencies, fellowships and summer schools around the world (Navigate with the bottom left tabs).",
+        "href": "https://docs.google.com/spreadsheets/d/1o__WKUBTHLoQX8pSRJsh0wMC8fCGzycQ0ezxe5CklxM/edit?usp=sharing",
+        "scopes": ["schools \u2022 workshops"],
+        "filters": ["Other"],
+        "title": "Residencies, Fellowships, Summer Schools",
+        "programming_languages": []
+    },
+    {
+        "description": "Famous digital art blog.",
+        "href": "http://creativeapplications.net/",
+        "scopes": ["blogs \u2022 websites"],
+        "filters": [],
+        "title": "CreativeApplications.Net [CAN",
+        "programming_languages": []
+    },
+    {
+        "description": "Home of Íñigo Quílez, specialised in GLSL and math snippets.",
+        "href": "https://iquilezles.org",
+        "scopes": [
+            "blogs \u2022 websites",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "iquilezles.org",
+        "programming_languages": []
+    },
+    {
+        "description": "Blog by Keith Peters, specialised in creative coding.",
+        "href": "http://www.bit-101.com/blog/",
+        "scopes": [
+            "coding",
+            "blogs \u2022 websites"
+        ],
+        "filters": [],
+        "title": "bit-101.com",
+        "programming_languages": []
+    },
+    {
+        "description": "Explore the math behind shaders.",
+        "href": "http://ibreakdownshaders.blogspot.com.au/",
+        "scopes": [
+            "shader",
+            "blogs \u2022 websites",
+            "math"
+        ],
+        "filters": [
+            "Learning Resources",
+            "Other"
+        ],
+        "title": "ibreakdownshaders",
+        "programming_languages": []
+    },
+    {
+        "description": "Blog of software engineer Adrian Courrèges. Articles about game graphics studies etc.",
+        "href": "http://www.adriancourreges.com/blog/",
+        "scopes": [
+            "game",
+            "blogs \u2022 websites",
+            "graphics"
+        ],
+        "filters": [],
+        "title": "adriancourrèges.com",
+        "programming_languages": []
+    },
+    {
+        "description": "Home of Jaume Sanchez Elias, with demos, talks, articles on WebGL and WebVR.",
+        "href": "https://www.clicktorelease.com",
+        "scopes": [
+            "web",
+            "blogs \u2022 websites"
+        ],
+        "filters": ["Learning Resources"],
+        "title": "clicktorelease.com",
+        "programming_languages": []
+    },
+    {
+        "description": "Blog about generative art and systems, by Mikael Hvidtfeldt Christensen.",
+        "href": "http://blog.hvidtfeldts.net/",
+        "scopes": [
+            "generative",
+            "blogs \u2022 websites"
+        ],
+        "filters": [],
+        "title": "syntopia",
+        "programming_languages": []
+    },
+    {
+        "description": "WebGL experiments and articles by Evan Wallace.",
+        "href": "http://madebyevan.com/",
+        "scopes": [
+            "web",
+            "blogs \u2022 websites"
+        ],
+        "filters": [],
+        "title": "madebyevan.com",
+        "programming_languages": []
+    },
+    {
+        "description": "Home of Song Ho Ahn, with a good collection of tutorials on OpenGL and math.",
+        "href": "http://www.songho.ca/",
+        "scopes": [
+            "blogs \u2022 websites",
+            "math"
+        ],
+        "filters": ["Other"],
+        "title": "songho.ca",
+        "programming_languages": []
+    },
+    {
+        "description": "Game art tricks, design tricks by Simon schreibt.",
+        "href": "https://simonschreibt.de/",
+        "scopes": [
+            "game",
+            "blogs \u2022 websites",
+            "design"
+        ],
+        "filters": [],
+        "title": "simonschreibt.de",
+        "programming_languages": []
+    },
+    {
+        "description": "Blog about generative art algorithms and techniques, by Manohar Vanga.",
+        "href": "https://sighack.com/",
+        "scopes": [
+            "generative",
+            "blogs \u2022 websites"
+        ],
+        "filters": [],
+        "title": "sighack.com",
+        "programming_languages": []
+    },
+    {
+        "description": "Compilation of WebGL experiments including comparisons on WebGL frameworks and physics engine (oimo.js, cannon.js, ammo.js)",
+        "href": "https://github.com/cx20/jsdo.it-archives",
+        "scopes": [
+            "framework",
+            "web",
+            "blogs \u2022 websites",
+            "physics"
+        ],
+        "filters": ["Tools"],
+        "title": "jsdo.it-archives",
+        "programming_languages": ["js"]
+    },
+    {
+        "description": "Newsletter to know everything about the WebAudio API",
+        "href": "https://www.webaudioweekly.com/",
+        "scopes": [
+            "web",
+            "blogs \u2022 websites",
+            "audio"
+        ],
+        "filters": [],
+        "title": "WebAudio Weekly",
+        "programming_languages": []
+    },
+    {
+        "description": "Curated list of awesome OpenGL libraries, debuggers and resources.",
+        "href": "https://github.com/eug/awesome-opengl",
+        "scopes": ["related"],
+        "filters": [],
+        "title": "Awesome opengl",
+        "programming_languages": []
+    },
+    {
+        "description": "Curated list of awesome WebGL libraries, resources and much more.",
+        "href": "https://github.com/sjfricke/awesome-webgl",
+        "scopes": [
+            "related",
+            "web"
+        ],
+        "filters": [],
+        "title": "Awesome webgl",
+        "programming_languages": []
+    },
+    {
+        "description": "Curated list of awesome HTML5 canvas with examples, related articles and posts.",
+        "href": "https://github.com/raphamorim/awesome-canvas",
+        "scopes": [
+            "canvas",
+            "related"
+        ],
+        "filters": [
+            "Learning Resources",
+            "Other"
+        ],
+        "title": "Awesome canvas",
+        "programming_languages": ["html"]
+    },
+    {
+        "description": "Curated list about Audio Visualization.",
+        "href": "https://github.com/willianjusten/awesome-audio-visualization",
+        "scopes": [
+            "related",
+            "visual",
+            "audio"
+        ],
+        "filters": [],
+        "title": "Awesome audio visualization",
+        "programming_languages": []
+    },
+    {
+        "description": "Curated list of awesome computer vision resources.",
+        "href": "https://github.com/jbhuang0604/awesome-computer-vision",
+        "scopes": ["related"],
+        "filters": [],
+        "title": "Awesome computer vision",
+        "programming_languages": []
+    },
+    {
+        "description": "Curated list of recommended research papers and other readings on data visualization.",
+        "href": "https://github.com/mathisonian/awesome-visualization-research",
+        "scopes": [
+            "related",
+            "visual"
+        ],
+        "filters": [],
+        "title": "Awesome visualization research",
+        "programming_languages": []
+    },
+    {
+        "description": "Curated list of livecoding languages and tools.",
+        "href": "https://github.com/lvm/awesome-livecoding/",
+        "scopes": [
+            "coding",
+            "related"
+        ],
+        "filters": [],
+        "title": "Awesome livecoding",
+        "programming_languages": []
+    },
+    {
+        "description": "Curated list of computer graphics tutorials and resources.",
+        "href": "https://github.com/ericjang/awesome-graphics",
+        "scopes": [
+            "related",
+            "graphics"
+        ],
+        "filters": [],
+        "title": "Awesome graphics",
+        "programming_languages": []
+    },
+    {
+        "description": "Curated list of graphic programming resources.",
+        "href": "https://github.com/mattdesl/graphics-resources",
+        "scopes": ["related"],
+        "filters": [],
+        "title": "Graphics resources",
+        "programming_languages": []
+    },
+    {
+        "description": "Curated list of game development resources to make magic happen.",
+        "href": "https://github.com/ellisonleao/magictools",
+        "scopes": [
+            "game",
+            "related"
+        ],
+        "filters": [],
+        "title": "Magic tools",
+        "programming_languages": []
+    },
+    {
+        "description": "Link collection of ray marching on the GPU.",
+        "href": "http://d.hatena.ne.jp/hanecci/20131005/p1",
+        "scopes": [
+            "related",
+            "ray"
+        ],
+        "filters": [],
+        "title": "Hanecci\u2019s link collection",
+        "programming_languages": []
+    },
+    {
+        "description": "Curated list of public avalible datasets, mostly free resources.",
+        "href": "https://github.com/caesar0301/awesome-public-datasets",
+        "scopes": ["related"],
+        "filters": [],
+        "title": "Awesome public datasets",
+        "programming_languages": []
+    },
+    {
+        "description": "Curated list from 2013.",
+        "href": "http://d.hatena.ne.jp/hanecci/20131005/p1",
+        "scopes": ["related"],
+        "filters": [],
+        "title": "Link collection of ray marching on the GPU",
+        "programming_languages": []
+    },
+    {
+        "description": "A resource repository for 3D machine learning.",
+        "href": "https://github.com/timzhang642/3D-Machine-Learning",
+        "scopes": [
+            "3d",
+            "related",
+            "mac"
+        ],
+        "filters": ["Other"],
+        "title": "3D Machine Learning",
+        "programming_languages": []
+    },
+    {
+        "description": "Curated list of Creative Technology groups, companies, studios, collectives and more.",
+        "href": "https://github.com/j0hnm4r5/awesome-creative-technology",
+        "scopes": ["related"],
+        "filters": [],
+        "title": "Awesome creative technology",
+        "programming_languages": []
+    }
+]
