@@ -5,6 +5,7 @@ const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
 const Cookies = require('cookies');
+const { exec } = require('child_process');
 const saltRounds = 10;
 
 const connection = mysql.createConnection({
@@ -20,15 +21,43 @@ connection.connect((err) => {
   console.log('Connected to the MySQL server.');
 });
 
-function sendSuccessResponse(res, message, data = true) {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({ success: true, message, data }));
-}
-
+function sendAdminSuccessResponse(res, message, data = true) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, message, data, userType: 'admin' }));
+  }
+  
+  function sendClientSuccessResponse(res, message, data = true) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, message, data, userType: 'client' }));
+  }
+function getNextDriveLetter(drives) {
+    const driveLetters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    for (let letter of driveLetters) {
+      if (!drives.includes(letter + ':')) {
+        return letter + ':';
+      }
+    }
+    return null;
+  }
 function sendErrorResponse(res, message, error = null) {
   res.writeHead(500, { 'Content-Type': 'application/json' });
   res.end(JSON.stringify({ success: false, message, error }));
 }
+function getAvailableDrives(callback) {
+    exec('wmic logicaldisk get name', (error, stdout) => {
+      if (error) {
+        console.error('Error getting drives:', error);
+        return;
+      }
+  
+      let drives = stdout.split('\n')
+        .map(line => line.trim())
+        .filter(line => line !== '' && line !== 'Name');
+  
+      callback(drives);
+    });
+  }
+  let previousDrives = [];
 
 function getHighestId(callback) {
   const query = 'SELECT MAX(keycode) AS maxKeycode FROM users';
@@ -132,7 +161,7 @@ function handleRegister(req, res) {
               return;
             }
 
-            sendSuccessResponse(res, 'User registered successfully');
+            sendClientSuccessResponse(res, 'Register successful');
             console.log('User registered successfully:', username);
           });
         });
@@ -171,10 +200,33 @@ function handleLogin(req, res) {
         }
 
         if (result) {
-          const cookies = new Cookies(req, res);
-          cookies.set('userId', user.keycode, { httpOnly: true });
-          sendSuccessResponse(res, 'Login successful', true);
-          console.log('Login successful:', username);
+            if (user.keycode === null) {
+                // User is an admin, check for key.txt on the next available drive
+                getAvailableDrives((drives) => {
+                  // Get the next available drive letter
+                  //username admin#1 parola contadmin
+                  let keyPath = path.join('E:\\', 'key.txt');
+                  if (fs.existsSync(keyPath)) {
+                    let key = fs.readFileSync(keyPath, 'utf8');
+                    if (key === 'success') {
+                      // Key is valid, log in the admin
+                      sendAdminSuccessResponse(res, 'Admin login successful');
+                      console.log('Admin login successful:', username);
+                      return;
+                    }
+                  }
+            
+                  // No valid key found, deny login
+                  sendErrorResponse(res, 'Invalid admin key');
+                  console.log('Invalid admin key:', username);
+                });
+              } else {
+                // Normal user login
+                const cookies = new Cookies(req, res);
+                cookies.set('userId', user.keycode, { httpOnly: true });
+                sendClientSuccessResponse(res, 'Login successful');
+                console.log('Login successful:', username);
+              }
         } else {
           sendErrorResponse(res, 'Invalid username or password');
           console.log('Invalid username or password:', username);
