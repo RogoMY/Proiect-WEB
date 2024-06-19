@@ -4,6 +4,7 @@ const url = require('url');
 const fs = require('fs');
 const path = require('path');
 const bcrypt = require('bcrypt');
+const Cookies = require('cookies');
 const saltRounds = 10;
 
 const connection = mysql.createConnection({
@@ -19,12 +20,45 @@ connection.connect((err) => {
   console.log('Connected to the MySQL server.');
 });
 
+function sendSuccessResponse(res, message, data = true) {
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, message, data }));
+}
+
+function sendErrorResponse(res, message, error = null) {
+    res.writeHead(500, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: false, message, error }));
+}
+
+
+function getHighestId(callback) {
+    const query = 'SELECT MAX(keycode) AS maxKeycode FROM users';
+    connection.query(query, (error, results) => {
+        if (error) {
+            callback(error);
+            return;
+        }
+        const highestId = results[0].maxKeycode;
+        callback(null, highestId);
+    });
+}
+
 function getUserByUsername(username, callback) {
     connection.query('SELECT * FROM users WHERE username = ?', [username], (error, results) => {
         if (error) {
             callback(error, null);
         } else {
             callback(null, results[0]);
+        }
+    });
+}
+
+function createUser(username, encryptedPassword, email, keycode, callback) {
+    connection.query('INSERT INTO users (username, password, email, keycode) VALUES (?, ?, ?, ?)', [username, encryptedPassword, email, keycode], (error, results) => {
+        if (error) {
+            callback(error, null);
+        } else {
+            callback(null, results);
         }
     });
 }
@@ -53,32 +87,43 @@ function handleRegister(req, res) {
 
         getUserByUsername(username, (error, user) => {
             if (error) {
-                sendErrorResponse(res, 500, 'Error querying the database');
+                sendErrorResponse(res, 'Error querying the database', error);
                 console.error('Error querying the database:', error);
                 return;
             }
 
             if (user) {
-                sendErrorResponse(res, 400, 'Username already exists');
+                sendErrorResponse(res, 'Username already exists');
                 console.log('Username already exists:', username);
                 return;
             }
 
-            bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
-                if (err) {
-                    sendErrorResponse(res, 500, 'Error hashing the password');
-                    console.error('Error hashing the password:', err);
+            getHighestId((error, highestId) => {
+                if (error) {
+                    console.error('Failed to get the highest id:', error);
+                    res.writeHead(500);
+                    res.end('Internal server error');
                     return;
                 }
 
-                createUser(username, hashedPassword, email, 1, (error, results) => {
-                    if (error) {
-                        sendErrorResponse(res, 500, 'Error adding user to the database');
-                        console.error('Error adding user to the database:', error);
+                const newId = highestId + 1;
+                bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
+                    if (err) {
+                        sendErrorResponse(res, 'Error hashing the password', err);
+                        console.error('Error hashing the password:', err);
                         return;
                     }
-                    sendSuccessResponse(res, 'User registered successfully');
-                    console.log('User registered successfully:', username);
+
+                    createUser(username, hashedPassword, email, newId, (error, results) => {
+                        if (error) {
+                            sendErrorResponse(res, 'Error adding user to the database', error);
+                            console.error('Error adding user to the database:', error);
+                            return;
+                        }
+
+                        sendSuccessResponse(res, 'User registered successfully');
+                        console.log('User registered successfully:', username);
+                    });
                 });
             });
         });
@@ -91,27 +136,36 @@ function handleLogin(req, res) {
         body += chunk.toString();
     });
     req.on('end', () => {
+        console.log('Received login data:', body);
         const { username, password } = JSON.parse(body);
 
         getUserByUsername(username, (error, user) => {
             if (error) {
-                sendErrorResponse(res, 500, 'Error retrieving user from the database');
+                sendErrorResponse(res, 'Error retrieving user from the database', error);
                 console.error('Error retrieving user from the database:', error);
                 return;
             }
 
             if (!user) {
-                sendErrorResponse(res, 401, 'Invalid username or password');
+                sendErrorResponse(res, 'Invalid username or password');
                 console.log('Invalid username or password:', username);
                 return;
             }
 
             bcrypt.compare(password, user.password, (err, result) => {
+                if (err) {
+                    sendErrorResponse(res, 'Error comparing passwords', err);
+                    console.error('Error comparing passwords:', err);
+                    return;
+                }
+
                 if (result) {
+                    const cookies = new Cookies(req, res);
+                    cookies.set('userId', user.keycode, { httpOnly: true });
                     sendSuccessResponse(res, 'Login successful', true);
                     console.log('Login successful:', username);
                 } else {
-                    sendErrorResponse(res, 401, 'Invalid username or password');
+                    sendErrorResponse(res, 'Invalid username or password');
                     console.log('Invalid username or password:', username);
                 }
             });
@@ -144,16 +198,6 @@ function handleFileRequest(pathname, res) {
             }
         });
     });
-}
-
-function sendErrorResponse(res, statusCode, message) {
-    res.writeHead(statusCode, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ success: false, message }));
-}
-
-function sendSuccessResponse(res, message, success = true) {
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ success, message }));
 }
 
 server.listen(5000, () => {
