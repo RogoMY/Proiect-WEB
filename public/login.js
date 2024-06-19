@@ -18,7 +18,11 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                window.location.href = 'homepage.html';
+                if (data.userType === 'admin') {
+                    window.location.href = 'admin.html';
+                } else {
+                    window.location.href = 'homepage.html';
+                }
             } else {
                 errorMessage.textContent = data.message;
             }

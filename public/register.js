@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
         })
         .then(response => response.json())
         .then(data => {
-            if (data.message === 'User registered successfully') {
+            if (data.message === 'Register successful') {
                 alert('User registered successfully');
                 window.location.href = '/login.html';
             } else {
