@@ -1,7 +1,9 @@
 {
   "dependencies": {
     "bcrypt": "^5.1.1",
+    "cheerio": "^1.0.0-rc.12",
     "cookie": "^0.6.0",
+    "cookies": "^0.9.1",
     "mysql2": "^3.9.7"
   }
 }
