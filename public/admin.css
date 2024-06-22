@@ -75,3 +75,16 @@
 .edit-btn:hover {
   color: #b410e6;
 }
+.load-more-btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 20px;
+  margin: 20px 0;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+.load-more-btn:hover {
+  background-color: #45a049;
+}
