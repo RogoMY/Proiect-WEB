@@ -8,6 +8,9 @@ const bcrypt = require('bcrypt');
 const mysql = require('mysql2');
 
 const saltRounds = 10;
+const usbKeyPath = 'E:\\key.txt'; // Path to your key file
+const predefinedRawKey = 'success'; // Replace with your actual raw key
+const adminToken = '$2b$10$OBkQgGs1au3Ms8EW2KmDQ.tf9GuL5EV.IJ0Mw.vP7FU0.M9prYMte'; // Predefined token for admin
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -22,9 +25,10 @@ connection.connect((err) => {
   console.log('Connected to the MySQL server.');
 });
 
-function sendAdminSuccessResponse(res, message, data = true) {
+function sendAdminSuccessResponse(res, message, token) {
+  console.log('Sending admin success response with token:', token);
   res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({ success: true, message, data, userType: 'admin' }));
+  res.end(JSON.stringify({ success: true, message, token, userType: 'admin' }));
 }
 
 function sendClientSuccessResponse(res, message, data = true) {
@@ -108,103 +112,40 @@ function getHighestId(callback) {
   });
 }
 
-function getAvailableDrives(callback) {
-  exec('wmic logicaldisk get name', (error, stdout) => {
-    if (error) {
-      console.error('Error getting drives:', error);
-      callback(error, null);
-      return;
-    }
+function verifyToken(req, res, next) {
+  const cookies = new Cookies(req, res);
+  const token = cookies.get('adminToken');
+  console.log('Received token for verification:', token);
 
-    let drives = stdout.split('\n')
-      .map(line => line.trim())
-      .filter(line => line !== '' && line !== 'Name');
+  if (!token) {
+    sendErrorResponse(res, 'No token provided');
+    return;
+  }
 
-    callback(null, drives);
-  });
-}
-
-function handleAdminLogin(req, res) {
-  let body = '';
-  req.on('data', chunk => {
-    body += chunk.toString();
-  });
-  req.on('end', () => {
-    const { username, password } = JSON.parse(body);
-
-    getUserByUsername(username, (error, user) => {
-      if (error) {
-        sendErrorResponse(res, 'Error retrieving user from the database', error);
-        return;
-      }
-
-      if (!user || user.keycode !== null) {
-        sendErrorResponse(res, 'Invalid admin credentials');
-        return;
-      }
-
-      bcrypt.compare(password, user.password, (err, result) => {
-        if (err || !result) {
-          sendErrorResponse(res, 'Invalid admin credentials');
-          return;
-        }
-
-        getAvailableDrives((error, drives) => {
-          if (error) {
-            sendErrorResponse(res, 'Error checking drives');
-            return;
-          }
-
-          let keyPath = path.join('E:\\', 'key.txt');
-          if (fs.existsSync(keyPath)) {
-            let key = fs.readFileSync(keyPath, 'utf8');
-            if (key === 'success') {
-              sendAdminSuccessResponse(res, 'Admin login successful');
-              console.log('Admin login successful:', username);
-              return;
-            }
-          }
-
-          sendErrorResponse(res, 'Invalid admin key');
-          console.log('Invalid admin key:', username);
-        });
-      });
-    });
-  });
+  if (token === adminToken) {
+    next();
+  } else {
+    sendErrorResponse(res, 'Invalid token');
+  }
 }
 
 const server = http.createServer((req, res) => {
   const cookies = new Cookies(req, res);
   const userId = cookies.get('userId');
+  const adminToken = cookies.get('adminToken');
+
+  console.log('Cookies received:', { userId, adminToken });
 
   const parsedUrl = url.parse(req.url);
   let pathname = `./public${parsedUrl.pathname}`;
 
-  if (pathname === './public/admin.html'|| pathname === './public/manage-content.html' && req.method === 'GET') {
-    // Check for admin access
-    getAvailableDrives((error, drives) => {
-      if (error || !drives.includes('E:')) {
-        res.writeHead(403, { 'Content-Type': 'text/plain' });
-        res.end('Forbidden');
-        return;
-      }
-
-      let keyPath = path.join('E:\\', 'key.txt');
-      if (fs.existsSync(keyPath)) {
-        let key = fs.readFileSync(keyPath, 'utf8');
-        if (key === 'success') {
-          // Allow access to admin.html
-          handleFileRequest(pathname, res, userId);
-          return;
-        }
-      }
-
-      res.writeHead(403, { 'Content-Type': 'text/plain' });
-      res.end('Forbidden');
+  if ((pathname === './public/admin.html' || pathname === './public/manage-content.html') && req.method === 'GET') {
+    verifyToken(req, res, () => {
+      handleFileRequest(pathname, res);
     });
   } else if (pathname === './public/check-auth' && req.method === 'GET') {
     handleCheckAuth(req, res);
-  } else if (!userId && pathname === './public/homepage.html' || pathname ==='./public/favorites.html' || pathname === './public/search-results.html') {
+  } else if (!userId && (pathname === './public/homepage.html' || pathname === './public/favorites.html' || pathname === './public/search-results.html')) {
     res.writeHead(302, { 'Location': '/login.html' });
     res.end();
     return;
@@ -219,23 +160,32 @@ const server = http.createServer((req, res) => {
   } else if (pathname === './public/logout' && req.method === 'POST') {
     handleLogout(req, res);
   } else if (pathname === './public/getUsers' && req.method === 'GET') {
-    handleGetUsers(req, res);
+    verifyToken(req, res, () => {
+      handleGetUsers(req, res);
+    });
   } else if (pathname === './public/changeEmail' && req.method === 'POST') {
-    handleChangeEmail(req, res);
+    verifyToken(req, res, () => {
+      handleChangeEmail(req, res);
+    });
   } else if (pathname === './public/changePassword' && req.method === 'POST') {
-    handleChangePassword(req, res);
+    verifyToken(req, res, () => {
+      handleChangePassword(req, res);
+    });
   } else if (pathname === './public/searchUsers' && req.method === 'GET') {
-    handleSearchUsers(req, res);
+    verifyToken(req, res, () => {
+      handleSearchUsers(req, res);
+    });
   } else {
-    handleFileRequest(pathname, res, userId);
+    handleFileRequest(pathname, res);
   }
 });
 
 function handleCheckAuth(req, res) {
   const cookies = new Cookies(req, res);
   const userId = cookies.get('userId');
+  const adminToken = cookies.get('adminToken');
 
-  if (userId) {
+  if (userId || adminToken) {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ success: true }));
   } else {
@@ -245,204 +195,216 @@ function handleCheckAuth(req, res) {
 }
 
 function handleRegister(req, res) {
-    let body = '';
-    req.on('data', chunk => {
-      body += chunk.toString();
-    });
-    req.on('end', () => {
-      console.log('Received registration data:', body);
-      const { username, email, password } = JSON.parse(body);
-  
-      getUserByUsername(username, (error, user) => {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+  req.on('end', () => {
+    console.log('Received registration data:', body);
+    const { username, email, password } = JSON.parse(body);
+
+    getUserByUsername(username, (error, user) => {
+      if (error) {
+        sendErrorResponse(res, 'Error querying the database', error);
+        console.error('Error querying the database:', error);
+        return;
+      }
+
+      if (user) {
+        sendErrorResponse(res, 'Username already exists');
+        console.log('Username already exists:', username);
+        return;
+      }
+
+      getHighestId((error, highestId) => {
         if (error) {
-          sendErrorResponse(res, 'Error querying the database', error);
-          console.error('Error querying the database:', error);
+          console.error('Failed to get the highest id:', error);
+          res.writeHead(500);
+          res.end('Internal server error');
           return;
         }
-  
-        if (user) {
-          sendErrorResponse(res, 'Username already exists');
-          console.log('Username already exists:', username);
-          return;
-        }
-  
-        getHighestId((error, highestId) => {
-          if (error) {
-            console.error('Failed to get the highest id:', error);
-            res.writeHead(500);
-            res.end('Internal server error');
+
+        const newId = highestId + 1;
+        bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
+          if (err) {
+            sendErrorResponse(res, 'Error hashing the password', err);
+            console.error('Error hashing the password:', err);
             return;
           }
-  
-          const newId = highestId + 1;
-          bcrypt.hash(password, saltRounds, (err, hashedPassword) => {
-            if (err) {
-              sendErrorResponse(res, 'Error hashing the password', err);
-              console.error('Error hashing the password:', err);
+
+          createUser(username, hashedPassword, email, newId, (error, results) => {
+            if (error) {
+              sendErrorResponse(res, 'Error adding user to the database', error);
+              console.error('Error adding user to the database:', error);
               return;
             }
-  
-            createUser(username, hashedPassword, email, newId, (error, results) => {
-              if (error) {
-                sendErrorResponse(res, 'Error adding user to the database', error);
-                console.error('Error adding user to the database:', error);
-                return;
-              }
-  
-              sendClientSuccessResponse(res, 'Register successful');
-              console.log('User registered successfully:', username);
-            });
+
+            sendClientSuccessResponse(res, 'Register successful');
+            console.log('User registered successfully:', username);
           });
         });
       });
     });
-  }
-  
-  function handleLogin(req, res) {
-    let body = '';
-    req.on('data', chunk => {
-      body += chunk.toString();
-    });
-    req.on('end', () => {
-      console.log('Received login data:', body);
-      const { username, password } = JSON.parse(body);
-  
-      getUserByUsername(username, (error, user) => {
-        if (error) {
-          sendErrorResponse(res, 'Error retrieving user from the database', error);
-          console.error('Error retrieving user from the database:', error);
+  });
+}
+
+function handleLogin(req, res) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+  req.on('end', () => {
+    console.log('Received login data:', body);
+    const { username, password } = JSON.parse(body);
+
+    getUserByUsername(username, (error, user) => {
+      if (error) {
+        sendErrorResponse(res, 'Error retrieving user from the database', error);
+        console.error('Error retrieving user from the database:', error);
+        return;
+      }
+
+      if (!user) {
+        sendErrorResponse(res, 'Invalid username or password');
+        console.log('Invalid username or password:', username);
+        return;
+      }
+
+      bcrypt.compare(password, user.password, (err, result) => {
+        if (err) {
+          sendErrorResponse(res, 'Error comparing passwords', err);
+          console.error('Error comparing passwords:', err);
           return;
         }
-  
-        if (!user) {
+
+        if (result) {
+          if (user.keycode === null) {
+            // Read the key from USB and compare with the predefined raw key
+            fs.readFile(usbKeyPath, 'utf8', (err, key) => {
+              if (err) {
+                sendErrorResponse(res, 'Error reading key from USB', err);
+                console.error('Error reading key from USB:', err);
+                return;
+              }
+              key = key.trim();
+              console.log('Read key from USB:', key);
+              if (key === predefinedRawKey) {
+                const cookies = new Cookies(req, res);
+                cookies.set('adminToken', adminToken, { httpOnly: true });
+                console.log('Setting admin token:', adminToken);
+                sendAdminSuccessResponse(res, 'Admin login successful', adminToken);
+                console.log('Admin login successful:', username);
+              } else {
+                sendErrorResponse(res, 'Invalid admin key');
+                console.log('Invalid admin key');
+              }
+            });
+          } else {
+            // Normal user login
+            const cookies = new Cookies(req, res);
+            cookies.set('userId', user.keycode, { httpOnly: true });
+            sendClientSuccessResponse(res, 'Login successful');
+            console.log('Login successful:', username);
+          }
+        } else {
           sendErrorResponse(res, 'Invalid username or password');
           console.log('Invalid username or password:', username);
-          return;
         }
-  
-        bcrypt.compare(password, user.password, (err, result) => {
-          if (err) {
-            sendErrorResponse(res, 'Error comparing passwords', err);
-            console.error('Error comparing passwords:', err);
-            return;
-          }
-  
-          if (result) {
-            if (user.keycode === null) {
-             
-              getAvailableDrives((drives) => {             
-                //username admin#1 parola contadmin
-                let keyPath = path.join('E:\\', 'key.txt');
-                if (fs.existsSync(keyPath)) {
-                  let key = fs.readFileSync(keyPath, 'utf8');
-                  if (key === 'success') {                 
-                    sendAdminSuccessResponse(res, 'Admin login successful');
-                    console.log('Admin login successful:', username);
-                    return;
-                  }
-                }
-  
-                // No valid key found, deny login
-                sendErrorResponse(res, 'Invalid admin key');
-                console.log('Invalid admin key:', username);
-              });
-            } else {
-              // Normal user login
-              const cookies = new Cookies(req, res);
-              cookies.set('userId', user.keycode, { httpOnly: true });
-              sendClientSuccessResponse(res, 'Login successful');
-              console.log('Login successful:', username);
-            }
-          } else {
-            sendErrorResponse(res, 'Invalid username or password');
-            console.log('Invalid username or password:', username);
-          }
-        });
       });
     });
-  }
-  
-  function handleLogout(req, res) {
-    console.log('Logout request received');
-    const cookies = new Cookies(req, res);
-    cookies.set('userId', '', { expires: new Date(0), httpOnly: true });
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ success: true, message: 'Logout successful' }));
-  }
-  
-  function handleGetUsers(req, res) {
-    getAllUsers((error, users) => {
-      if (error) {
-        sendErrorResponse(res, 'Error fetching users', error);
-        return;
-      }
-      console.log('Fetched users:', users);  // Add this line
-      res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ success: true, users }));
-    });
-  }
-  
-  function handleChangeEmail(req, res) {
-    let body = '';
-    req.on('data', chunk => {
-      body += chunk.toString();
-    });
-    req.on('end', () => {
-      const { username, newEmail } = JSON.parse(body);
-      console.log(`Received changeEmail request for username: ${username}, newEmail: ${newEmail}`);
-      updateUserEmail(username, newEmail, (error, results) => {
-        if (error) {
-          console.error('Error updating email:', error);
-          sendErrorResponse(res, 'Error updating email', error);
-          return;
-        }
-        console.log('Email updated successfully:', results);
-        sendAdminSuccessResponse(res, 'Email updated successfully');
-      });
-    });
-  }
-  
-  function handleChangePassword(req, res) {
-    let body = '';
-    req.on('data', chunk => {
-      body += chunk.toString();
-    });
-    req.on('end', () => {
-      const { username, newPassword } = JSON.parse(body);
-      console.log(`Received changePassword request for username: ${username}, newPassword: ${newPassword}`);
-      updateUserPassword(username, newPassword, (error, results) => {
-        if (error) {
-          console.error('Error updating password:', error);
-          sendErrorResponse(res, 'Error updating password', error);
-          return;
-        }
-        console.log('Password updated successfully:', results);
-        sendAdminSuccessResponse(res, 'Password updated successfully');
-      });
-    });
-  }
-  function handleSearchUsers(req, res) {
-      const queryObject = url.parse(req.url, true).query;
-      const searchTerm = queryObject.q;
-      
-      if (!searchTerm) {
-        sendErrorResponse(res, 'No search term provided');
-        return;
-      }
-    
-      const query = 'SELECT username, email, password, keycode FROM users WHERE username LIKE ?';
-      connection.query(query, [`%${searchTerm}%`], (error, results) => {
-        if (error) {
-          sendErrorResponse(res, 'Error searching users', error);
-          return;
-        }
-        console.log('Searched users:', results);
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ success: true, users: results }));
-      });
-    }
+  });
+}
 
-function handleFileRequest(pathname, res, userId) {
+function handleLogout(req, res) {
+  console.log('Logout request received');
+  const cookies = new Cookies(req, res);
+  cookies.set('userId', '', { expires: new Date(0), httpOnly: true });
+  cookies.set('adminToken', '', { expires: new Date(0), httpOnly: true });
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({ success: true, message: 'Logout successful' }));
+}
+
+function handleGetUsers(req, res) {
+  const queryObject = url.parse(req.url, true).query;
+  const page = parseInt(queryObject.page) || 1;
+  const limit = parseInt(queryObject.limit) || 10;
+  const offset = (page - 1) * limit;
+
+  const query = 'SELECT username, email, password, keycode FROM users LIMIT ? OFFSET ?';
+  connection.query(query, [limit, offset], (error, results) => {
+    if (error) {
+      sendErrorResponse(res, 'Error fetching users', error);
+      return;
+    }
+    console.log('Fetched users:', results);
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, users: results }));
+  });
+}
+
+
+function handleChangeEmail(req, res) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+  req.on('end', () => {
+    const { username, newEmail } = JSON.parse(body);
+    console.log(`Received changeEmail request for username: ${username}, newEmail: ${newEmail}`);
+    updateUserEmail(username, newEmail, (error, results) => {
+      if (error) {
+        console.error('Error updating email:', error);
+        sendErrorResponse(res, 'Error updating email', error);
+        return;
+      }
+      console.log('Email updated successfully:', results);
+      sendAdminSuccessResponse(res, 'Email updated successfully');
+    });
+  });
+}
+
+function handleChangePassword(req, res) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+  req.on('end', () => {
+    const { username, newPassword } = JSON.parse(body);
+    console.log(`Received changePassword request for username: ${username}, newPassword: ${newPassword}`);
+    updateUserPassword(username, newPassword, (error, results) => {
+      if (error) {
+        console.error('Error updating password:', error);
+        sendErrorResponse(res, 'Error updating password', error);
+        return;
+      }
+      console.log('Password updated successfully:', results);
+      sendAdminSuccessResponse(res, 'Password updated successfully');
+    });
+  });
+}
+
+function handleSearchUsers(req, res) {
+  const queryObject = url.parse(req.url, true).query;
+  const searchTerm = queryObject.q;
+  
+  if (!searchTerm) {
+    sendErrorResponse(res, 'No search term provided');
+    return;
+  }
+
+  const query = 'SELECT username, email, password, keycode FROM users WHERE username LIKE ?';
+  connection.query(query, [`%${searchTerm}%`], (error, results) => {
+    if (error) {
+      sendErrorResponse(res, 'Error searching users', error);
+      return;
+    }
+    console.log('Searched users:', results);
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, users: results }));
+  });
+}
+
+function handleFileRequest(pathname, res) {
   if (pathname.endsWith('/')) {
     pathname += 'login.html'; 
   }
