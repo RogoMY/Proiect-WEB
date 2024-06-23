@@ -1,4 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
+  
   fetchFavorites();
 
   // Search and logout
