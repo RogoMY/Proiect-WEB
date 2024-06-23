@@ -8,14 +8,14 @@ const bcrypt = require('bcrypt');
 const mysql = require('mysql2');
 
 const saltRounds = 10;
-const usbKeyPath = 'E:\\key.txt'; // Path to your key file
+const usbKeyPath = 'F:\\key.txt'; // Path to your key file
 const predefinedRawKey = 'success'; // Replace with your actual raw key
 const adminToken = '$2b$10$OBkQgGs1au3Ms8EW2KmDQ.tf9GuL5EV.IJ0Mw.vP7FU0.M9prYMte'; // Predefined token for admin
 
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'parola',
+  password: 'bd2024',
   database: 'web',
   port: 3306
 });
@@ -23,162 +23,75 @@ const connection = mysql.createConnection({
 connection.connect((err) => {
   if (err) throw err;
   console.log('Connected to the MySQL server.');
-});
 
-function sendAdminSuccessResponse(res, message, token) {
-  console.log('Sending admin success response with token:', token);
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({ success: true, message, token, userType: 'admin' }));
-}
-
-function sendClientSuccessResponse(res, message, data = true) {
-  res.writeHead(200, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({ success: true, message, data, userType: 'client' }));
-}
-
-function sendErrorResponse(res, message, error = null) {
-  res.writeHead(500, { 'Content-Type': 'application/json' });
-  res.end(JSON.stringify({ success: false, message, error }));
-}
-
-function getUserByUsername(username, callback) {
-  connection.query('SELECT * FROM users WHERE username = ?', [username], (error, results) => {
-    if (error) {
-      callback(error, null);
-    } else {
-      callback(null, results[0]);
-    }
-  });
-}
-
-function createUser(username, encryptedPassword, email, keycode, callback) {
-  connection.query('INSERT INTO users (username, password, email, keycode) VALUES (?, ?, ?, ?)', [username, encryptedPassword, email, keycode], (error, results) => {
-    if (error) {
-      callback(error, null);
-    } else {
-      callback(null, results);
-    }
-  });
-}
-
-function updateUserPassword(username, newPassword, callback) {
-  bcrypt.hash(newPassword, saltRounds, (err, hashedPassword) => {
+  connection.query("SET GLOBAL sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))", (err, results) => {
     if (err) {
-      callback(err, null);
-    } else {
-      const query = 'UPDATE users SET password = ? WHERE username = ?';
-      connection.query(query, [hashedPassword, username], (error, results) => {
-        if (error) {
-          callback(error, null);
-        } else {
-          callback(null, results);
-        }
-      });
-    }
-  });
-}
-
-function updateUserEmail(username, newEmail, callback) {
-  const query = 'UPDATE users SET email = ? WHERE username = ?';
-  connection.query(query, [newEmail, username], (error, results) => {
-    if (error) {
-      callback(error, null);
-    } else {
-      callback(null, results);
-    }
-  });
-}
-
-function getAllUsers(callback) {
-  const query = 'SELECT username, email, password, keycode FROM users';
-  connection.query(query, (error, results) => {
-    if (error) {
-      callback(error, null);
-    } else {
-      callback(null, results);
-    }
-  });
-}
-
-function getHighestId(callback) {
-  const query = 'SELECT MAX(keycode) AS maxKeycode FROM users';
-  connection.query(query, (error, results) => {
-    if (error) {
-      callback(error);
+      console.error('Error disabling ONLY_FULL_GROUP_BY:', err);
       return;
     }
-    const highestId = results[0].maxKeycode;
-    callback(null, highestId);
+    console.log('ONLY_FULL_GROUP_BY disabled');
+    startServer();
+  });
+});
+
+function startServer() {
+  const server = http.createServer((req, res) => {
+    const cookies = new Cookies(req, res);
+    const userId = cookies.get('userId');
+    const adminToken = cookies.get('adminToken');
+
+    console.log('Cookies received:', { userId, adminToken });
+
+    const parsedUrl = url.parse(req.url);
+    let pathname = `./public${parsedUrl.pathname}`;
+
+    if ((pathname === './public/admin.html' || pathname === './public/manage-content.html') && req.method === 'GET') {
+      verifyToken(req, res, () => {
+        handleFileRequest(pathname, res);
+      });
+    } else if (pathname === './public/check-auth' && req.method === 'GET') {
+      handleCheckAuth(req, res);
+    } else if (!userId && (pathname === './public/homepage.html' || pathname === './public/favorites.html' || pathname === './public/search-results.html')) {
+      res.writeHead(302, { 'Location': '/login.html' });
+      res.end();
+      return;
+    } else if (userId && (pathname === './public/login.html' || pathname === './public/register.html' || pathname === './public/')) {
+      res.writeHead(302, { 'Location': '/homepage.html' });
+      res.end();
+      return;
+    } else if (pathname === './public/register' && req.method === 'POST') {
+      handleRegister(req, res);
+    } else if (pathname === './public/login' && req.method === 'POST') {
+      handleLogin(req, res);
+    } else if (pathname === './public/logout' && req.method === 'POST') {
+      handleLogout(req, res);
+    } else if (pathname === './public/getUsers' && req.method === 'GET') {
+      verifyToken(req, res, () => {
+        handleGetUsers(req, res);
+      });
+    } else if (pathname === './public/changeEmail' && req.method === 'POST') {
+      verifyToken(req, res, () => {
+        handleChangeEmail(req, res);
+      });
+    } else if (pathname === './public/changePassword' && req.method === 'POST') {
+      verifyToken(req, res, () => {
+        handleChangePassword(req, res);
+      });
+    } else if (pathname === './public/searchUsers' && req.method === 'GET') {
+      verifyToken(req, res, () => {
+        handleSearchUsers(req, res);
+      });
+    } else if (pathname === './public/search' && req.method === 'POST') {
+      handleSearch(req, res);
+    } else {
+      handleFileRequest(pathname, res);
+    }
+  });
+
+  server.listen(5000, () => {
+    console.log("Server listening on port 5000");
   });
 }
-
-function verifyToken(req, res, next) {
-  const cookies = new Cookies(req, res);
-  const token = cookies.get('adminToken');
-  console.log('Received token for verification:', token);
-
-  if (!token) {
-    sendErrorResponse(res, 'No token provided');
-    return;
-  }
-
-  if (token === adminToken) {
-    next();
-  } else {
-    sendErrorResponse(res, 'Invalid token');
-  }
-}
-
-const server = http.createServer((req, res) => {
-  const cookies = new Cookies(req, res);
-  const userId = cookies.get('userId');
-  const adminToken = cookies.get('adminToken');
-
-  console.log('Cookies received:', { userId, adminToken });
-
-  const parsedUrl = url.parse(req.url);
-  let pathname = `./public${parsedUrl.pathname}`;
-
-  if ((pathname === './public/admin.html' || pathname === './public/manage-content.html') && req.method === 'GET') {
-    verifyToken(req, res, () => {
-      handleFileRequest(pathname, res);
-    });
-  } else if (pathname === './public/check-auth' && req.method === 'GET') {
-    handleCheckAuth(req, res);
-  } else if (!userId && (pathname === './public/homepage.html' || pathname === './public/favorites.html' || pathname === './public/search-results.html')) {
-    res.writeHead(302, { 'Location': '/login.html' });
-    res.end();
-    return;
-  } else if (userId && (pathname === './public/login.html' || pathname === './public/register.html' || pathname === './public/')) {
-    res.writeHead(302, { 'Location': '/homepage.html' });
-    res.end();
-    return;
-  } else if (pathname === './public/register' && req.method === 'POST') {
-    handleRegister(req, res);
-  } else if (pathname === './public/login' && req.method === 'POST') {
-    handleLogin(req, res);
-  } else if (pathname === './public/logout' && req.method === 'POST') {
-    handleLogout(req, res);
-  } else if (pathname === './public/getUsers' && req.method === 'GET') {
-    verifyToken(req, res, () => {
-      handleGetUsers(req, res);
-    });
-  } else if (pathname === './public/changeEmail' && req.method === 'POST') {
-    verifyToken(req, res, () => {
-      handleChangeEmail(req, res);
-    });
-  } else if (pathname === './public/changePassword' && req.method === 'POST') {
-    verifyToken(req, res, () => {
-      handleChangePassword(req, res);
-    });
-  } else if (pathname === './public/searchUsers' && req.method === 'GET') {
-    verifyToken(req, res, () => {
-      handleSearchUsers(req, res);
-    });
-  } else {
-    handleFileRequest(pathname, res);
-  }
-});
 
 function handleCheckAuth(req, res) {
   const cookies = new Cookies(req, res);
@@ -342,7 +255,6 @@ function handleGetUsers(req, res) {
   });
 }
 
-
 function handleChangeEmail(req, res) {
   let body = '';
   req.on('data', chunk => {
@@ -404,6 +316,238 @@ function handleSearchUsers(req, res) {
   });
 }
 
+function getPlural(word) {
+  if (word.endsWith('y')) {
+    return word.slice(0, -1) + 'ies';
+  } else if (word.endsWith('s') || word.endsWith('sh') || word.endsWith('ch') || word.endsWith('x') || word.endsWith('z')) {
+    return word + 'es';
+  } else {
+    return word + 's';
+  }
+}
+
+function handleSearch(req, res) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+
+  req.on('end', () => {
+    const { query } = JSON.parse(body);
+    console.log('Received search query:', query);
+
+    const redundantWords = new Set([
+      'a', 'an', 'the', 'and', 'or', 'but', 'so', 'if', 'then', 'about', 'how', 'to', 'make', 'for', 'with', 'in', 'on', 'at', 'by', 'from', 'up', 'down', 'of', 'that', 'this', 'these', 'those', 'is', 'are', 'was', 'were', 'be', 'being', 'been', 'has', 'have', 'had', 'do', 'does', 'did', 'not', 'no', 'yes', 'as', 'such', 'can', 'could', 'should', 'would', 'will', 'shall', 'might', 'must', 'i', 'me', 'my', 'we', 'us', 'our', 'you', 'your', 'he', 'him', 'his', 'she', 'her', 'it', 'its', 'they', 'them', 'their', 'what', 'which', 'who', 'whom', 'whose', 'why', 'where', 'when', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 'use'
+    ]);
+
+    const words = query.split(/\s+/).map(word => word.toLowerCase()).filter(word => !redundantWords.has(word));
+
+    if (words.length === 0) {
+      sendErrorResponse(res, 'No relevant search terms found');
+      return;
+    }
+
+    let allResults = {};
+    let queryPromises = [];
+
+    words.forEach(word => {
+      const pluralWord = getPlural(word);
+      console.log('Processing word:', word);
+      console.log('Processing plural word:', pluralWord);
+
+      const singularLikeExact = `% ${word} %`;
+      const pluralLikeExact = `% ${pluralWord} %`;
+      const singularLikePartial1 = `% ${word}%`;
+      const pluralLikePartial1 = `% ${pluralWord}%`;
+      const singularLikePartial2 = `%${word} %`;
+      const pluralLikePartial2 = `%${pluralWord} %`;
+      const singularLikeAnywhere = `%${word}%`;
+      const pluralLikeAnywhere = `%${pluralWord}%`;
+
+      const sqlQuery = `
+        SELECT 
+          c.id, c.title, c.link, c.description, 
+          GROUP_CONCAT(DISTINCT cat.name ORDER BY cat.name) AS category, 
+          GROUP_CONCAT(DISTINCT plat.name ORDER BY plat.name) AS platform, 
+          GROUP_CONCAT(DISTINCT sco.name ORDER BY sco.name) AS scopes, 
+          GROUP_CONCAT(DISTINCT lang.name ORDER BY lang.name) AS programming_languages,
+          (IF(c.title LIKE ${connection.escape(singularLikeExact)}, 10, 0) + 
+          IF(c.title LIKE ${connection.escape(pluralLikeExact)}, 10, 0) +
+          IF(c.description LIKE ${connection.escape(singularLikeExact)}, 5, 0) +
+          IF(c.description LIKE ${connection.escape(pluralLikeExact)}, 5, 0) +
+          IF(cat.name LIKE ${connection.escape(singularLikeExact)}, 3, 0) +
+          IF(cat.name LIKE ${connection.escape(pluralLikeExact)}, 3, 0) +
+          IF(plat.name LIKE ${connection.escape(singularLikeExact)}, 3, 0) +
+          IF(plat.name LIKE ${connection.escape(pluralLikeExact)}, 3, 0) +
+          IF(sco.name LIKE ${connection.escape(singularLikeExact)}, 3, 0) +
+          IF(sco.name LIKE ${connection.escape(pluralLikeExact)}, 3, 0) +
+          IF(lang.name LIKE ${connection.escape(singularLikeExact)}, 3, 0) +
+          IF(lang.name LIKE ${connection.escape(pluralLikeExact)}, 3, 0) +
+
+          IF(c.title LIKE ${connection.escape(singularLikePartial1)}, 7, 0) +
+          IF(c.title LIKE ${connection.escape(pluralLikePartial1)}, 7, 0) +
+          IF(c.description LIKE ${connection.escape(singularLikePartial1)}, 4, 0) +
+          IF(c.description LIKE ${connection.escape(pluralLikePartial1)}, 4, 0) +
+          IF(cat.name LIKE ${connection.escape(singularLikePartial1)}, 2, 0) +
+          IF(cat.name LIKE ${connection.escape(pluralLikePartial1)}, 2, 0) +
+          IF(plat.name LIKE ${connection.escape(singularLikePartial1)}, 2, 0) +
+          IF(plat.name LIKE ${connection.escape(pluralLikePartial1)}, 2, 0) +
+          IF(sco.name LIKE ${connection.escape(singularLikePartial1)}, 2, 0) +
+          IF(sco.name LIKE ${connection.escape(pluralLikePartial1)}, 2, 0) +
+          IF(lang.name LIKE ${connection.escape(singularLikePartial1)}, 2, 0) +
+          IF(lang.name LIKE ${connection.escape(pluralLikePartial1)}, 2, 0) +
+
+          IF(c.title LIKE ${connection.escape(singularLikePartial2)}, 5, 0) +
+          IF(c.title LIKE ${connection.escape(pluralLikePartial2)}, 5, 0) +
+          IF(c.description LIKE ${connection.escape(singularLikePartial2)}, 3, 0) +
+          IF(c.description LIKE ${connection.escape(pluralLikePartial2)}, 3, 0) +
+          IF(cat.name LIKE ${connection.escape(singularLikePartial2)}, 1, 0) +
+          IF(cat.name LIKE ${connection.escape(pluralLikePartial2)}, 1, 0) +
+          IF(plat.name LIKE ${connection.escape(singularLikePartial2)}, 1, 0) +
+          IF(plat.name LIKE ${connection.escape(pluralLikePartial2)}, 1, 0) +
+          IF(sco.name LIKE ${connection.escape(singularLikePartial2)}, 1, 0) +
+          IF(sco.name LIKE ${connection.escape(pluralLikePartial2)}, 1, 0) +
+          IF(lang.name LIKE ${connection.escape(singularLikePartial2)}, 1, 0) +
+          IF(lang.name LIKE ${connection.escape(pluralLikePartial2)}, 1, 0) +
+
+          IF(c.title LIKE ${connection.escape(singularLikeAnywhere)}, 3, 0) +
+          IF(c.title LIKE ${connection.escape(pluralLikeAnywhere)}, 3, 0) +
+          IF(c.description LIKE ${connection.escape(singularLikeAnywhere)}, 2, 0) +
+          IF(c.description LIKE ${connection.escape(pluralLikeAnywhere)}, 2, 0) +
+          IF(cat.name LIKE ${connection.escape(singularLikeAnywhere)}, 1, 0) +
+          IF(cat.name LIKE ${connection.escape(pluralLikeAnywhere)}, 1, 0) +
+          IF(plat.name LIKE ${connection.escape(singularLikeAnywhere)}, 1, 0) +
+          IF(plat.name LIKE ${connection.escape(pluralLikeAnywhere)}, 1, 0) +
+          IF(sco.name LIKE ${connection.escape(singularLikeAnywhere)}, 1, 0) +
+          IF(sco.name LIKE ${connection.escape(pluralLikeAnywhere)}, 1, 0) +
+          IF(lang.name LIKE ${connection.escape(singularLikeAnywhere)}, 1, 0) +
+          IF(lang.name LIKE ${connection.escape(pluralLikeAnywhere)}, 1, 0)) AS relevance_score
+        FROM 
+          contents c
+        LEFT JOIN 
+          content_categories cc ON c.id = cc.content_id
+        LEFT JOIN 
+          categories cat ON cc.category_id = cat.id
+        LEFT JOIN 
+          content_platforms cp ON c.id = cp.content_id
+        LEFT JOIN 
+          platforms plat ON cp.platform_id = plat.id
+        LEFT JOIN 
+          content_scopes cs ON c.id = cs.content_id
+        LEFT JOIN 
+          scopes sco ON cs.scope_id = sco.id
+        LEFT JOIN 
+          content_prog_langs cpl ON c.id = cpl.content_id
+        LEFT JOIN 
+          prog_langs lang ON cpl.prog_lang_id = lang.id
+        WHERE 
+          (c.title LIKE ${connection.escape(singularLikeExact)}
+          OR c.description LIKE ${connection.escape(singularLikeExact)}
+          OR cat.name LIKE ${connection.escape(singularLikeExact)}
+          OR plat.name LIKE ${connection.escape(singularLikeExact)}
+          OR sco.name LIKE ${connection.escape(singularLikeExact)}
+          OR lang.name LIKE ${connection.escape(singularLikeExact)}) 
+          OR (c.title LIKE ${connection.escape(pluralLikeExact)}
+          OR c.description LIKE ${connection.escape(pluralLikeExact)}
+          OR cat.name LIKE ${connection.escape(pluralLikeExact)}
+          OR plat.name LIKE ${connection.escape(pluralLikeExact)}
+          OR sco.name LIKE ${connection.escape(pluralLikeExact)}
+          OR lang.name LIKE ${connection.escape(pluralLikeExact)}) 
+          OR (c.title LIKE ${connection.escape(singularLikePartial1)}
+          OR c.description LIKE ${connection.escape(singularLikePartial1)}
+          OR cat.name LIKE ${connection.escape(singularLikePartial1)}
+          OR plat.name LIKE ${connection.escape(singularLikePartial1)}
+          OR sco.name LIKE ${connection.escape(singularLikePartial1)}
+          OR lang.name LIKE ${connection.escape(singularLikePartial1)}) 
+          OR (c.title LIKE ${connection.escape(pluralLikePartial1)}
+          OR c.description LIKE ${connection.escape(pluralLikePartial1)}
+          OR cat.name LIKE ${connection.escape(pluralLikePartial1)}
+          OR plat.name LIKE ${connection.escape(pluralLikePartial1)}
+          OR sco.name LIKE ${connection.escape(pluralLikePartial1)}
+          OR lang.name LIKE ${connection.escape(pluralLikePartial1)}) 
+          OR (c.title LIKE ${connection.escape(singularLikePartial2)}
+          OR c.description LIKE ${connection.escape(singularLikePartial2)}
+          OR cat.name LIKE ${connection.escape(singularLikePartial2)}
+          OR plat.name LIKE ${connection.escape(singularLikePartial2)}
+          OR sco.name LIKE ${connection.escape(singularLikePartial2)}
+          OR lang.name LIKE ${connection.escape(singularLikePartial2)}) 
+          OR (c.title LIKE ${connection.escape(pluralLikePartial2)}
+          OR c.description LIKE ${connection.escape(pluralLikePartial2)}
+          OR cat.name LIKE ${connection.escape(pluralLikePartial2)}
+          OR plat.name LIKE ${connection.escape(pluralLikePartial2)}
+          OR sco.name LIKE ${connection.escape(pluralLikePartial2)}
+          OR lang.name LIKE ${connection.escape(pluralLikePartial2)}) 
+          OR (c.title LIKE ${connection.escape(singularLikeAnywhere)}
+          OR c.description LIKE ${connection.escape(singularLikeAnywhere)}
+          OR cat.name LIKE ${connection.escape(singularLikeAnywhere)}
+          OR plat.name LIKE ${connection.escape(singularLikeAnywhere)}
+          OR sco.name LIKE ${connection.escape(singularLikeAnywhere)}
+          OR lang.name LIKE ${connection.escape(singularLikeAnywhere)}) 
+          OR (c.title LIKE ${connection.escape(pluralLikeAnywhere)}
+          OR c.description LIKE ${connection.escape(pluralLikeAnywhere)}
+          OR cat.name LIKE ${connection.escape(pluralLikeAnywhere)}
+          OR plat.name LIKE ${connection.escape(pluralLikeAnywhere)}
+          OR sco.name LIKE ${connection.escape(pluralLikeAnywhere)}
+          OR lang.name LIKE ${connection.escape(pluralLikeAnywhere)})
+        GROUP BY
+          c.id, c.title, c.link, c.description
+      `;
+
+      console.log('Executing SQL query:', sqlQuery);
+
+      queryPromises.push(new Promise((resolve, reject) => {
+        connection.query(sqlQuery, (error, results) => {
+          if (error) {
+            reject(error);
+          } else {
+            console.log('Results for word:', word, results);
+            results.forEach(result => {
+              if (allResults[result.id]) {
+                allResults[result.id].relevance_score += result.relevance_score;
+              } else {
+                allResults[result.id] = {
+                  id: result.id,
+                  title: result.title,
+                  link: result.link,
+                  description: result.description,
+                  category: result.category ? result.category.split(',') : [],
+                  platform: result.platform ? result.platform.split(',') : [],
+                  scopes: result.scopes ? result.scopes.split(',') : [],
+                  programming_languages: result.programming_languages ? result.programming_languages.split(',') : [],
+                  relevance_score: result.relevance_score
+                };
+              }
+            });
+            resolve();
+          }
+        });
+      }));
+    });
+
+    Promise.all(queryPromises)
+      .then(() => {
+        const filteredResults = Object.values(allResults).filter(result => {
+          console.log(`ID: ${result.id}, Relevance Score: ${result.relevance_score}`);
+          return result.relevance_score > 0; // ma gandeam sa fac pe baza nr_cuvinte*2 sau cv de genul pentru scorul minim, dar e o chestie de finete la unele rezultate poate fi mai bine la altele sa nu am nimic
+        });
+        filteredResults.sort((a, b) => b.relevance_score - a.relevance_score);
+
+        console.log('Final filtered results:', filteredResults);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true, results: filteredResults }));
+      })
+      .catch(error => {
+        console.error('Error searching the database:', error);
+        sendErrorResponse(res, 'Error searching the database', error);
+      });
+  });
+}
+
+
+
+
+
+
 function handleFileRequest(pathname, res) {
   if (pathname.endsWith('/')) {
     pathname += 'login.html'; 
@@ -431,6 +575,106 @@ function handleFileRequest(pathname, res) {
   });
 }
 
-server.listen(5000, () => {
-  console.log("Server listening on port 5000");
-});
+function sendAdminSuccessResponse(res, message, token) {
+  console.log('Sending admin success response with token:', token);
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({ success: true, message, token, userType: 'admin' }));
+}
+
+function sendClientSuccessResponse(res, message, data = true) {
+  res.writeHead(200, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({ success: true, message, data, userType: 'client' }));
+}
+
+function sendErrorResponse(res, message, error = null) {
+  res.writeHead(500, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({ success: false, message, error }));
+}
+
+function getUserByUsername(username, callback) {
+  connection.query('SELECT * FROM users WHERE username = ?', [username], (error, results) => {
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results[0]);
+    }
+  });
+}
+
+function createUser(username, encryptedPassword, email, keycode, callback) {
+  connection.query('INSERT INTO users (username, password, email, keycode) VALUES (?, ?, ?, ?)', [username, encryptedPassword, email, keycode], (error, results) => {
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+}
+
+function updateUserPassword(username, newPassword, callback) {
+  bcrypt.hash(newPassword, saltRounds, (err, hashedPassword) => {
+    if (err) {
+      callback(err, null);
+    } else {
+      const query = 'UPDATE users SET password = ? WHERE username = ?';
+      connection.query(query, [hashedPassword, username], (error, results) => {
+        if (error) {
+          callback(error, null);
+        } else {
+          callback(null, results);
+        }
+      });
+    }
+  });
+}
+
+function updateUserEmail(username, newEmail, callback) {
+  const query = 'UPDATE users SET email = ? WHERE username = ?';
+  connection.query(query, [newEmail, username], (error, results) => {
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+}
+
+function getAllUsers(callback) {
+  const query = 'SELECT username, email, password, keycode FROM users';
+  connection.query(query, (error, results) => {
+    if (error) {
+      callback(error, null);
+    } else {
+      callback(null, results);
+    }
+  });
+}
+
+function getHighestId(callback) {
+  const query = 'SELECT MAX(keycode) AS maxKeycode FROM users';
+  connection.query(query, (error, results) => {
+    if (error) {
+      callback(error);
+      return;
+    }
+    const highestId = results[0].maxKeycode;
+    callback(null, highestId);
+  });
+}
+
+function verifyToken(req, res, next) {
+  const cookies = new Cookies(req, res);
+  const token = cookies.get('adminToken');
+  console.log('Received token for verification:', token);
+
+  if (!token) {
+    sendErrorResponse(res, 'No token provided');
+    return;
+  }
+
+  if (token === adminToken) {
+    next();
+  } else {
+    sendErrorResponse(res, 'Invalid token');
+  }
+}
