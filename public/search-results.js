@@ -84,6 +84,41 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   }
 
+  function logSearchHistory(result, callback) {
+    const { title, link, description, category, platform, scopes, programming_languages } = result;
+    const tags = [
+      ...category,
+      ...platform,
+      ...scopes,
+      ...programming_languages
+    ].join(', ');
+
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ title, link, description, tags })
+    };
+
+    console.log('Preparing to log search history:', { title, link, description, tags });
+
+    fetch('http://localhost:5000/logHistory', requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        console.log('Log History - Response:', data);
+        if (data.success) {
+          console.log('Successfully logged search history:', { title, link, description, tags });
+          callback();
+        } else {
+          console.error('Error logging search history:', data.message);
+          callback();
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+        callback();
+      });
+  }
+
   function displayResults(results) {
     var resultsList = document.getElementById('results-list');
     resultsList.innerHTML = '';
@@ -100,6 +135,25 @@ document.addEventListener('DOMContentLoaded', function() {
       titleLink.classList.add('search-result-title');
       titleLink.textContent = result.title;
       resultItem.appendChild(titleLink);
+
+      titleLink.addEventListener('click', function(event) {
+        event.preventDefault();
+        console.log('Clicked link:', {
+          title: result.title,
+          link: result.link,
+          description: result.description,
+          category: result.category,
+          platform: result.platform,
+          scopes: result.scopes,
+          programming_languages: result.programming_languages
+        });
+        logSearchHistory(result, () => {
+          console.log('Redirecting to:', result.link);
+          setTimeout(() => {
+            window.location.href = result.link;
+          }, 1000); // 1-second delay
+        });
+      });
 
       var description = document.createElement('p');
       description.classList.add('search-result-description');
@@ -183,7 +237,7 @@ document.addEventListener('DOMContentLoaded', function() {
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.value = filter;
-        checkbox.classList.add(filterType); 
+        checkbox.classList.add(filterType);
 
         if (selectedFilters[filterType].has(filter)) {
           checkbox.checked = true;
@@ -236,7 +290,7 @@ document.addEventListener('DOMContentLoaded', function() {
     var filterCheckboxes = document.querySelectorAll('.filter-group input[type="checkbox"]');
     filterCheckboxes.forEach(function(checkbox) {
       if (checkbox.checked) {
-        selectedFilters[checkbox.classList[0]].add(checkbox.value); 
+        selectedFilters[checkbox.classList[0]].add(checkbox.value);
       }
     });
   }
@@ -321,7 +375,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     displayResults(initialResults);
     updateFilterCounts(initialResults);
-    
+
     updateResetButtonVisibility();
   }
 
@@ -339,5 +393,4 @@ document.addEventListener('DOMContentLoaded', function() {
   resetFiltersButton.addEventListener('click', function() {
     resetFilters();
   });
-
 });

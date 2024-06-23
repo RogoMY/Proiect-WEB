@@ -8,14 +8,14 @@ const bcrypt = require('bcrypt');
 const mysql = require('mysql2');
 
 const saltRounds = 10;
-const usbKeyPath = 'F:\\key.txt'; // Path to your key file
+const usbKeyPath = 'E:\\key.txt'; // Path to your key file
 const predefinedRawKey = 'success'; // Replace with your actual raw key
 const adminToken = '$2b$10$OBkQgGs1au3Ms8EW2KmDQ.tf9GuL5EV.IJ0Mw.vP7FU0.M9prYMte'; // Predefined token for admin
 
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'bd2024',
+  password: 'parola',
   database: 'web',
   port: 3306
 });
@@ -44,7 +44,7 @@ function startServer() {
 
     const parsedUrl = url.parse(req.url);
     let pathname = `./public${parsedUrl.pathname}`;
-
+    console.log(`Received ${req.method} request for ${pathname}`);
     if ((pathname === './public/admin.html' || pathname === './public/manage-content.html') && req.method === 'GET') {
       verifyToken(req, res, () => {
         handleFileRequest(pathname, res);
@@ -83,6 +83,10 @@ function startServer() {
       });
     } else if (pathname === './public/search' && req.method === 'POST') {
       handleSearch(req, res);
+    } else if (pathname === './public/logHistory' && req.method === 'POST') {
+      handleLogHistory(req,res,cookies);
+    } else if (pathname === './public/getHistory' && req.method === 'GET') {
+      handleGetHistory(req,res,cookies);    
     } else {
       handleFileRequest(pathname, res);
     }
@@ -294,6 +298,58 @@ function handleChangePassword(req, res) {
     });
   });
 }
+function handleLogHistory(req, res, cookies) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+
+  req.on('end', () => {
+    console.log('Raw request body:', body);
+
+    try {
+      const userKeycode = cookies.get('userId');
+      console.log('User Keycode from Cookie:', userKeycode);
+
+      if (!userKeycode) {
+        res.writeHead(401, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, message: 'User not authenticated' }));
+        return;
+      }
+
+      const parsedBody = JSON.parse(body);
+      console.log('Parsed request body:', parsedBody);
+
+      const { title, link, description, tags } = parsedBody;
+      console.log('Extracted Data:', { title, link, description, tags });
+
+      if (!title || !link) {
+        console.log('Missing title or link in request body');
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, message: 'Bad request' }));
+        return;
+      }
+
+      const insertHistoryQuery = 'INSERT INTO history (user_keycode, title, link, description, tags) VALUES (?, ?, ?, ?, ?)';
+      connection.query(insertHistoryQuery, [userKeycode, title, link, description, tags], (error, results) => {
+        if (error) {
+          console.error('Error logging search history:', error);
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ success: false, message: 'Internal server error' }));
+          return;
+        }
+
+        console.log('Log History - Insert Results:', results);
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true, message: 'Search history logged' }));
+      });
+    } catch (e) {
+      console.error('Error processing request:', e);
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, message: 'Bad request' }));
+    }
+  });
+}
 
 function handleSearchUsers(req, res) {
   const queryObject = url.parse(req.url, true).query;
@@ -324,6 +380,30 @@ function getPlural(word) {
   } else {
     return word + 's';
   }
+}
+function handleGetHistory(req, res, cookies) {
+  const userKeycode = cookies.get('userId');
+  console.log('User Keycode from Cookie:', userKeycode);
+
+  if (!userKeycode) {
+    res.writeHead(401, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: false, message: 'User not authenticated' }));
+    return;
+  }
+
+  const fetchHistoryQuery = 'SELECT title, link, description, tags FROM history WHERE user_keycode = ? ORDER BY timestamp DESC';
+  connection.query(fetchHistoryQuery, [userKeycode], (error, results) => {
+    if (error) {
+      console.error('Error fetching search history:', error);
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, message: 'Internal server error' }));
+      return;
+    }
+
+    console.log('Fetched search history:', results);
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, history: results }));
+  });
 }
 
 function handleSearch(req, res) {
