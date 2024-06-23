@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function() {
             errorMessage.textContent = 'Passwords do not match!';
             return;
         }
-        fetch('http://localhost:5000/register', {
+        fetch('/register', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
