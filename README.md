@@ -61,4 +61,23 @@ CREATE TABLE IF NOT EXISTS users (
   email VARCHAR(255) NOT NULL UNIQUE,
   keycode INT
 );
+CREATE TABLE `favorites` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `user_keycode` bigint NOT NULL,
+  `title` varchar(255) NOT NULL,
+  `link` varchar(255) NOT NULL,
+  `description` text,  
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`) 
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+CREATE TABLE history (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_keycode INT NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  link TEXT NOT NULL,
+  description TEXT,
+  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
 ```
