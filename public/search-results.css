@@ -169,17 +169,16 @@
 
 /* Star icon styling */
 .star-icon {
+  font-size: 20px;
+  position: absolute;
+  top: 10px;
+  right: 10px;
   cursor: pointer;
-  font-size: 24px; /* Mărimea stelei */
-  color: gray; /* Culoare pentru steaua goală */
-  margin-left: 10px;
-   /* Contur pentru steaua goală */
-  padding: 2px;
-  display: inline-block;
+  color: black;
 }
 
 .star-icon.favorite {
-  color: gold; /* Culoare pentru steaua umplută */
-   /* Contur pentru steaua umplută */
+  color: gold;
 }
+
 

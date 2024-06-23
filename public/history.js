@@ -44,11 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
         description.textContent = item.description;
         historyItem.appendChild(description);
   
-        const tags = document.createElement('p');
-        tags.classList.add('search-result-tags'); // Use the same class as search result tags
-        tags.textContent = 'Tags: ' + item.tags;
-        historyItem.appendChild(tags);
-  
+       
         historySection.appendChild(historyItem);
       });
     }

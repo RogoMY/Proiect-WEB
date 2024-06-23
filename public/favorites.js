@@ -108,14 +108,12 @@ document.addEventListener('DOMContentLoaded', function() {
       description.classList.add('search-result-description');
       description.textContent = item.description;
 
-      const tags = document.createElement('p');
-      tags.classList.add('search-result-tags');
-      tags.textContent = 'Tags: ' + item.tags;
+      
 
       favoriteItem.appendChild(starIcon);
       favoriteItem.appendChild(titleLink);
       favoriteItem.appendChild(description);
-      favoriteItem.appendChild(tags);
+      
 
       favoritesSection.appendChild(favoriteItem);
     });

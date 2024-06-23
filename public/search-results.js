@@ -67,7 +67,7 @@ document.addEventListener('DOMContentLoaded', function() {
         body: JSON.stringify({ query })
       };
 
-      fetch('http://localhost:5000/search', requestOptions)
+      fetch('/search', requestOptions)
         .then(response => response.json())
         .then(data => {
           if (data.success) {
@@ -101,7 +101,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     console.log('Preparing to log search history:', { title, link, description, tags });
 
-    fetch('http://localhost:5000/logHistory', requestOptions)
+    fetch('/logHistory', requestOptions)
       .then(response => response.json())
       .then(data => {
         console.log('Log History - Response:', data);
@@ -151,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
           console.log('Redirecting to:', result.link);
           setTimeout(() => {
             window.location.href = result.link;
-          }, 1000); // 1-second delay
+          }, 10); // 1-second delay
         });
       });
 

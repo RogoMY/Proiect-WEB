@@ -150,7 +150,7 @@ function handleFetchFavorites(req, res) {
     return;
   }
 
-  const fetchFavoritesQuery = 'SELECT title, link, description, tags FROM favorites WHERE user_keycode = ?';
+  const fetchFavoritesQuery = 'SELECT title, link, description FROM favorites WHERE user_keycode = ?';
   connection.query(fetchFavoritesQuery, [userKeycode], (error, results) => {
     if (error) {
       console.error('Error fetching favorites:', error);
@@ -171,7 +171,7 @@ function handleToggleFavorite(req, res) {
   });
 
   req.on('end', () => {
-    const { title, link, description, tags } = JSON.parse(body);
+    const { title, link, description } = JSON.parse(body);
     const userKeycode = new Cookies(req, res).get('userId');
 
     if (!userKeycode) {
@@ -190,8 +190,8 @@ function handleToggleFavorite(req, res) {
       }
 
       const isFavorite = results[0].isFavorite > 0;
-      const query = isFavorite ? 'DELETE FROM favorites WHERE user_keycode = ? AND link = ?' : 'INSERT INTO favorites (user_keycode, title, link, description, tags) VALUES (?, ?, ?, ?, ?)';
-      const params = isFavorite ? [userKeycode, link] : [userKeycode, title, link, description, tags];
+      const query = isFavorite ? 'DELETE FROM favorites WHERE user_keycode = ? AND link = ?' : 'INSERT INTO favorites (user_keycode, title, link, description) VALUES (?, ?, ?, ?)';
+      const params = isFavorite ? [userKeycode, link] : [userKeycode, title, link, description];
 
       connection.query(query, params, (error, results) => {
         if (error) {
@@ -409,6 +409,7 @@ function handleChangePassword(req, res) {
     });
   });
 }
+
 function handleLogHistory(req, res, cookies) {
   let body = '';
   req.on('data', chunk => {
@@ -431,8 +432,8 @@ function handleLogHistory(req, res, cookies) {
       const parsedBody = JSON.parse(body);
       console.log('Parsed request body:', parsedBody);
 
-      const { title, link, description, tags } = parsedBody;
-      console.log('Extracted Data:', { title, link, description, tags });
+      const { title, link, description } = parsedBody;
+      console.log('Extracted Data:', { title, link, description });
 
       if (!title || !link) {
         console.log('Missing title or link in request body');
@@ -441,8 +442,8 @@ function handleLogHistory(req, res, cookies) {
         return;
       }
 
-      const insertHistoryQuery = 'INSERT INTO history (user_keycode, title, link, description, tags) VALUES (?, ?, ?, ?, ?)';
-      connection.query(insertHistoryQuery, [userKeycode, title, link, description, tags], (error, results) => {
+      const insertHistoryQuery = 'INSERT INTO history (user_keycode, title, link, description) VALUES (?, ?, ?, ?)';
+      connection.query(insertHistoryQuery, [userKeycode, title, link, description], (error, results) => {
         if (error) {
           console.error('Error logging search history:', error);
           res.writeHead(500, { 'Content-Type': 'application/json' });
@@ -493,7 +494,6 @@ function getPlural(word) {
   }
 }
 
-
 function handleGetHistory(req, res, cookies) {
   const userKeycode = cookies.get('userId');
   console.log('User Keycode from Cookie:', userKeycode);
@@ -504,7 +504,7 @@ function handleGetHistory(req, res, cookies) {
     return;
   }
 
-  const fetchHistoryQuery = 'SELECT title, link, description, tags FROM history WHERE user_keycode = ? ORDER BY timestamp DESC';
+  const fetchHistoryQuery = 'SELECT title, link, description FROM history WHERE user_keycode = ? ORDER BY timestamp DESC';
   connection.query(fetchHistoryQuery, [userKeycode], (error, results) => {
     if (error) {
       console.error('Error fetching search history:', error);
