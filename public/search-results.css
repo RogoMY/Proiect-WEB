@@ -133,3 +133,53 @@
       display: none;
   }
 }
+.search-result-item {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  padding: 10px;
+  margin: 10px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  position: relative; /* Added for positioning star icon */
+}
+
+.search-result-title {
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+  text-decoration: none;
+  margin-bottom: 5px;
+}
+
+.search-result-title:hover {
+  text-decoration: underline;
+}
+
+.search-result-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 5px;
+}
+
+.search-result-tags {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Star icon styling */
+.star-icon {
+  cursor: pointer;
+  font-size: 24px; /* Mărimea stelei */
+  color: gray; /* Culoare pentru steaua goală */
+  margin-left: 10px;
+   /* Contur pentru steaua goală */
+  padding: 2px;
+  display: inline-block;
+}
+
+.star-icon.favorite {
+  color: gold; /* Culoare pentru steaua umplută */
+   /* Contur pentru steaua umplută */
+}
+

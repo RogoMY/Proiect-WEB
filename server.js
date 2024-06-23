@@ -45,7 +45,24 @@ function startServer() {
     const parsedUrl = url.parse(req.url);
     let pathname = `./public${parsedUrl.pathname}`;
     console.log(`Received ${req.method} request for ${pathname}`);
-    if ((pathname === './public/admin.html' || pathname === './public/manage-content.html') && req.method === 'GET') {
+    const restrictedPages = [
+      './public/homepage.html',
+      './public/favorites.html',
+      './public/search-results.html',
+      './public/history.html'
+    ];
+
+    if (!userId && restrictedPages.includes(pathname)) {
+      res.writeHead(302, { 'Location': '/login.html' });
+      res.end();
+      return;
+    }
+    // Gestionare rute personalizate
+    if (pathname === './public/fetchFavorites' && req.method === 'GET') {
+      handleFetchFavorites(req, res);
+    } else if (pathname === './public/toggleFavorite' && req.method === 'POST') {
+      handleToggleFavorite(req, res);
+    } else if ((pathname === './public/admin.html' || pathname === './public/manage-content.html') && req.method === 'GET') {
       verifyToken(req, res, () => {
         handleFileRequest(pathname, res);
       });
@@ -94,6 +111,100 @@ function startServer() {
 
   server.listen(5000, () => {
     console.log("Server listening on port 5000");
+  });
+}
+
+function handleFileRequest(pathname, res) {
+  if (pathname.endsWith('/')) {
+    pathname += 'login.html'; 
+  }
+
+  fs.exists(pathname, exist => {
+    if (!exist) {
+      res.statusCode = 404;
+      res.end(`File ${pathname} not found!`);
+      return;
+    }
+
+    fs.readFile(pathname, (err, data) => {
+      if (err) {
+        res.statusCode = 500;
+        res.end(`Error getting the file: ${err}.`);
+      } else {
+        const ext = path.parse(pathname).ext;
+        if (ext === '.html') {
+          res.setHeader('Content-type', 'text/html');
+        }
+        res.end(data);
+      }
+    });
+  });
+}
+
+function handleFetchFavorites(req, res) {
+  const userKeycode = new Cookies(req, res).get('userId');
+
+  if (!userKeycode) {
+    res.writeHead(401, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: false, message: 'User not authenticated' }));
+    return;
+  }
+
+  const fetchFavoritesQuery = 'SELECT title, link, description, tags FROM favorites WHERE user_keycode = ?';
+  connection.query(fetchFavoritesQuery, [userKeycode], (error, results) => {
+    if (error) {
+      console.error('Error fetching favorites:', error);
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, message: 'Internal server error' }));
+      return;
+    }
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, favorites: results }));
+  });
+}
+
+function handleToggleFavorite(req, res) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+
+  req.on('end', () => {
+    const { title, link, description, tags } = JSON.parse(body);
+    const userKeycode = new Cookies(req, res).get('userId');
+
+    if (!userKeycode) {
+      res.writeHead(401, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, message: 'User not authenticated' }));
+      return;
+    }
+
+    const checkFavoriteQuery = 'SELECT COUNT(*) AS isFavorite FROM favorites WHERE user_keycode = ? AND link = ?';
+    connection.query(checkFavoriteQuery, [userKeycode, link], (error, results) => {
+      if (error) {
+        console.error('Error checking favorite:', error);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, message: 'Internal server error' }));
+        return;
+      }
+
+      const isFavorite = results[0].isFavorite > 0;
+      const query = isFavorite ? 'DELETE FROM favorites WHERE user_keycode = ? AND link = ?' : 'INSERT INTO favorites (user_keycode, title, link, description, tags) VALUES (?, ?, ?, ?, ?)';
+      const params = isFavorite ? [userKeycode, link] : [userKeycode, title, link, description, tags];
+
+      connection.query(query, params, (error, results) => {
+        if (error) {
+          console.error('Error toggling favorite:', error);
+          res.writeHead(500, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ success: false, message: 'Internal server error' }));
+          return;
+        }
+
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true }));
+      });
+    });
   });
 }
 
@@ -381,6 +492,8 @@ function getPlural(word) {
     return word + 's';
   }
 }
+
+
 function handleGetHistory(req, res, cookies) {
   const userKeycode = cookies.get('userId');
   console.log('User Keycode from Cookie:', userKeycode);
@@ -414,6 +527,14 @@ function handleSearch(req, res) {
 
   req.on('end', () => {
     const { query } = JSON.parse(body);
+    const userKeycode = new Cookies(req, res).get('userId');
+
+    if (!userKeycode) {
+      res.writeHead(401, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, message: 'User not authenticated' }));
+      return;
+    }
+
     console.log('Received search query:', query);
 
     const redundantWords = new Set([
@@ -610,48 +731,32 @@ function handleSearch(req, res) {
           console.log(`ID: ${result.id}, Relevance Score: ${result.relevance_score}`);
           return result.relevance_score > 0; // ma gandeam sa fac pe baza nr_cuvinte*2 sau cv de genul pentru scorul minim, dar e o chestie de finete la unele rezultate poate fi mai bine la altele sa nu am nimic
         });
-        filteredResults.sort((a, b) => b.relevance_score - a.relevance_score);
 
-        console.log('Final filtered results:', filteredResults);
-        res.writeHead(200, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ success: true, results: filteredResults }));
+        // Verifică dacă elementele sunt deja favorite
+        const fetchFavoritesQuery = 'SELECT link FROM favorites WHERE user_keycode = ?';
+        connection.query(fetchFavoritesQuery, [userKeycode], (error, favorites) => {
+          if (error) {
+            console.error('Error fetching favorites:', error);
+            sendErrorResponse(res, 'Error fetching favorites', error);
+            return;
+          }
+
+          const favoriteLinks = new Set(favorites.map(fav => fav.link));
+          filteredResults.forEach(result => {
+            result.isFavorite = favoriteLinks.has(result.link);
+          });
+
+          filteredResults.sort((a, b) => b.relevance_score - a.relevance_score);
+
+          console.log('Final filtered results:', filteredResults);
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ success: true, results: filteredResults }));
+        });
       })
       .catch(error => {
         console.error('Error searching the database:', error);
         sendErrorResponse(res, 'Error searching the database', error);
       });
-  });
-}
-
-
-
-
-
-
-function handleFileRequest(pathname, res) {
-  if (pathname.endsWith('/')) {
-    pathname += 'login.html'; 
-  }
-
-  fs.exists(pathname, exist => {
-    if (!exist) {
-      res.statusCode = 404;
-      res.end(`File ${pathname} not found!`);
-      return;
-    }
-
-    fs.readFile(pathname, (err, data) => {
-      if (err) {
-        res.statusCode = 500;
-        res.end(`Error getting the file: ${err}.`);
-      } else {
-        const ext = path.parse(pathname).ext;
-        if (ext === '.html') {
-          res.setHeader('Content-type', 'text/html');
-        }
-        res.end(data);
-      }
-    });
   });
 }
 

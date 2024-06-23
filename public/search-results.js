@@ -170,8 +170,43 @@ document.addEventListener('DOMContentLoaded', function() {
       ].filter(tag => tag.trim().length > 0).join(', ');
       resultItem.appendChild(tags);
 
+      // Add the star for favorites
+      var starIcon = document.createElement('span');
+      starIcon.classList.add('star-icon');
+      starIcon.innerHTML = '&#9734;'; // Empty star
+      if (result.isFavorite) {
+        starIcon.classList.add('favorite'); // Add the favorite class if the item is already a favorite
+      }
+      console.log('Adding star icon to:', result.title); // Log message for verification
+      starIcon.addEventListener('click', function() {
+        toggleFavorite(result, starIcon);
+      });
+      resultItem.appendChild(starIcon);
+
       resultsList.appendChild(resultItem);
     });
+  }
+
+  function toggleFavorite(result, starIcon) {
+    const isAdding = !starIcon.classList.contains('favorite');
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(result)
+    };
+
+    fetch(`/toggleFavorite`, requestOptions)
+      .then(response => response.json())
+      .then(data => {
+        if (data.success) {
+          starIcon.classList.toggle('favorite');
+        } else {
+          console.error('Error updating favorite:', data.message);
+        }
+      })
+      .catch(error => {
+        console.error('Error:', error);
+      });
   }
 
   function extractFilters(results) {
