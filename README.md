@@ -61,14 +61,25 @@ CREATE TABLE IF NOT EXISTS users (
   email VARCHAR(255) NOT NULL UNIQUE,
   keycode INT
 );
-CREATE TABLE favorites (
+CREATE TABLE IF NOT EXISTS favorites (
   id INT AUTO_INCREMENT PRIMARY KEY,
-  user_keycode BIGINT NOT NULL,
+  user_keycode INT NOT NULL,
   title VARCHAR(255) NOT NULL,
   link VARCHAR(255) NOT NULL,
   description TEXT,
   tags TEXT,
   timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-  FOREIGN KEY (user_keycode) REFERENCES users(keycode)
+  FOREIGN KEY (user_keycode) REFERENCES users(keycode) ON DELETE CASCADE
+);
+
+CREATE TABLE IF NOT EXISTS history (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  user_keycode INT NOT NULL,
+  title VARCHAR(255) NOT NULL,
+  link VARCHAR(255) NOT NULL,
+  description TEXT,
+  tags TEXT,
+  timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+  FOREIGN KEY (user_keycode) REFERENCES users(keycode) ON DELETE CASCADE
 );
 ```
