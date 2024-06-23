@@ -183,9 +183,8 @@ document.addEventListener('DOMContentLoaded', function() {
         var checkbox = document.createElement('input');
         checkbox.type = 'checkbox';
         checkbox.value = filter;
-        checkbox.classList.add(filterType); // Add class to differentiate filter type
+        checkbox.classList.add(filterType); 
 
-        // Maintain the state of checkboxes
         if (selectedFilters[filterType].has(filter)) {
           checkbox.checked = true;
         }
@@ -243,26 +242,21 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function applyFilters() {
-    // Filter the initial results based on selected filters
     var filteredResults = initialResults.filter(result => {
       var match = true;
 
-      // Apply category filters (Level 1)
       if (selectedFilters.category.size > 0) {
         match = result.category.some(cat => selectedFilters.category.has(cat));
       }
 
-      // Apply scopes filters (Level 2)
       if (match && selectedFilters.scopes.size > 0) {
         match = result.scopes.some(scope => selectedFilters.scopes.has(scope));
       }
 
-      // Apply programming languages filters (Level 3)
       if (match && selectedFilters.programming_languages.size > 0) {
         match = result.programming_languages.some(lang => selectedFilters.programming_languages.has(lang));
       }
 
-      // Apply platforms filters (Level 4)
       if (match && selectedFilters.platform.size > 0) {
         match = result.platform.some(plat => selectedFilters.platform.has(plat));
       }
