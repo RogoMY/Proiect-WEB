@@ -66,11 +66,9 @@ CREATE TABLE `favorites` (
   `user_keycode` bigint NOT NULL,
   `title` varchar(255) NOT NULL,
   `link` varchar(255) NOT NULL,
-  `description` text,
-  `tags` text,
+  `description` text,  
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
-  PRIMARY KEY (`id`),
-  KEY `user_keycode` (`user_keycode`)
+  PRIMARY KEY (`id`) 
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 
@@ -80,7 +78,6 @@ CREATE TABLE history (
   title VARCHAR(255) NOT NULL,
   link TEXT NOT NULL,
   description TEXT,
-  tags TEXT,
   timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 );
 ```
