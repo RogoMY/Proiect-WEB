@@ -8,14 +8,14 @@ const bcrypt = require('bcrypt');
 const mysql = require('mysql2');
 
 const saltRounds = 10;
-const usbKeyPath = 'F:\\key.txt'; // Path to your key file
+const usbKeyPath = 'E:\\key.txt'; // Path to your key file
 const predefinedRawKey = 'success'; // Replace with your actual raw key
 const adminToken = '$2b$10$OBkQgGs1au3Ms8EW2KmDQ.tf9GuL5EV.IJ0Mw.vP7FU0.M9prYMte'; // Predefined token for admin
 
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'bd2024',
+  password: 'parola',
   database: 'web',
   port: 3306
 });

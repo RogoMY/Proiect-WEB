@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', function() {
         body: JSON.stringify({ query })
       };
 
-      fetch('http://localhost:5000/search', requestOptions)
+      fetch('/search', requestOptions)
         .then(response => response.json())
         .then(data => {
           if (data.success) {
