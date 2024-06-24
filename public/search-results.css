@@ -59,6 +59,9 @@
   color: #007bff;
   font-size: 1.5rem; 
 }
+.search-result-title:hover {
+  color:rgba(121, 0, 207, 0.998)
+}
 
 .search-result-description {
   margin: 0 0 10px 0;
@@ -144,13 +147,7 @@
   position: relative; /* Added for positioning star icon */
 }
 
-.search-result-title {
-  font-size: 18px;
-  font-weight: bold;
-  color: #333;
-  text-decoration: none;
-  margin-bottom: 5px;
-}
+
 
 .search-result-title:hover {
   text-decoration: underline;

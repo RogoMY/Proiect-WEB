@@ -1,14 +1,11 @@
-
-
-
 .admin-main {
     padding: 20px;
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-
-.manage-buttons button {
+  }
+  
+  .manage-buttons button {
     background-color: #28a745;
     color: white;
     border: none;
@@ -17,127 +14,132 @@
     cursor: pointer;
     font-size: 16px;
     border-radius: 4px;
-}
-
-.manage-buttons button:hover {
+  }
+  
+  .manage-buttons button:hover {
     background-color: #218838;
-}
-
-
-.form-section {
+  }
+  
+  .form-section {
     background: #f8f9fa;
     padding: 20px;
     margin-top: 20px;
     width: 80%;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-radius: 8px;
-    display: none; 
-}
-
-.form-section h2 {
+    display: none;
+  }
+  
+  .form-section h2 {
     color: #333;
-}
-
-.form-section label {
+  }
+  
+  .form-section label {
     display: block;
     margin-bottom: 5px;
     font-weight: bold;
-}
-
-.form-section input[type="text"],
-.form-section input[type="url"],
-.form-section select,
-.form-section textarea {
+  }
+  
+  .form-section input[type="text"],
+  .form-section input[type="url"],
+  .form-section select,
+  .form-section textarea {
     width: 100%;
     padding: 8px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
     border-radius: 4px;
-}
-
-.form-section textarea {
+  }
+  
+  .form-section textarea {
     height: 100px;
-}
-
-.form-section button {
+  }
+  
+  .form-section button {
     background-color: #0056b3;
     color: white;
     padding: 10px 15px;
     border: none;
     border-radius: 4px;
     cursor: pointer;
-}
-
-.form-section button:hover {
+  }
+  
+  .form-section button:hover {
     background-color: #003d82;
-}
-.categories-section, .category-details {
+  }
+  
+  .categories-section,
+  .category-details {
     margin-top: 20px;
     padding: 15px;
     border: 1px solid #ccc;
     border-radius: 5px;
-}
-
-.category-list {
+  }
+  
+  .category-list {
     display: flex;
     flex-direction: column;
-}
-
-.category-item {
+  }
+  
+  .category-item {
     padding: 10px;
-    margin: 5px 0;
+    margin: 10px 0;
     background-color: #f0f0f0;
-    border: 1px;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-.category-item:hover {
-    background-color: #e0e0e0;
-}
-
-#category-content {
-    margin-top: 20px;
-}
-.delete-category-btn, .edit-btn, .delete-btn {
-    margin-left: 10px;
-    color: #ff0000; 
+    border: 1px solid #000;
+    border-radius: 5px;
+    position: relative;
+  }
+  
+  .category-item input[type="text"] {
+    width: 50%;
+  }
+  
+  .category-item label {
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .category-item .interface-label,
+  .category-item .interface-span {
+    display: block;
+  }
+  
+  .interface-container {
+    display: flex;
+    flex-direction:row;
+  }
+  
+  .delete-category-btn {
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    color: #ff0000;
     border: none;
     background-color: transparent;
     cursor: pointer;
-}
-
-.delete-category-btn:hover, .edit-btn:hover, .delete-btn:hover {
-    color: #cc0000; 
-}
-
-.category-item-details {
-    margin-bottom: 15px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-@media (max-width: 768px) {
-
-
+  }
+  
+  .delete-category-btn:hover {
+    color: #cc0000;
+  }
+  
+  @media (max-width: 768px) {
     .admin-main {
-        width: 100%; 
-        padding: 10px; 
+      width: 100%;
+      padding: 10px;
     }
-
+  
     .form-section {
-        width: 100%; 
-        box-sizing: border-box;
+      width: 100%;
+      box-sizing: border-box;
     }
-
+  
     .form-section input[type="text"],
     .form-section input[type="url"],
     .form-section select,
     .form-section textarea {
-        width: calc(100% - 20px); 
-        box-sizing: border-box; 
+      width: calc(100% - 20px);
+      box-sizing: border-box;
     }
-
-
-}
+  }
+  

@@ -8,14 +8,14 @@ const bcrypt = require('bcrypt');
 const mysql = require('mysql2');
 
 const saltRounds = 10;
-const usbKeyPath = 'E:\\key.txt'; // Path to your key file
+const usbKeyPath = 'F:\\key.txt'; // Path to your key file
 const predefinedRawKey = 'success'; // Replace with your actual raw key
 const adminToken = '$2b$10$OBkQgGs1au3Ms8EW2KmDQ.tf9GuL5EV.IJ0Mw.vP7FU0.M9prYMte'; // Predefined token for admin
 
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'parola',
+  password: 'bd2024',
   database: 'web',
   port: 3306
 });
@@ -68,6 +68,10 @@ function startServer() {
       });
     } else if (pathname === './public/check-auth' && req.method === 'GET') {
       handleCheckAuth(req, res);
+    } else if (pathname === './public/getParentCategories' && req.method === 'GET') {
+      handleGetParentCategories(req, res);
+    } else if (pathname === './public/addCategory' && req.method === 'POST') {
+      handleAddCategory(req, res);
     } else if (!userId && (pathname === './public/homepage.html' || pathname === './public/favorites.html' || pathname === './public/search-results.html')) {
       res.writeHead(302, { 'Location': '/login.html' });
       res.end();
@@ -104,7 +108,46 @@ function startServer() {
       handleLogHistory(req,res,cookies);
     } else if (pathname === './public/getHistory' && req.method === 'GET') {
       handleGetHistory(req,res,cookies);    
-    } else {
+    } else if (pathname === './public/addTag' && req.method === 'POST') {
+      verifyToken(req, res, () => {
+        handleAddTag(req, res);
+      });
+    } else if (pathname === './public/getCategories' && req.method === 'GET') {
+      verifyToken(req, res, () => {
+        handleGetCategories(req, res);
+      });
+    } else if (pathname === './public/getScopes' && req.method === 'GET') {
+      verifyToken(req, res, () => {
+        handleGetScopes(req, res);
+      });
+    } else if (pathname === './public/getPlatforms' && req.method === 'GET') {
+      verifyToken(req, res, () => {
+        handleGetPlatforms(req, res);
+      });
+    } else if (pathname === './public/getProgrammingLanguages' && req.method === 'GET') {
+      verifyToken(req, res, () => {
+        handleGetProgrammingLanguages(req, res);
+      });
+    } else if (pathname === './public/addContent' && req.method === 'POST') {
+      verifyToken(req, res, () => {
+        handleAddContent(req, res);
+      });
+    } else if (pathname === './public/updateCategory' && req.method === 'POST') {
+      verifyToken(req, res, () => {
+        updateCategory(req, res);
+      });
+    } else if (pathname === './public/deleteCategory' && req.method === 'DELETE') {
+      verifyToken(req, res, () => {
+        deleteCategory(req, res);
+      });
+    }
+
+    else if (pathname === './public/getAllCategories' && req.method === 'GET') {
+      verifyToken(req, res, () => {
+        handleGetAllCategories(req, res);
+      });
+    }
+    else {
       handleFileRequest(pathname, res);
     }
   });
@@ -862,4 +905,276 @@ function verifyToken(req, res, next) {
   } else {
     sendErrorResponse(res, 'Invalid token');
   }
+}
+
+// New functions for managing categories
+function handleGetParentCategories(req, res) {
+  const query = 'SELECT id, name, tag FROM categories WHERE interface = 1';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error fetching parent categories:', error);
+      sendErrorResponse(res, 'Error fetching parent categories', error);
+      return;
+    }
+
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, categories: results }));
+  });
+}
+
+function handleAddCategory(req, res) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+
+  req.on('end', () => {
+    const { title, tag, parentCategory, interface } = JSON.parse(body);
+
+    if (!title || !tag) {
+      sendErrorResponse(res, 'Title and tag are required');
+      return;
+    }
+
+    const query = 'INSERT INTO categories (name, tag, parent, interface) VALUES (?, ?, ?, ?)';
+    const params = [title, tag, parentCategory || null, interface];
+
+    connection.query(query, params, (error, results) => {
+      if (error) {
+        console.error('Error adding category:', error);
+        sendErrorResponse(res, 'Error adding category', error);
+        return;
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: true, message: 'Category added successfully' }));
+    });
+  });
+}
+function handleAddTag(req, res) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+
+  req.on('end', () => {
+    const { type, name } = JSON.parse(body);
+
+    if (!type || !name) {
+      sendErrorResponse(res, 'Type and name are required');
+      return;
+    }
+
+    let query = '';
+    let params = [name];
+
+    switch (type) {
+      case 'platform':
+        query = 'INSERT INTO platforms (name) VALUES (?)';
+        break;
+      case 'scope':
+        query = 'INSERT INTO scopes (name) VALUES (?)';
+        break;
+      case 'programming language':
+        query = 'INSERT INTO prog_langs (name) VALUES (?)';
+        break;
+      default:
+        sendErrorResponse(res, 'Invalid type');
+        return;
+    }
+
+    connection.query(query, params, (error, results) => {
+      if (error) {
+        console.error('Error adding tag:', error);
+        sendErrorResponse(res, 'Error adding tag', error);
+        return;
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: true, message: 'Tag added successfully' }));
+    });
+  });
+}
+function handleGetCategories(req, res) {
+  const query = 'SELECT id, name FROM categories WHERE interface = 0';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error fetching categories:', error);
+      sendErrorResponse(res, 'Error fetching categories', error);
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, categories: results }));
+  });
+}
+
+function handleGetScopes(req, res) {
+  const query = 'SELECT id, name FROM scopes';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error fetching scopes:', error);
+      sendErrorResponse(res, 'Error fetching scopes', error);
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, scopes: results }));
+  });
+}
+
+function handleGetPlatforms(req, res) {
+  const query = 'SELECT id, name FROM platforms';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error fetching platforms:', error);
+      sendErrorResponse(res, 'Error fetching platforms', error);
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, platforms: results }));
+  });
+}
+
+function handleGetProgrammingLanguages(req, res) {
+  const query = 'SELECT id, name FROM prog_langs';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error fetching programming languages:', error);
+      sendErrorResponse(res, 'Error fetching programming languages', error);
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, programming_languages: results }));
+  });
+}
+
+function handleAddContent(req, res) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+
+  req.on('end', () => {
+    const { title, description, link, category, scopes, platforms, programmingLanguages } = JSON.parse(body);
+
+    if (!title || !description || !link || !category) {
+      sendErrorResponse(res, 'Title, description, link, and category are required');
+      return;
+    }
+
+    const contentQuery = 'INSERT INTO contents (title, description, link) VALUES (?, ?, ?)';
+    const contentParams = [title, description, link];
+
+    connection.query(contentQuery, contentParams, (error, results) => {
+      if (error) {
+        console.error('Error adding content:', error);
+        sendErrorResponse(res, 'Error adding content', error);
+        return;
+      }
+
+      const contentId = results.insertId;
+
+      const categoryQuery = 'INSERT INTO content_categories (content_id, category_id) VALUES (?, ?)';
+      connection.query(categoryQuery, [contentId, category], (error) => {
+        if (error) {
+          console.error('Error linking content to category:', error);
+          sendErrorResponse(res, 'Error linking content to category', error);
+          return;
+        }
+      });
+
+      if (scopes.length > 0) {
+        const scopeQuery = 'INSERT INTO content_scopes (content_id, scope_id) VALUES ?';
+        const scopeParams = scopes.map(scopeId => [contentId, scopeId]);
+        connection.query(scopeQuery, [scopeParams], (error) => {
+          if (error) {
+            console.error('Error linking content to scopes:', error);
+            sendErrorResponse(res, 'Error linking content to scopes', error);
+            return;
+          }
+        });
+      }
+
+      if (platforms.length > 0) {
+        const platformQuery = 'INSERT INTO content_platforms (content_id, platform_id) VALUES ?';
+        const platformParams = platforms.map(platformId => [contentId, platformId]);
+        connection.query(platformQuery, [platformParams], (error) => {
+          if (error) {
+            console.error('Error linking content to platforms:', error);
+            sendErrorResponse(res, 'Error linking content to platforms', error);
+            return;
+          }
+        });
+      }
+
+      if (programmingLanguages.length > 0) {
+        const programmingLanguageQuery = 'INSERT INTO content_prog_langs (content_id, prog_lang_id) VALUES ?';
+        const programmingLanguageParams = programmingLanguages.map(langId => [contentId, langId]);
+        connection.query(programmingLanguageQuery, [programmingLanguageParams], (error) => {
+          if (error) {
+            console.error('Error linking content to programming languages:', error);
+            sendErrorResponse(res, 'Error linking content to programming languages', error);
+            return;
+          }
+        });
+      }
+
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: true, message: 'Content added successfully' }));
+    });
+  });
+}
+function handleGetAllCategories(req, res) {
+  const query = 'SELECT id, name, tag, parent, interface FROM categories';
+  connection.query(query, (error, results) => {
+    if (error) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, message: 'Error fetching categories', error }));
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, categories: results }));
+  });
+}
+
+function updateCategory(req, res) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+
+  req.on('end', () => {
+    const { id, field, value } = JSON.parse(body);
+    const query = `UPDATE categories SET ${field} = ? WHERE id = ?`;
+    connection.query(query, [value, id], (error, results) => {
+      if (error) {
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, message: 'Error updating category', error }));
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: true, message: 'Category updated successfully' }));
+    });
+  });
+}
+
+function deleteCategory(req, res) {
+  const queryObject = url.parse(req.url, true).query;
+  const { id } = queryObject;
+
+  if (!id) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: false, message: 'ID is required' }));
+    return;
+  }
+
+  const query = 'DELETE FROM categories WHERE id = ?';
+  connection.query(query, [id], (error, results) => {
+    if (error) {
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, message: 'Error deleting category', error }));
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, message: 'Category deleted successfully' }));
+  });
 }
