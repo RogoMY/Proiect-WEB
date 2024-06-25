@@ -19,11 +19,9 @@ document.addEventListener('DOMContentLoaded', function() {
         .then(data => {
             if (data.success) {
                 if (data.userType === 'admin') {
-                    // Ensure the admin token is stored in the cookie
                     document.cookie = `adminToken=${data.token}; path=/`;
                     window.location.href = 'admin.html';
                 } else {
-                    // Ensure the user token is stored in the cookie
                     document.cookie = `userId=${data.data}; path=/`;
                     window.location.href = 'homepage.html';
                 }

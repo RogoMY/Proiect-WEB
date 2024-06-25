@@ -16,6 +16,7 @@
                     <li><a href="login.html" id="logout-link">Logout</a></li>
                     <li><a href="admin.html">Manage Users</a></li>
                     <li><a href="manage-content.html">Manage Content</a></li>
+                    <li><a href="data.html">Import/Export Data</a></li>
                 </ul>
             </nav>
         </div>
@@ -24,10 +25,12 @@
     
     <main class="admin-main">
         <div class="manage-buttons">
-            <button id="manage-categories-button">Manage Categories</button>
-            <button id="manage-content-button">Manage Content</button>
+            <button id="manage-categories-button">Add Category</button>
+            <button id="manage-content-button">Add Content</button>
+            <button id="manage-tags-button">Add Tag</button>
+            <button id="edit-content-button">Edit Content</button>
             <button id="edit-categories-button">Edit Categories</button>
-            <button id="manage-tags-button">Manage Tags</button>
+            <button id="edit-tags-button">Edit Tags</button>
         </div>
     
         <section class="form-section" id="category-form">
@@ -84,12 +87,37 @@
           
               <button type="submit">Add Content</button>
             </form>
-          </section>
+        </section>
           
         <section class="form-section" id="edit-categories-form" style="display: none;">
             <h2>Edit Categories</h2>
             <input type="text" id="category-search" placeholder="Search by tag...">
             <div id="edit-category-list">
+                <!--dinamic-->
+            </div>
+        </section>
+
+        <section class="form-section" id="edit-tags-form" style="display: none;">
+            <h2>Edit Tags</h2>
+            <select id="tag-type-select">
+                <option value="scopes">Scopes</option>
+                <option value="platforms">Platforms</option>
+                <option value="programming_languages">Programming Languages</option>
+            </select>
+            <input type="text" id="tag-search" placeholder="Search by name...">
+            <div id="edit-tag-list">
+                <!--dinamic-->
+            </div>
+        </section>
+
+        <section class="form-section" id="edit-content-form" style="display: none;">
+            <h2>Edit Content</h2>
+            <select id="content-category-select">
+                <!--dinamic-->
+            </select>
+            <input type="text" id="content-search" placeholder="Search by title...">
+            <div id="edit-content-list">
+                <!--dinamic-->
             </div>
         </section>
 

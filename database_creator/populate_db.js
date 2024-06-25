@@ -5,7 +5,7 @@ const path = require('path');
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'parola',
+  password: 'bd2024',
   database: 'web',
   port: 3306
 });
@@ -107,7 +107,26 @@ function createTables() {
       keycode INT
     );
   `;
-
+ const createFavoritesSQL= ` CREATE TABLE IF NOT EXISTS favorites (
+    id int NOT NULL AUTO_INCREMENT,
+    user_keycode bigint NOT NULL,
+    title varchar(255) NOT NULL,
+    link varchar(255) NOT NULL,
+    description text,  
+    timestamp timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id) 
+  );` ;
+  
+  
+ const createHistorySQL=` 
+ CREATE TABLE IF NOT EXISTS history (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    user_keycode INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
+    link TEXT NOT NULL,
+    description TEXT,
+    timestamp TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+  );`;
   const tables = [
     { sql: createCategoriesSQL, message: 'Categories table created.' },
     { sql: createPlatformsSQL, message: 'Platforms table created.' },
@@ -118,7 +137,9 @@ function createTables() {
     { sql: createContentProgLangsSQL, message: 'Content programming languages table created.' },
     { sql: createContentPlatformsSQL, message: 'Content platforms table created.' },
     { sql: createContentCategoriesSQL, message: 'Content categories table created.' },
-    { sql: createUsersSQL, message: 'Users table created.' }
+    { sql: createUsersSQL, message: 'Users table created.' },
+    { sql: createFavoritesSQL, message: 'Favorites table created.' },
+    { sql: createHistorySQL, message: 'History table created.' }
   ];
 
   function createNextTable(index) {

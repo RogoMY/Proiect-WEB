@@ -75,6 +75,7 @@
 .edit-btn:hover {
   color: #b410e6;
 }
+
 .load-more-btn {
   background-color: #4CAF50;
   color: white;
@@ -87,4 +88,30 @@
 
 .load-more-btn:hover {
   background-color: #45a049;
+}
+
+.import-export-section {
+  padding: 20px;
+  margin-top: 20px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#import-data-form button[type="submit"],
+#export-data-button {
+  background-color: #28a745;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+  margin-right: 10px;
+}
+
+#import-data-form button[type="submit"]:hover,
+#export-data-button:hover {
+  background-color: #218838;
 }

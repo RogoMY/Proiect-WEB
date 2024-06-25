@@ -6,11 +6,13 @@ const http = require('http');
 const url = require('url');
 const bcrypt = require('bcrypt');
 const mysql = require('mysql2');
+const multer = require('multer');
 
 const saltRounds = 10;
-const usbKeyPath = 'F:\\key.txt'; // Path to your key file
-const predefinedRawKey = 'success'; // Replace with your actual raw key
-const adminToken = '$2b$10$OBkQgGs1au3Ms8EW2KmDQ.tf9GuL5EV.IJ0Mw.vP7FU0.M9prYMte'; // Predefined token for admin
+const usbKeyPath = 'F:\\key.txt'; 
+const predefinedRawKey = 'success';
+const adminToken = '$2b$10$OBkQgGs1au3Ms8EW2KmDQ.tf9GuL5EV.IJ0Mw.vP7FU0.M9prYMte'; 
+const upload = multer({ dest: 'uploads/' });
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -57,7 +59,6 @@ function startServer() {
       res.end();
       return;
     }
-    // Gestionare rute personalizate
     if (pathname === './public/fetchFavorites' && req.method === 'GET') {
       handleFetchFavorites(req, res);
     } else if (pathname === './public/toggleFavorite' && req.method === 'POST') {
@@ -146,7 +147,46 @@ function startServer() {
       verifyToken(req, res, () => {
         handleGetAllCategories(req, res);
       });
+    }  else if (pathname === './public/updateTag' && req.method === 'POST') {
+      verifyToken(req, res, () => {
+        updateTag(req, res);
+      });
+    } else if (pathname === './public/deleteTag' && req.method === 'DELETE') {
+      verifyToken(req, res, () => {
+        deleteTag(req, res);
+      });
+    } else if (pathname === './public/getCategoriesWithInterfaceZero' && req.method === 'GET') {
+      verifyToken(req, res, () => {
+        getCategoriesWithInterfaceZero(req, res);
+      });
+    } else if (pathname === './public/getContentByCategory' && req.method === 'GET') {
+      verifyToken(req, res, () => {
+        getContentByCategory(req, res);
+      });
+    } else if (pathname === './public/updateContentField' && req.method === 'POST') {
+      verifyToken(req, res, () => {
+        updateContentField(req, res);
+      });
+    } else if (pathname === './public/updateContentTags' && req.method === 'POST') {
+      verifyToken(req, res, () => {
+        updateContentTags(req, res);
+      });
+    } else if (pathname === './public/deleteContent' && req.method === 'DELETE') {
+      verifyToken(req, res, () => {
+        deleteContent(req, res);
+      });
+    } else if (pathname === './public/exportData' && req.method === 'GET') {
+      verifyToken(req, res, () => {
+        handleExportData(req, res);
+      });
+    } else if (pathname === './public/importData' && req.method === 'POST') {
+      verifyToken(req, res, () => {
+        handleImportData(req, res);
+      });
     }
+    
+    
+
     else {
       handleFileRequest(pathname, res);
     }
@@ -350,7 +390,7 @@ function handleLogin(req, res) {
 
         if (result) {
           if (user.keycode === null) {
-            // Read the key from USB and compare with the predefined raw key
+            //citim de pe usb si comparam cu cheia predefinita
             fs.readFile(usbKeyPath, 'utf8', (err, key) => {
               if (err) {
                 sendErrorResponse(res, 'Error reading key from USB', err);
@@ -371,7 +411,7 @@ function handleLogin(req, res) {
               }
             });
           } else {
-            // Normal user login
+            //logare normala utilziator
             const cookies = new Cookies(req, res);
             cookies.set('userId', user.keycode, { httpOnly: true });
             sendClientSuccessResponse(res, 'Login successful');
@@ -547,7 +587,7 @@ function handleGetHistory(req, res, cookies) {
     return;
   }
 
-  const fetchHistoryQuery = 'SELECT title, link, description FROM history WHERE user_keycode = ? ORDER BY timestamp DESC';
+  const fetchHistoryQuery = 'SELECT title, link, description FROM history WHERE user_keycode = ? ORDER BY timestamp ASC';
   connection.query(fetchHistoryQuery, [userKeycode], (error, results) => {
     if (error) {
       console.error('Error fetching search history:', error);
@@ -581,7 +621,7 @@ function handleSearch(req, res) {
     console.log('Received search query:', query);
 
     const redundantWords = new Set([
-      'a', 'an', 'the', 'and', 'or', 'but', 'so', 'if', 'then', 'about', 'how', 'to', 'make', 'for', 'with', 'in', 'on', 'at', 'by', 'from', 'up', 'down', 'of', 'that', 'this', 'these', 'those', 'is', 'are', 'was', 'were', 'be', 'being', 'been', 'has', 'have', 'had', 'do', 'does', 'did', 'not', 'no', 'yes', 'as', 'such', 'can', 'could', 'should', 'would', 'will', 'shall', 'might', 'must', 'i', 'me', 'my', 'we', 'us', 'our', 'you', 'your', 'he', 'him', 'his', 'she', 'her', 'it', 'its', 'they', 'them', 'their', 'what', 'which', 'who', 'whom', 'whose', 'why', 'where', 'when', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'only', 'own', 'same', 'so', 'than', 'too', 'very', 'use'
+      'a', 'an', 'the', 'and', 'or', 'but', 'so', 'if', 'then', 'about', 'how', 'to', 'make', 'for', 'with', 'in', 'on', 'at', 'by', 'from', 'up', 'down', 'of', 'that', 'this', 'these', 'those', 'is', 'are', 'was', 'were', 'be', 'being', 'been', 'has', 'have', 'had', 'do', 'does', 'did', 'not', 'no', 'yes', 'as', 'such', 'can', 'could', 'should', 'would', 'will', 'shall', 'might', 'must', 'i', 'me', 'my', 'we', 'us', 'our', 'you', 'your', 'he', 'him', 'his', 'she', 'her', 'it', 'its', 'they', 'them', 'their', 'what', 'which', 'who', 'whom', 'whose', 'why', 'where', 'when', 'how', 'all', 'any', 'both', 'each', 'few', 'more', 'most', 'other', 'some', 'such', 'no', 'nor', 'only', 'own', 'look', 'same', 'so', 'than', 'too', 'very', 'use'
     ]);
 
     const words = query.split(/\s+/).map(word => word.toLowerCase()).filter(word => !redundantWords.has(word));
@@ -775,7 +815,6 @@ function handleSearch(req, res) {
           return result.relevance_score > 0; // ma gandeam sa fac pe baza nr_cuvinte*2 sau cv de genul pentru scorul minim, dar e o chestie de finete la unele rezultate poate fi mai bine la altele sa nu am nimic
         });
 
-        // Verifică dacă elementele sunt deja favorite
         const fetchFavoritesQuery = 'SELECT link FROM favorites WHERE user_keycode = ?';
         connection.query(fetchFavoritesQuery, [userKeycode], (error, favorites) => {
           if (error) {
@@ -907,7 +946,6 @@ function verifyToken(req, res, next) {
   }
 }
 
-// New functions for managing categories
 function handleGetParentCategories(req, res) {
   const query = 'SELECT id, name, tag FROM categories WHERE interface = 1';
   connection.query(query, (error, results) => {
@@ -1123,39 +1161,99 @@ function handleAddContent(req, res) {
     });
   });
 }
-function handleGetAllCategories(req, res) {
-  const query = 'SELECT id, name, tag, parent, interface FROM categories';
-  connection.query(query, (error, results) => {
-    if (error) {
-      res.writeHead(500, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ success: false, message: 'Error fetching categories', error }));
-      return;
-    }
-    res.writeHead(200, { 'Content-Type': 'application/json' });
-    res.end(JSON.stringify({ success: true, categories: results }));
-  });
-}
-
-function updateCategory(req, res) {
-  let body = '';
-  req.on('data', chunk => {
-    body += chunk.toString();
-  });
-
-  req.on('end', () => {
-    const { id, field, value } = JSON.parse(body);
-    const query = `UPDATE categories SET ${field} = ? WHERE id = ?`;
-    connection.query(query, [value, id], (error, results) => {
+  function handleGetAllCategories(req, res) {
+    const query = `
+      SELECT 
+        c1.id, 
+        c1.name, 
+        c1.tag, 
+        c1.parent AS parent_id, 
+        c2.tag AS parent_tag, 
+        c1.interface 
+      FROM categories c1
+      LEFT JOIN categories c2 ON c1.parent = c2.id
+    `;
+    connection.query(query, (error, results) => {
       if (error) {
+        console.error('Error fetching categories:', error);
         res.writeHead(500, { 'Content-Type': 'application/json' });
-        res.end(JSON.stringify({ success: false, message: 'Error updating category', error }));
+        res.end(JSON.stringify({ success: false, message: 'Error fetching categories', error }));
         return;
       }
       res.writeHead(200, { 'Content-Type': 'application/json' });
-      res.end(JSON.stringify({ success: true, message: 'Category updated successfully' }));
+      res.end(JSON.stringify({ success: true, categories: results }));
     });
-  });
-}
+  }
+  
+  function updateCategory(req, res) {
+    let body = '';
+    req.on('data', chunk => {
+      body += chunk.toString();
+    });
+  
+    req.on('end', () => {
+      const { id, field, value } = JSON.parse(body);
+  
+      if (field === 'parent') {
+        const parentTag = value;
+  
+        if (parentTag === null || parentTag === '') {
+          const updateQuery = `UPDATE categories SET parent = NULL WHERE id = ?`;
+          connection.query(updateQuery, [id], (error, results) => {
+            if (error) {
+              console.error('Error removing parent category:', error);
+              res.writeHead(500, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({ success: false, message: 'Error removing parent category', error }));
+              return;
+            }
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: true, message: 'Parent category removed successfully' }));
+          });
+        } else {
+          const parentQuery = 'SELECT id FROM categories WHERE tag = ? and interface=1';
+          connection.query(parentQuery, [parentTag], (error, results) => {
+            if (error) {
+              console.error('Error fetching parent category:', error);
+              res.writeHead(500, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({ success: false, message: 'Error fetching parent category', error }));
+              return;
+            }
+            if (results.length > 0) {
+              const parentId = results[0].id;
+              const updateQuery = `UPDATE categories SET ${field} = ? WHERE id = ?`;
+              connection.query(updateQuery, [parentId, id], (error, results) => {
+                if (error) {
+                  console.error('Error updating category:', error);
+                  res.writeHead(500, { 'Content-Type': 'application/json' });
+                  res.end(JSON.stringify({ success: false, message: 'Error updating category', error }));
+                  return;
+                }
+                res.writeHead(200, { 'Content-Type': 'application/json' });
+                res.end(JSON.stringify({ success: true, message: 'Category updated successfully' }));
+              });
+            } else {
+              console.error('Parent category not found for tag:', parentTag);
+              res.writeHead(400, { 'Content-Type': 'application/json' });
+              res.end(JSON.stringify({ success: false, message: 'Parent category not found' }));
+            }
+          });
+        }
+      } else {
+        const query = `UPDATE categories SET ${field} = ? WHERE id = ?`;
+        connection.query(query, [value, id], (error, results) => {
+          if (error) {
+            console.error('Error updating category:', error);
+            res.writeHead(500, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: false, message: 'Error updating category', error }));
+            return;
+          }
+          res.writeHead(200, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ success: true, message: 'Category updated successfully' }));
+        });
+      }
+    });
+  }
+  
 
 function deleteCategory(req, res) {
   const queryObject = url.parse(req.url, true).query;
@@ -1177,4 +1275,510 @@ function deleteCategory(req, res) {
     res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify({ success: true, message: 'Category deleted successfully' }));
   });
+}
+function updateTag(req, res) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+
+  req.on('end', () => {
+    const { id, name, type } = JSON.parse(body);
+    if (!name.trim() || !/^[a-zA-Z0-9\-]+$/.test(name)) {
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, message: 'Invalid name format. Must contain only letters, numbers, and dashes.' }));
+      return; 
+    }
+
+    let tableName;
+    switch (type) {
+      case 'scopes':
+        tableName = 'scopes';
+        break;
+      case 'platforms':
+        tableName = 'platforms';
+        break;
+      case 'programming_languages':
+        tableName = 'prog_langs';
+        break;
+      default:
+        res.writeHead(400, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, message: 'Invalid tag type' }));
+        return;
+    }
+
+    const query = `UPDATE ${tableName} SET name = ? WHERE id = ?`;
+    connection.query(query, [name, id], (error, results) => {
+      if (error) {
+        console.error('Error updating tag:', error);
+        res.writeHead(500, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: false, message: 'Error updating tag', error }));
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: true, message: 'Tag updated successfully' }));
+    });
+  });
+}
+
+function deleteTag(req, res) {
+  const url = new URL(req.url, `http://${req.headers.host}`);
+  const id = url.searchParams.get('id');
+  const type = url.searchParams.get('type');
+
+  if (!id || !type) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: false, message: 'Missing id or type parameter' }));
+    return;
+  }
+
+  let tableName;
+  switch (type) {
+    case 'scopes':
+      tableName = 'scopes';
+      break;
+    case 'platforms':
+      tableName = 'platforms';
+      break;
+    case 'programming_languages':
+      tableName = 'prog_langs';
+      break;
+    default:
+      res.writeHead(400, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, message: 'Invalid tag type' }));
+      return;
+  }
+
+  const query = `DELETE FROM ${tableName} WHERE id = ?`;
+  connection.query(query, [id], (error, results) => {
+    if (error) {
+      console.error('Error deleting tag:', error);
+      res.writeHead(500, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: false, message: 'Error deleting tag', error }));
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, message: 'Tag deleted successfully' }));
+  });
+}
+function getCategoriesWithInterfaceZero(req, res) {
+  const query = 'SELECT id, name, tag FROM categories WHERE interface = 0';
+  connection.query(query, (error, results) => {
+    if (error) {
+      console.error('Error fetching categories with interface=0:', error);
+      sendErrorResponse(res, 'Error fetching categories with interface=0', error);
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, categories: results }));
+  });
+}
+
+function getContentByCategory(req, res) {
+  const urlParts = new URL(req.url, `http://${req.headers.host}`);
+  const categoryId = urlParts.searchParams.get('categoryId');
+  if (!categoryId) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: false, message: 'Missing categoryId parameter' }));
+    return;
+  }
+  const query = `
+    SELECT contents.id, contents.title, contents.description, contents.link,
+      GROUP_CONCAT(DISTINCT platforms.name) AS platforms,
+      GROUP_CONCAT(DISTINCT scopes.name) AS scopes,
+      GROUP_CONCAT(DISTINCT prog_langs.name) AS programming_languages
+    FROM contents
+    LEFT JOIN content_platforms ON contents.id = content_platforms.content_id
+    LEFT JOIN platforms ON content_platforms.platform_id = platforms.id
+    LEFT JOIN content_scopes ON contents.id = content_scopes.content_id
+    LEFT JOIN scopes ON content_scopes.scope_id = scopes.id
+    LEFT JOIN content_prog_langs ON contents.id = content_prog_langs.content_id
+    LEFT JOIN prog_langs ON content_prog_langs.prog_lang_id = prog_langs.id
+    LEFT JOIN content_categories ON contents.id = content_categories.content_id
+    WHERE content_categories.category_id = ?
+    GROUP BY contents.id
+  `;
+  connection.query(query, [categoryId], (error, results) => {
+    if (error) {
+      console.error('Error fetching content:', error);
+      sendErrorResponse(res, 'Error fetching content', error);
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, content: results }));
+  });
+}
+
+
+function updateContentField(req, res) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+  req.on('end', () => {
+    const { id, field, value } = JSON.parse(body);
+    const query = `UPDATE contents SET ${field} = ? WHERE id = ?`;
+    connection.query(query, [value, id], (error, results) => {
+      if (error) {
+        console.error('Error updating content field:', error);
+        sendErrorResponse(res, 'Error updating content field', error);
+        return;
+      }
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: true, message: 'Content updated successfully' }));
+    });
+  });
+}
+
+function updateContentTags(req, res) {
+  let body = '';
+  req.on('data', chunk => {
+    body += chunk.toString();
+  });
+  req.on('end', () => {
+    const { id, field, tags } = JSON.parse(body);
+    
+    console.log(`Received updateContentTags request with field: ${field}`);
+    console.log(`Tags received: ${JSON.stringify(tags)}, Length: ${tags.length}`);
+
+    let tableName = '';
+    let foreignKey = '';
+    let joinTable = '';
+    switch (field) {
+      case 'platforms':
+        tableName = 'platforms';
+        foreignKey = 'platform_id';
+        joinTable = 'content_platforms';
+        break;
+      case 'scopes':
+        tableName = 'scopes';
+        foreignKey = 'scope_id';
+        joinTable = 'content_scopes';
+        break;
+      case 'languages':
+        tableName = 'prog_langs';
+        foreignKey = 'prog_lang_id';
+        joinTable = 'content_prog_langs';
+        break;
+      default:
+        console.error(`Invalid tag type: ${field}`);
+        sendErrorResponse(res, 'Invalid tag type');
+        return;
+    }
+
+    if (!tags || (tags.length === 0)) {
+      console.log(`Tags array is empty or contains an empty string. Deleting all ${field} entries for content ID: ${id}`);
+      const deleteQuery = `DELETE FROM ${joinTable} WHERE content_id = ?`;
+      connection.query(deleteQuery, [id], (deleteError, deleteResults) => {
+        if (deleteError) {
+          console.error(`Error deleting ${field}:`, deleteError);
+          sendErrorResponse(res, `Error deleting ${field}`, deleteError);
+          return;
+        }
+        res.writeHead(200, { 'Content-Type': 'application/json' });
+        res.end(JSON.stringify({ success: true, message: `${field} updated successfully` }));
+      });
+    } else {
+      const checkQuery = `SELECT id FROM ${tableName} WHERE name IN (?)`;
+      connection.query(checkQuery, [tags], (checkError, checkResults) => {
+        if (checkError) {
+          console.error(`Error checking ${field}:`, checkError);
+          sendErrorResponse(res, `Error checking ${field}`, checkError);
+          return;
+        }
+        if (checkResults.length !== tags.length) {
+          res.writeHead(400, { 'Content-Type': 'application/json' });
+          res.end(JSON.stringify({ success: false, message: `Invalid ${field} provided` }));
+          return;
+        }
+        const deleteQuery = `DELETE FROM ${joinTable} WHERE content_id = ?`;
+        connection.query(deleteQuery, [id], (deleteError, deleteResults) => {
+          if (deleteError) {
+            console.error(`Error deleting ${field}:`, deleteError);
+            sendErrorResponse(res, `Error deleting ${field}`, deleteError);
+            return;
+          }
+          const insertQuery = `INSERT INTO ${joinTable} (content_id, ${foreignKey}) VALUES ?`;
+          const values = checkResults.map(row => [id, row.id]);
+          connection.query(insertQuery, [values], (insertError, insertResults) => {
+            if (insertError) {
+              console.error(`Error inserting ${field}:`, insertError);
+              sendErrorResponse(res, `Error inserting ${field}`, insertError);
+              return;
+            }
+            res.writeHead(200, { 'Content-Type': 'application/json' });
+            res.end(JSON.stringify({ success: true, message: `${field} updated successfully` }));
+          });
+        });
+      });
+    }
+  });
+}
+
+
+
+function deleteContent(req, res) {
+  const urlParts = new URL(req.url, `http://${req.headers.host}`);
+  const id = urlParts.searchParams.get('id');
+  if (!id) {
+    res.writeHead(400, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: false, message: 'Missing id parameter' }));
+    return;
+  }
+  const query = 'DELETE FROM contents WHERE id = ?';
+  connection.query(query, [id], (error, results) => {
+    if (error) {
+      console.error('Error deleting content:', error);
+      sendErrorResponse(res, 'Error deleting content', error);
+      return;
+    }
+    res.writeHead(200, { 'Content-Type': 'application/json' });
+    res.end(JSON.stringify({ success: true, message: 'Content deleted successfully' }));
+  });
+}
+
+function handleExportData(req, res) {
+  const queries = [
+    { table: 'categories', query: 'SELECT * FROM categories' },
+    { table: 'platforms', query: 'SELECT * FROM platforms' },
+    { table: 'scopes', query: 'SELECT * FROM scopes' },
+    { table: 'prog_langs', query: 'SELECT * FROM prog_langs' },
+    { table: 'contents', query: 'SELECT * FROM contents' },
+    { table: 'content_scopes', query: 'SELECT * FROM content_scopes' },
+    { table: 'content_prog_langs', query: 'SELECT * FROM content_prog_langs' },
+    { table: 'content_platforms', query: 'SELECT * FROM content_platforms' },
+    { table: 'content_categories', query: 'SELECT * FROM content_categories' },
+    { table: 'users', query: 'SELECT * FROM users' },
+    { table: 'favorites', query: 'SELECT * FROM favorites' },
+    { table: 'history', query: 'SELECT * FROM history' },
+  ];
+
+  let data = '';
+
+  const fetchTableData = (index) => {
+    if (index >= queries.length) {
+      res.writeHead(200, {
+        'Content-Disposition': 'attachment; filename=refi.json',
+        'Content-Type': 'application/json'
+      });
+      res.end(data);
+      return;
+    }
+
+    const { table, query } = queries[index];
+    connection.query(query, (error, results) => {
+      if (error) {
+        console.error(`Error fetching data from ${table}:`, error);
+        sendErrorResponse(res, `Error fetching data from ${table}`, error);
+        return;
+      }
+
+      data += `#${table}\n`;
+      results.forEach(row => {
+        data += JSON.stringify(row) + '\n';
+      });
+
+      fetchTableData(index + 1);
+    });
+  };
+
+  fetchTableData(0);
+}
+
+function handleImportData(req, res) {
+  upload.single('import-file')(req, res, function (err) {
+    if (err) {
+      console.error('Error uploading file:', err);
+      return sendErrorResponse(res, 'Error uploading file.');
+    }
+
+    const filePath = req.file.path;
+    fs.readFile(filePath, 'utf8', (err, data) => {
+      if (err) {
+        console.error('Error reading file:', err);
+        return sendErrorResponse(res, 'Error reading file.');
+      }
+
+      try {
+        const jsonData = JSON.parse(data);
+        processImportData(jsonData, res);
+      } catch (err) {
+        console.error('Error parsing JSON:', err);
+        return sendErrorResponse(res, 'Error parsing JSON.');
+      } finally {
+        fs.unlink(filePath, (err) => {
+          if (err) console.error('Error deleting uploaded file:', err);
+        });
+      }
+    });
+  });
+}
+
+
+function processImportData(data, res) {
+  const categoriesSet = new Set(data.map(item => item.category));
+  const scopesSet = new Set(data.flatMap(item => item.scopes));
+  const programmingLanguagesSet = new Set(data.flatMap(item => item.programming_languages));
+  const platformsSet = new Set(data.flatMap(item => item.platforms));
+
+  validateSets({ categoriesSet, scopesSet, programmingLanguagesSet, platformsSet }, (err) => {
+    if (err) {
+      return sendErrorResponse(res, err);
+    }
+
+    let hasErrorOccurred = false;
+
+    data.forEach(item => {
+      const { title, description, href, category, scopes, programming_languages, platforms } = item;
+
+      if (!title || !description || !href) {
+        console.error('Invalid content data:', item);
+        hasErrorOccurred = true;
+        return;
+      }
+
+      connection.query('INSERT INTO contents (title, description, link) VALUES (?, ?, ?)', [title, description, href], (err, results) => {
+        if (err) {
+          console.error('Error inserting content:', err);
+          hasErrorOccurred = true;
+          return;
+        }
+        const contentId = results.insertId;
+        insertContentTags(contentId, 'scopes', scopes);
+        insertContentTags(contentId, 'programming_languages', programming_languages);
+        insertContentTags(contentId, 'platforms', platforms);
+        insertContentCategory(contentId, category);
+      });
+    });
+
+    if (hasErrorOccurred) {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: true, message: 'Data imported with some errors.' }));
+    } else {
+      res.writeHead(200, { 'Content-Type': 'application/json' });
+      res.end(JSON.stringify({ success: true, message: 'Data imported successfully.' }));
+    }
+  });
+}
+
+
+
+function validateSets(sets, callback) {
+  const { categoriesSet, scopesSet, programmingLanguagesSet, platformsSet } = sets;
+
+  const queries = [
+    { type: 'category', query: 'SELECT tag FROM categories WHERE tag IN (?)', values: [Array.from(categoriesSet)] },
+    { type: 'scope', query: 'SELECT name FROM scopes WHERE name IN (?)', values: [Array.from(scopesSet)] },
+    { type: 'programming_language', query: 'SELECT name FROM prog_langs WHERE name IN (?)', values: [Array.from(programmingLanguagesSet)] },
+    { type: 'platform', query: 'SELECT name FROM platforms WHERE name IN (?)', values: [Array.from(platformsSet)] },
+  ];
+
+  executeValidationQueries(queries, (err, results) => {
+    if (err) {
+      return callback(err);
+    }
+
+    const missingCategories = Array.from(categoriesSet).filter(tag => !results.category.includes(tag));
+    const missingScopes = Array.from(scopesSet).filter(name => !results.scope.includes(name));
+    const missingProgrammingLanguages = Array.from(programmingLanguagesSet).filter(name => !results.programming_language.includes(name));
+    const missingPlatforms = Array.from(platformsSet).filter(name => !results.platform.includes(name));
+
+    if (missingCategories.length || missingScopes.length || missingProgrammingLanguages.length || missingPlatforms.length) {
+      let errorMessage = 'Validation failed:';
+      if (missingCategories.length) errorMessage += ` Missing categories: ${missingCategories.join(', ')}`;
+      if (missingScopes.length) errorMessage += ` Missing scopes: ${missingScopes.join(', ')}`;
+      if (missingProgrammingLanguages.length) errorMessage += ` Missing programming languages: ${missingProgrammingLanguages.join(', ')}`;
+      if (missingPlatforms.length) errorMessage += ` Missing platforms: ${missingPlatforms.join(', ')}`;
+      return callback(errorMessage);
+    }
+
+    callback(null);
+  });
+}
+
+
+function executeValidationQueries(queries, callback) {
+  let results = {};
+  let completedQueries = 0;
+
+  queries.forEach(query => {
+    connection.query(query.query, query.values, (err, rows) => {
+      if (err) {
+        return callback(`Error validating ${query.type}s: ${err.message}`);
+      }
+
+      results[query.type] = rows.map(row => row[query.type === 'category' ? 'tag' : 'name']);
+      completedQueries++;
+
+      if (completedQueries === queries.length) {
+        callback(null, results);
+      }
+    });
+  });
+}
+
+function insertContentTags(contentId, type, tags) {
+  if (!tags.length) return;
+
+  let table, column;
+  switch (type) {
+    case 'scopes':
+      table = 'content_scopes';
+      column = 'scope_id';
+      break;
+    case 'programming_languages':
+      table = 'content_prog_langs';
+      column = 'prog_lang_id';
+      break;
+    case 'platforms':
+      table = 'content_platforms';
+      column = 'platform_id';
+      break;
+    default:
+      return;
+  }
+
+  const queries = tags.map(tag => {
+    return new Promise((resolve, reject) => {
+      connection.query(`SELECT id FROM ${type === 'scopes' ? 'scopes' : type === 'programming_languages' ? 'prog_langs' : 'platforms'} WHERE name = ?`, [tag], (err, results) => {
+        if (err) return reject(err);
+        if (!results.length) return resolve();
+        const tagId = results[0].id;
+        connection.query(`INSERT INTO ${table} (content_id, ${column}) VALUES (?, ?)`, [contentId, tagId], (err) => {
+          if (err) return reject(err);
+          resolve();
+        });
+      });
+    });
+  });
+
+  Promise.all(queries).catch(err => {
+    console.error(`Error inserting ${type}:`, err);
+  });
+}
+
+function insertContentCategory(contentId, category) {
+  connection.query('SELECT id FROM categories WHERE tag = ?', [category], (err, results) => {
+    if (err) {
+      console.error('Error fetching category id:', err);
+      return;
+    }
+    if (results.length > 0) {
+      const categoryId = results[0].id;
+      connection.query('INSERT INTO content_categories (content_id, category_id) VALUES (?, ?)', [contentId, categoryId], (err) => {
+        if (err) {
+          console.error('Error inserting content category:', err);
+        }
+      });
+    }
+  });
+}
+function sendErrorResponse(res, message, err) {
+  if (res.headersSent) {
+    console.error('Headers already sent:', message, err);
+    return;
+  }
+
+  res.writeHead(500, { 'Content-Type': 'application/json' });
+  res.end(JSON.stringify({ success: false, message }));
 }

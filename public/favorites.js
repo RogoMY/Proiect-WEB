@@ -2,7 +2,6 @@ document.addEventListener('DOMContentLoaded', function() {
   
   fetchFavorites();
 
-  // Search and logout
   var searchButton = document.getElementById('search-button');
   var searchField = document.getElementById('search-field');
 

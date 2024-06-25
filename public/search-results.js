@@ -40,6 +40,7 @@ document.addEventListener('DOMContentLoaded', function() {
     .then(response => response.json())
     .then(data => {
       if (data.success) {
+        document.cookie = 'userId=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;';
         window.location.href = 'login.html';
       } else {
         alert('Logout failed.');
@@ -151,7 +152,7 @@ document.addEventListener('DOMContentLoaded', function() {
           console.log('Redirecting to:', result.link);
           setTimeout(() => {
             window.location.href = result.link;
-          }, 10); // 1-second delay
+          }, 10);
         });
       });
 
@@ -170,14 +171,13 @@ document.addEventListener('DOMContentLoaded', function() {
       ].filter(tag => tag.trim().length > 0).join(', ');
       resultItem.appendChild(tags);
 
-      // Add the star for favorites
       var starIcon = document.createElement('span');
       starIcon.classList.add('star-icon');
-      starIcon.innerHTML = '&#9734;'; // Empty star
+      starIcon.innerHTML = '&#9734;'; //stea goala
       if (result.isFavorite) {
-        starIcon.classList.add('favorite'); // Add the favorite class if the item is already a favorite
+        starIcon.classList.add('favorite');
       }
-      console.log('Adding star icon to:', result.title); // Log message for verification
+      console.log('Adding star icon to:', result.title);
       starIcon.addEventListener('click', function() {
         toggleFavorite(result, starIcon);
       });

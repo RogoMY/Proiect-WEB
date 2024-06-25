@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard | Import/Export Data</title>
+    <link rel="stylesheet" href="admin.css">
+    <link rel="stylesheet" href="header-footer.css">
+</head>
+<body>
+    <header class="header">
+        <span class="logo">ReFi Admin</span>
+        <div class="menu-and-search">
+            <nav class="menu">
+                <ul>
+                    <li><a href="login.html">Logout</a></li>
+                    <li><a href="admin.html">Manage Users</a></li>
+                    <li><a href="manage-content.html">Manage Content</a></li>
+                    <li><a href="data.html">Import/Export Data</a></li>
+                </ul>
+            </nav>
+        </div>
+        <button class="menu-toggle" id="menu-toggle">&#9776;</button>
+    </header>
+    
+    <main class="admin-main">
+        <h1>Import/Export Data</h1>
+        
+        <section>
+            <h2>Export Data</h2>
+            <button id="export-data-button">Export Data</button>
+        </section>
+
+        <section>
+            <h2>Import Data</h2>
+            <form id="import-data-form" enctype="multipart/form-data">
+                <input type="file" id="import-file" name="import-file" accept=".json" required>
+                <button type="submit">Import Data</button>
+            </form>
+        </section>
+    </main>
+  
+    <footer class="footer">
+        <div class="footer-content">
+            © ReFi 2024<br>
+            Admin Dashboard
+        </div>
+    </footer>
+  
+    <script src="data.js"></script>
+</body>
+</html>

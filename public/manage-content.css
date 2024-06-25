@@ -1,145 +1,268 @@
 .admin-main {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.manage-buttons button {
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  margin: 10px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 4px;
+}
+
+.manage-buttons button:hover {
+  background-color: #218838;
+}
+
+.form-section {
+  background: #f8f9fa;
+  padding: 20px;
+  margin-top: 20px;
+  width: 80%;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  display: none;
+}
+
+.alert {
+  position: fixed;
+  top: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 15px;
+  background-color: #28a745;
+  color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  z-index: 1000;
+  opacity: 0.9;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.alert.error {
+  background-color: #dc3545;
+}
+
+.form-section h2 {
+  color: #333;
+}
+
+.form-section label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+.form-section input[type="text"],
+.form-section input[type="url"],
+.form-section select,
+.form-section textarea {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-section textarea {
+  height: 100px;
+}
+
+.form-section button {
+  background-color: #0056b3;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.form-section button:hover {
+  background-color: #003d82;
+}
+
+.categories-section,
+.category-details {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.category-list {
+  display: flex;
+  flex-direction: column;
+}
+
+.category-item {
+  padding: 10px;
+  margin: 10px 0;
+  background-color: #f0f0f0;
+  border: 1px solid #000;
+  border-radius: 5px;
+  position: relative;
+}
+
+.category-item input[type="text"] {
+  width: 50%;
+}
+
+.category-item label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.category-item .interface-label,
+.category-item .interface-span {
+  display: block;
+}
+
+.interface-container {
+  display: flex;
+  flex-direction: row;
+}
+
+.delete-category-btn {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: #ff0000;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+
+.delete-category-btn:hover {
+  color: #cc0000;
+}
+
+.tag-item {
+  padding: 10px;
+  margin: 5px 0;
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  display:flex;
+  align-items: center;
+}
+
+.tag-item label {
+  flex: 0 0 100px;
+  margin-right: 10px;
+}
+
+.tag-item input {
+  flex: 1;
+  margin-right: 10px;
+}
+
+.tag-item button {
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  flex-shrink: 0;
+}
+
+.tag-item button:hover {
+  background-color: #cc0000;
+}
+
+#edit-content-list {
+  display: flex;
+  flex-direction: column;
+  background-color: #e9ecef;
+  padding: 20px;
+  border-radius: 8px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.content-item {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px; 
+}
+
+.content-item label {
+  font-weight: bold;
+}
+
+.content-item input[type="text"],
+.content-item input[type="url"],
+.content-item textarea {
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.content-item textarea {
+  resize: vertical;
+  max-width: 100%;
+}
+
+.content-item button.delete-content-btn {
+  align-self: flex-end;
+  padding: 5px 10px;
+  background-color: #ff0000;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  margin-top: 10px; 
+  flex-shrink: 0;
+}
+
+.content-item button.delete-content-btn:hover {
+  background-color: #cc0000;
+}
+
+.content-item .input-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px; 
+}
+
+@media (max-width: 768px) {
+  .admin-main {
+    width: 100%;
+    padding: 10px;
   }
-  
-  .manage-buttons button {
-    background-color: #28a745;
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    margin: 10px;
-    cursor: pointer;
-    font-size: 16px;
-    border-radius: 4px;
-  }
-  
-  .manage-buttons button:hover {
-    background-color: #218838;
-  }
-  
+
   .form-section {
-    background: #f8f9fa;
-    padding: 20px;
-    margin-top: 20px;
-    width: 80%;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    display: none;
+    width: 100%;
+    box-sizing: border-box;
   }
-  
-  .form-section h2 {
-    color: #333;
-  }
-  
-  .form-section label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: bold;
-  }
-  
+
   .form-section input[type="text"],
   .form-section input[type="url"],
   .form-section select,
   .form-section textarea {
-    width: 100%;
-    padding: 8px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    width: calc(100% - 20px);
+    box-sizing: border-box;
   }
-  
-  .form-section textarea {
-    height: 100px;
-  }
-  
+
   .form-section button {
-    background-color: #0056b3;
-    color: white;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+    width: 100%;
   }
-  
-  .form-section button:hover {
-    background-color: #003d82;
-  }
-  
-  .categories-section,
-  .category-details {
-    margin-top: 20px;
-    padding: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-  }
-  
-  .category-list {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .category-item {
-    padding: 10px;
-    margin: 10px 0;
-    background-color: #f0f0f0;
-    border: 1px solid #000;
-    border-radius: 5px;
-    position: relative;
-  }
-  
-  .category-item input[type="text"] {
-    width: 50%;
-  }
-  
-  .category-item label {
-    display: block;
-    margin-bottom: 5px;
-  }
-  
-  .category-item .interface-label,
-  .category-item .interface-span {
-    display: block;
-  }
-  
-  .interface-container {
-    display: flex;
-    flex-direction:row;
-  }
-  
-  .delete-category-btn {
-    position: absolute;
-    bottom: 10px;
-    right: 10px;
-    color: #ff0000;
-    border: none;
-    background-color: transparent;
-    cursor: pointer;
-  }
-  
-  .delete-category-btn:hover {
-    color: #cc0000;
-  }
-  
-  @media (max-width: 768px) {
-    .admin-main {
-      width: 100%;
-      padding: 10px;
-    }
-  
-    .form-section {
-      width: 100%;
-      box-sizing: border-box;
-    }
-  
-    .form-section input[type="text"],
-    .form-section input[type="url"],
-    .form-section select,
-    .form-section textarea {
-      width: calc(100% - 20px);
-      box-sizing: border-box;
-    }
-  }
-  
+}

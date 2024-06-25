@@ -31,16 +31,16 @@ document.addEventListener('DOMContentLoaded', function() {
   
       history.forEach(item => {
         const historyItem = document.createElement('div');
-        historyItem.classList.add('search-result-item'); // Use the same class as search result item
+        historyItem.classList.add('search-result-item');
   
         const titleLink = document.createElement('a');
         titleLink.href = item.link;
-        titleLink.classList.add('search-result-title'); // Use the same class as search result title
+        titleLink.classList.add('search-result-title');
         titleLink.textContent = item.title;
         historyItem.appendChild(titleLink);
   
         const description = document.createElement('p');
-        description.classList.add('search-result-description'); // Use the same class as search result description
+        description.classList.add('search-result-description');
         description.textContent = item.description;
         historyItem.appendChild(description);
   
