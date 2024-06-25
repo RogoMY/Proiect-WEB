@@ -17,7 +17,7 @@ const upload = multer({ dest: 'uploads/' });
 const connection = mysql.createConnection({
   host: 'localhost',
   user: 'root',
-  password: 'bd2024',
+  password: 'parola',
   database: 'web',
   port: 3306
 });

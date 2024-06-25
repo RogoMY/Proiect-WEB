@@ -103,6 +103,7 @@
             <h3>Autentificarea</h3>
             <p>
                 Autentificarea utilizatorilor se efectueaza printr-o pagina special destinata acestui scop, unde este necesar sa se completeze informatiile solicitate (username si parola). Dupa introducerea datelor, utilizatorii vor apasa pe butonul „login”. Daca informatiile sunt valide, vor fi redirectionati catre pagina principala sau catre admin dashboard (in cazul in care logarea a fost efectuata pentru un cont de administrator). Este important de mentionat ca pentru autentificare este necesar sa existe un cont de utilizator preexistent.
+				De asemenea, pentru ca un admin sa se poata conecta pe contul lui, el trebuie sa isi puna pe masina care ruleaza serverul un stick ( in cazul nostru primeste disk-ul E ) in care se afla un fisier key.txt in care este scris cuvantul "success" pentru validare.
             </p>
         </section>
         <section id="register">
@@ -111,18 +112,25 @@
                 Procedura de inregistrare incepe cu completarea unui formular, unde utilizatorul introduce email-ul, parola si confirmarea parolei. Dupa apasarea butonului „register” si verificarea corectitudinii informatiilor (email-ul trebuie sa fie intr-un format acceptat si parolele trebuie sa corespunda), utilizatorul este redirectionat catre pagina de login.
             </p>
         </section>
-    
-        <section id="history-visualization">
+        <section id="search-system">
+			<h3>Sistem de Cautare a Informatiilor</h3>
+		<p>
+        Utilizatorii pot cauta informatii din baza de date folosind campul de cautare din coltul din dreapta sus al ecranului, utilizand limbaj natural. Raspunsurile sunt afisate in ordinea relevantei, intai cele care corespund perfect cererii, urmate de cele partiale. 
+        Filtrele din partea stanga se actualizeaza dinamic in functie de rezultatele obtinute. Algoritmul utilizeaza scoruri de relevanta, cautand cuvintele utilizate in taguri, titluri si descrieri, ignorand cuvintele de legatura fara relevanta (ex. pe, la, care, cum, ce, etc.). 
+        Fiecare rezultat afiseaza in partea dreapta o stea ⭐, care va fi colorata in galben daca este deja adaugata in lista de "favorite" sau fara culoare daca nu a fost selectata. Utilizatorii pot face clic pe acest simbol pentru a adauga sau elimina elemente din lista de favorite. Toate actiunile sunt salvate in istoricul utilizatorului.
+			</p>
+		</section>
+		<section id="history-visualization">
             <h3>Sistem de afisare al istoricului cautarilor</h3>
             <p>
-                Pe pagina dedicata vizualizarii istoricului, utilizatorul isi poate vedea si reaccesa ultimele sale cautari. De asemenea, este afisata data si ora cautarii.
+                Pe pagina dedicata vizualizarii istoricului, utilizatorul isi poate vedea si reaccesa ultimele sale cautari care au fost apasate, ordonate dupa data accesarii.
             </p>
         </section>
-
+		
         <section id="favorites-visualization">
             <h3>Sistem de afisare al materialelor favorite</h3>
             <p>
-                Pe pagina dedicata vizualizarii materialelor favorite, utilizatorul va putea accesa printr-un singur click materialele pe care le-a marcat ca fiind "favorite".
+                Pe pagina dedicata vizualizarii materialelor favorite, utilizatorul va putea accesa printr-un singur click materialele pe care le-a marcat ca fiind "favorite" sau le va putea elimina din aceasta lista apasand butonul ⭐ din dreapta elementelor.
             </p>
         </section>
     
@@ -130,7 +138,7 @@
             <h3>Admin Dashboard</h3>
             <ul>
                 <li>Gestionarea utilizatorilor:
-                    <p>Administratorul poate sterge un utilizator din baza de date, sau ii poate actualiza informatiile (adresa de e-mail, parola). De asemenea, pentru a gasi mai usor un utilizator, se poate folosi de functia de search pe baza username-ului sau al e-mail-ului.</p>
+                    <p>Administratorul poate sa ii atualizeze informatiile (adresa de e-mail, parola) unui utilizator din baza de date. De asemenea, pentru a gasi mai usor un utilizator, se poate folosi de functia de search pe baza username-ului.</p>
                 </li>
                 <li>Gestionarea materialelor:
                     <p> Administratorul, prin apasarea butoanelor aferente, poate accesa formularele de adaugare de noi categorii (poate alege titlul si categoria-parinte, daca este necesar) sau de adaugare de noi elemente intr-o categorie deja existenta. La apasarea butonului de adaugare, valabil pe ambele formulare, se face o validare a informatiilor (ex. asocierea unui link valid unui material sau selectarea unei categorii), urmand sa fie afisate mesajele de eroare aferente, sau inchiderea formularului in caz de succes.
@@ -147,6 +155,9 @@
             <li><a href="https://developer.mozilla.org/">Documente MDN Web</a></li>
             <li><a href="https://github.com/terkelg/awesome-creative-coding?tab=readme-ov-file">Sursa materiale site</a></li>
             <li>Surse de inspiratie:<a href="https://github.com/">Github</a> pentru sistemul de logare si de search, si <a href="https://www.emag.ro/">Emag</a> pentru design-ul filtrelor</li>
+			<li><a href="https://github.com/kelektiv/node.bcrypt.js">Sistemul de criptare</a></li>
+			<li><a href="https://github.com/sidorares/node-mysql2">Sistemul folosit la base de date</a></li>
+			<li><a href="https://github.com/pillarjs/cookies">Sistemul folosit pentru cookie-uri</a></li>
         </ul>
     </section>
 </body>
