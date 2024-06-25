@@ -141,10 +141,12 @@
                     <p>Administratorul poate sa ii atualizeze informatiile (adresa de e-mail, parola) unui utilizator din baza de date. De asemenea, pentru a gasi mai usor un utilizator, se poate folosi de functia de search pe baza username-ului.</p>
                 </li>
                 <li>Gestionarea materialelor:
-                    <p> Administratorul, prin apasarea butoanelor aferente, poate accesa formularele de adaugare de noi categorii (poate alege titlul si categoria-parinte, daca este necesar) sau de adaugare de noi elemente intr-o categorie deja existenta. La apasarea butonului de adaugare, valabil pe ambele formulare, se face o validare a informatiilor (ex. asocierea unui link valid unui material sau selectarea unei categorii), urmand sa fie afisate mesajele de eroare aferente, sau inchiderea formularului in caz de succes.
-                        <p>Totodata, administratorul poate apasa pe butonul asociat unei categorii pentru a vizualiza, edita si sterge materialele cuprinse. De asemenea, administratorul poate sterge o categorie intreaga prin apasarea butonului de "delete" din dreapta titlului categoriei.</p>
+                    <p>Administratorul poate adauga categorii, inregistrari si tag-uri(platforme,scopuri,limbaje de programare) noi si le poate edita pe cele existente. De asemenea, corectidunea datelor se face pe baza de reg-ex alaturi de validarea existentei, in cazul tagurilor, categoriilor,inregistrari existente, prin utilizarea bazei de date (de exemplu, putem asigna un tag unei inregistrari doar daca exista deja in baza de date acel tag si nici nu il putem pune de 2 ori pe acelasi).</p>
                 </li>
-            </ul>
+                <li>Import/Export date:
+                    <p>Administratorul poate exporta intreaga baza de date in format json. De asemenea, acesta poate adauga date noi in baza de date deja existenta, alegand un fisier json care trebuie sa treaca de testele de validare(strucutra corecta, date complete si tag-uri, categorii existente). In cazul folosirii de date incorecte, fisierul va fi respins.</p>
+                    </li>
+                    </ul>
         </section>
     </section>
 
